@@ -11,10 +11,12 @@ raisin: #50424b
   color: #9dbca6;
 }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-  transition: margin-left 0.5s;
-  padding: 20px;
+.orange {
+  color: #fd7336;
+}
+
+.beige {
+  color: #e3c080;
 }
 
 .header {
@@ -124,4 +126,23 @@ raisin: #50424b
   );
   padding: 1px;
   margin: 5px 2px;
+}
+
+.buyersCard {
+  padding: 10px;
+  margin: 5px;
+  display: block;
+  border: solid #9dbca6 2px;
+  background: transparent;
+}
+
+.button {
+  font-size: 14px;
+  padding: 6px 12px;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  border: 1px solid transparent;
+  color: white;
+  background-color: #9dbca6;
 }
