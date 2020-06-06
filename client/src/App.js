@@ -1,7 +1,14 @@
 import React, { Component } from "react";
+// import Catalog from "./components/Catalog";
+// import Sellers from "./components/Sellers";
+import ContactUs from "./components/ContactUs";
+
 import "./App.css";
 
 class App extends Component {
+  componentDidMount() {
+    this.closeNav();
+  }
   openNav = () => {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
@@ -9,7 +16,7 @@ class App extends Component {
 
   closeNav = () => {
     document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
+    document.getElementById("main").style.marginLeft = "20px";
   };
 
   render() {
@@ -17,7 +24,7 @@ class App extends Component {
       <div className="App">
         {/* SIDENAV CONTAINER */}
         <div id="mySidenav" className="sidenav">
-          <a class="closebtn" onClick={() => this.closeNav()}>
+          <a className="closebtn" onClick={() => this.closeNav()}>
             &times;
           </a>
 
@@ -48,10 +55,13 @@ class App extends Component {
             </span>
             {/* BODY CONTAINER */}
             <div className="row body">
-              <img
+              {/* <img
                 src="https://color.romanuke.com/wp-content/uploads/2016/08/cvetovaya-palitra-2987.png"
                 alt="Error"
-              />
+              /> */}
+              {/* <Sellers /> */}
+              {/* <Catalog /> */}
+              <ContactUs />
             </div>
           </div>
 
