@@ -15,7 +15,7 @@ export default class ContactUs extends Component {
         directly. Our team will come back to you within
         <div className="container d-flex justify-content-center my-3" />
         <div className="row">
-          <div className="col">
+          <div className="col mb-md-0 mb-5">
             <div
               id="contact-form"
               name="contact-form"
@@ -23,8 +23,8 @@ export default class ContactUs extends Component {
               //   method="POST"
             >
               <div className="row">
-                <div className="col-md-6">
-                  <div>
+                <div className="col">
+                  <div className="md-form mb-0">
                     <input
                       type="text"
                       id="name"
@@ -34,8 +34,9 @@ export default class ContactUs extends Component {
                     <label htmlFor="name">Your name</label>
                   </div>
                 </div>
-                <div className="col-md-6">
-                  <div>
+                <div className="col">
+                  <div className="md-form mb-0">
+                    {" "}
                     <input
                       type="text"
                       id="email"
@@ -48,7 +49,7 @@ export default class ContactUs extends Component {
               </div>
               <div className="row">
                 <div className="col">
-                  <div>
+                  <div className="md-form mb-0">
                     <input
                       type="text"
                       id="subject"
@@ -60,13 +61,13 @@ export default class ContactUs extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col">
-                  <div>
+                <div className="col-md-12">
+                  <div className="md-form">
                     <textarea
                       type="text"
                       id="message"
                       name="message"
-                      rows="2"
+                      rows="3"
                       className="form-control md-textarea"
                     ></textarea>
                     <label htmlFor="message">Your message</label>

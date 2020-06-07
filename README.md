@@ -33,4 +33,6 @@ An online marketplace for farmers' markets.
 
 ### Design
 
-- Materialize: npm install --save materialize-css@next
+- Materialize: `npm install --save materialize-css@next`
+- MDBootstrap: `npm install mdbootstrap`
+- React Router: `npm install react-router-dom`
