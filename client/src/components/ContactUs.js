@@ -6,7 +6,7 @@ import "../App.css";
 export default class ContactUs extends Component {
   render() {
     return (
-      <div>
+      <div className="container">
         <h2 className="h1-responsive font-weight-bold text-center my-4">
           CONTACT US
         </h2>
@@ -87,8 +87,8 @@ export default class ContactUs extends Component {
             {/* <div className="status"></div> */}
           </div>
         </div>
-        <div className="container d-flex justify-content-center my-3 text-danger">
-          MAYBE WE CAN ADD A GOOGLE MAP HERE
+        <div className="d-flex justify-content-center  my-5">
+          <div className="square">GOOGLE MAP HERE</div>
         </div>
         <div className="row mt-4">
           <div className="col text-center">

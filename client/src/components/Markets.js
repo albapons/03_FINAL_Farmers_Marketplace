@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import SuppliersCard from "./SuppliersCard";
+import MarketsCard from "./MarketsCard";
 
-export default class Suppliers extends Component {
+export default class Markets extends Component {
   render() {
     return (
       <div className="container">
@@ -9,10 +9,10 @@ export default class Suppliers extends Component {
           <div className="square">GOOGLE MAP HERE</div>
         </div>
         <div className="d-flex justify-content-between">
-          <SuppliersCard />
-          <SuppliersCard />
-          <SuppliersCard />
-          <SuppliersCard />
+          <MarketsCard />
+          <MarketsCard />
+          <MarketsCard />
+          <MarketsCard />
         </div>
       </div>
     );
