@@ -28,7 +28,15 @@ export default class ProductsCard extends Component {
         Blabla blabla blabla blabla <br />
         blabla blabla blabla blabla
         <br />
-        {/* Unit Price */}00,00 €/u{/* Mob */}
+        {/* Unit Price */}00,00 €/u
+        <br />
+        <div className="d-flex justify-content-between mt-3">
+          <div>
+            <i className="fas fa-car-side fa-2x blue"></i>
+            {/* Food Miles */} 10 km
+          </div>
+          <i className="fas fa-cart-plus mx-3 blue fa-2x"></i>
+        </div>
       </div>
     );
   }

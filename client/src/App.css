@@ -19,6 +19,51 @@ raisin: #50424b
   color: #e3c080;
 }
 
+/* HOME PAGE */
+.homeTitle {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 50px;
+  color: white;
+  text-align: center;
+}
+
+.buy {
+  background: #9dbca6;
+  background-image: "images/OnlineShop";
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.markets {
+  background: #e3c080;
+  background-image: "images/Markets";
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.recipe {
+  background: #fd7336;
+  background-image: "images/Recipe";
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.suppliers {
+  background: #b12737;
+  background-image: "images/Suppliers";
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .header {
   height: 80px;
   border-bottom: solid #b12737 3px;
@@ -26,10 +71,15 @@ raisin: #50424b
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  font-family: "Abril Fatface", cursive;
+  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Bebas Neue", cursive;
+  padding: 20px;
 }
 
 .navBarButton {
-  width: 10%;
+  width: 5%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,6 +136,7 @@ raisin: #50424b
   }
 }
 
+/* SOCIAL MEDIA BUTTONS */
 .fa-facebook {
   background: white;
   color: #3b5998;
@@ -145,4 +196,13 @@ raisin: #50424b
   border: 1px solid transparent;
   color: white;
   background-color: #9dbca6;
+}
+
+.square {
+  width: 300px;
+  height: 300px;
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

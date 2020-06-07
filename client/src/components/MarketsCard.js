@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 
-export default class Buyers extends Component {
+export default class MarketsCard extends Component {
   render() {
     return (
       <div className="buyersCard">
@@ -14,16 +14,20 @@ export default class Buyers extends Component {
           />
         </div>
         <br />
-        {/* ID */}001
         <h5 className="mt-2">
-          {/* Company Name */}
-          <strong>COMPANY NAME</strong>
+          {/* Product Name */}
+          <strong>MARKET'S NAME</strong>
         </h5>
-        {/* PostCode */}08241 - Manresa{/* City */}
+        {/* Description */}
+        CP - City
         <br />
-        {/* Telf */}93 555 12 12 · 627 13 15 19{/* Mob */}
         <br />
-        {/* website */}www.website.com
+        Suppliers:
+        <ul>
+          <li>One supplier</li>
+          <li>Another supplier</li>
+          <li>Another supplier</li>
+        </ul>
       </div>
     );
   }
