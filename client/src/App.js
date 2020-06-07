@@ -50,14 +50,6 @@ class App extends Component {
                 {/* If there are not a username */}
               </div>
             </div>
-
-            {/* FOOTER CONTAINER */}
-            <div className="d-flex justify-content-end">
-              <i className="fab fa-instagram"></i>
-              <i className="fab fa-facebook"></i>
-              <i className="fab fa-twitter"></i>
-              <i className="fab fa-whatsapp"></i>
-            </div>
           </div>
         </div>
         <Switch>
@@ -95,6 +87,13 @@ class App extends Component {
             </div>
           </Route>
         </Switch>
+        {/* FOOTER CONTAINER */}
+        <div className="d-flex justify-content-end">
+          <i className="fab fa-instagram"></i>
+          <i className="fab fa-facebook"></i>
+          <i className="fab fa-twitter"></i>
+          <i className="fab fa-whatsapp"></i>
+        </div>
       </Router>
     );
   }
