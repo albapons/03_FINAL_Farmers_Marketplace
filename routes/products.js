@@ -26,8 +26,8 @@ router.post("/", function (req, res, next) {
   } = req.body;
   db(
     `INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units) 
-    VALUES (${name},	${unit_price},	${units},	${description}, ${tax_code}, ${seller_id},
-    ${isPerishable}, ${shelf_life_count}, ${shelf_life_units});`
+    VALUES ("${name}",	"${unit_price}",	"${units}",	"${description}", "${tax_code}", "${seller_id}",
+    "${isPerishable}", "${shelf_life_count}", "${shelf_life_units}");`
   )
     .then((results) =>
       res.send({
