@@ -11,12 +11,15 @@ const con = mysql.createConnection({
   user: DB_USER || "root",
   password: DB_PASS,
   database: DB_NAME || "farmers",
+
   multipleStatements: true,
+
 });
 
 con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
+
 
   let sql = `DROP TABLE IF EXISTS products;
     DROP TABLE IF EXISTS users;
@@ -226,6 +229,7 @@ con.connect(function (err) {
   con.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Table creation `users, markets and products` was successful!");
+
 
     console.log("Closing...");
   });
