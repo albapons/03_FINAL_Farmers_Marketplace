@@ -3,9 +3,9 @@ var router = express.Router();
 
 /* GET markets listing. */
 router.get("/", function (req, res, next) {
+  console.log("Inside get request! ");
   db(`SELECT * FROM markets;`)
     .then((results) => {
-      console.log("Here are the results: ", results.data);
       res.send(results.data);
     })
     .catch((err) => res.status(500).send(err));
