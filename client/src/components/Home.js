@@ -16,24 +16,28 @@ export default class Home extends Component {
   render() {
     return (
       <div className="body">
-        <div
-          className="homeTitle buy"
-          onMouseOver={(e) => this.changeOpacityUp(e)}
-          onMouseLeave={(e) => this.changeOpacityDown(e)}
-        >
-          <Link to="/products">BUY ONLINE</Link>
+        <div className="row">
+          {" "}
+          <div
+            className="homeTitle buy"
+            onMouseOver={(e) => this.changeOpacityUp(e)}
+            onMouseLeave={(e) => this.changeOpacityDown(e)}
+          >
+            <Link to="/products">BUY ONLINE</Link>
+          </div>
+          <div
+            className="homeTitle markets"
+            onMouseOver={(e) => this.changeOpacityUp(e)}
+            onMouseLeave={(e) => this.changeOpacityDown(e)}
+          >
+            <Link to="/markets">FIND YOUR MARKET</Link>
+          </div>
         </div>
 
         <div>
           <h1 className="support my-3">SUPPORT LOCAL BUSINESS</h1>
         </div>
-        <div
-          className="homeTitle markets"
-          onMouseOver={(e) => this.changeOpacityUp(e)}
-          onMouseLeave={(e) => this.changeOpacityDown(e)}
-        >
-          <Link to="/markets">FIND YOUR MARKET</Link>
-        </div>
+
         <div className="row my-3">
           <div
             className="homeTitle suppliers my-3"
