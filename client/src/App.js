@@ -41,11 +41,16 @@ class App extends Component {
         <div id="main">
           {/* TOP CONTAINER */}
           <div className="header">
-            <h1> FARMER'S MARKETPLACE</h1>
+            <div>
+              <Link to="/">
+                <h1 className=""> FARMER'S MARKETPLACE</h1>
+              </Link>
+            </div>
+
             <div className="d-flex align-items-center">
-              <h4>Register</h4>
+              <h4 className="d-flex align-items-center">Register</h4>
               <i className="fas fa-sign-in-alt mx-3 blue fa-2x"></i>
-              <h4>Login</h4>
+              <h4 className="d-flex align-items-center">Login</h4>
               <i className="fas fa-sign-in-alt mx-3 blue fa-2x"></i>
               {/* If there are a username */}
               {/* Hi username!<i className="fas fa-user-circle mx-3"></i> */}
@@ -72,18 +77,21 @@ class App extends Component {
               <Route path="/">
                 {/* BODY CONTAINER */}
                 <div className="row body">
-                  <span className="homeTitle buy">
+                  <div className="homeTitle buy">
                     <Link to="/products">BUY ONLINE</Link>
-                  </span>
-                  <span className="homeTitle markets">
+                  </div>
+                  <div className="homeTitle markets">
                     <Link to="/markets">FIND YOUR MARKET</Link>
-                  </span>
-                  <span className="homeTitle suppliers">
+                  </div>
+                  <div>
+                    {/* <h1 className="support">SUPPORT LOCAL BUSINESS</h1> */}
+                  </div>
+                  <div className="homeTitle suppliers">
                     <Link to="/suppliers">OUR SUPPLIERS</Link>
-                  </span>
-                  <span className="homeTitle recipe">
+                  </div>
+                  <div className="homeTitle recipe">
                     <Link to="/recipe">RECIPE OF THE DAY</Link>
-                  </span>
+                  </div>
                 </div>
               </Route>
             </Switch>

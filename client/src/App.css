@@ -23,8 +23,16 @@ raisin: #50424b
 .homeTitle {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 50px;
-  color: white;
   text-align: center;
+  color: white;
+}
+
+.support {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 100%;
+  font-size: 50px;
+  color: #b12737;
+  justify-content: center;
 }
 
 .buy {
@@ -175,8 +183,7 @@ raisin: #50424b
     #d6249f 60%,
     #285aeb 90%
   );
-  padding: 1px;
-  margin: 5px 2px;
+  margin: 0px 2px;
 }
 
 .buyersCard {
