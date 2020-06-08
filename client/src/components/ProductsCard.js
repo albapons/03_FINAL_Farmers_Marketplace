@@ -32,10 +32,10 @@ export default class ProductsCard extends Component {
         <br />
         <div className="d-flex justify-content-between mt-3">
           <div>
-            <i className="fas fa-car-side fa-2x blue"></i>
+            <i className="fas fa-car-side fa-2x CCblue"></i>
             {/* Food Miles */} 10 km
           </div>
-          <i className="fas fa-cart-plus mx-3 blue fa-2x"></i>
+          <i className="fas fa-cart-plus mx-3 CCblue fa-2x"></i>
         </div>
       </div>
     );
