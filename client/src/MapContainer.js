@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 
-const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
+// const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
+const apiKey = "AIzaSyBW1yUN5ZPFHlTg-QIdvdhjexHzx1YszsE"
 const mapStyles = {
-  width: "100%",
+  width: "200%",
   height: "700px",
 };
 
@@ -77,7 +78,7 @@ export class MapContainer extends Component {
                 placeholder="Find Location"
                 onKeyPress={this.handleKeyPress}
               />
-              <button onClick={this.search} className="btn btn-primary ml-2">
+              <button onClick={this.search} className="btn btn-success ml-2 font-weight-bold">
                 Go to Map
               </button>
             </div>
@@ -135,3 +136,5 @@ export class MapContainer extends Component {
 export default GoogleApiWrapper({
   apiKey,
 })(MapContainer);
+
+
