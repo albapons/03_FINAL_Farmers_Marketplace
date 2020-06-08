@@ -7,66 +7,21 @@ raisin: #50424b
 */
 
 /* COLOR CARD */
-.blue {
+.CCblue {
   color: #9dbca6;
 }
 
-.orange {
+.CCorange {
   color: #fd7336;
 }
 
-.beige {
+.CCbeige {
   color: #e3c080;
-}
-
-/* HOME PAGE */
-.homeTitle {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 50px;
-  color: white;
-  text-align: center;
-}
-
-.buy {
-  background: #9dbca6;
-  background-image: "images/OnlineShop";
-  width: 300px;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.markets {
-  background: #e3c080;
-  background-image: "images/Markets";
-  width: 300px;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.recipe {
-  background: #fd7336;
-  background-image: "images/Recipe";
-  width: 300px;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.suppliers {
-  background: #b12737;
-  background-image: "images/Suppliers";
-  width: 300px;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .header {
   height: 80px;
   border-bottom: solid #b12737 3px;
+
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -75,6 +30,10 @@ raisin: #50424b
   font-family: "Barlow Condensed", sans-serif;
   font-family: "Bebas Neue", cursive;
   padding: 20px;
+}
+
+.header a {
+  color: black !important;
 }
 
 .navBarButton {
@@ -87,9 +46,6 @@ raisin: #50424b
 
 .body {
   width: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* The side navigation menu */
@@ -175,8 +131,7 @@ raisin: #50424b
     #d6249f 60%,
     #285aeb 90%
   );
-  padding: 1px;
-  margin: 5px 2px;
+  margin: 0px 2px;
 }
 
 .buyersCard {
@@ -185,17 +140,6 @@ raisin: #50424b
   display: block;
   border: solid #9dbca6 2px;
   background: transparent;
-}
-
-.button {
-  font-size: 14px;
-  padding: 6px 12px;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  cursor: pointer;
-  border: 1px solid transparent;
-  color: white;
-  background-color: #9dbca6;
 }
 
 .square {

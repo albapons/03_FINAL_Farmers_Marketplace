@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
+import "./ContactUs.css";
 
 // https://mdbootstrap.com/docs/jquery/forms/contact/
 
@@ -92,16 +93,16 @@ export default class ContactUs extends Component {
         </div>
         <div className="row mt-4">
           <div className="col text-center">
-            <i className="fas fa-map-marker-alt mt-4 fa-2x beige"></i>
+            <i className="fas fa-map-marker-alt mt-4 fa-2x CCbeige"></i>
             <p>San Francisco, CA 94126, USA</p>
           </div>
           <div className="col text-center">
-            <i className="fas fa-phone mt-4 fa-2x beige"></i>
+            <i className="fas fa-phone mt-4 fa-2x CCbeige"></i>
             <p>+ 01 234 567 89</p>
           </div>
 
           <div className="col text-center">
-            <i className="fas fa-envelope mt-4 fa-2x beige"></i>
+            <i className="fas fa-envelope mt-4 fa-2x CCbeige"></i>
             <p>contact@mdbootstrap.com</p>
           </div>
         </div>
