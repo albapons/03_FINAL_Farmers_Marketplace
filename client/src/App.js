@@ -5,7 +5,7 @@ import Suppliers from "./components/Suppliers";
 import ContactUs from "./components/ContactUs";
 import Markets from "./components/Markets";
 import Home from "./components/Home";
-import ApiRecipe from "./ApiRecipe";
+import ApiRecipe from "./components/ApiRecipe";
 
 import "./App.css";
 
