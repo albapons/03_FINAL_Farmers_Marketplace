@@ -54,6 +54,8 @@ con.connect(function (err) {
       mob_no varchar(255),
       website varchar(255),
       isSeller binary(1),
+      password varchar(255),
+      username varchar(255),
       PRIMARY KEY (id)
     
     );
@@ -148,18 +150,18 @@ con.connect(function (err) {
     VALUES ("Stein",	"Leenders",	"steinleenders@gmail.com",	"Brambletye Ln, Forest Row",	"RH18",	"East Grinstead", "",		"Bramble Tye Fruit Farm", "", "", "",	"-",	1);
     INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	location,	company_name,	company_no,	tel_no,	mob_no,	website,	isSeller) 
     VALUES ("David",	"Lucas",	"info@edenfarms.co.uk",	"Rectory Lane, Old Bolingbroke",	"PE23 4EY",	 "Spilsby", "",		"Eden Farms", "", "", "", "www.edenfarms.co.uk", 1);
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller) 
-    VALUES ("Alba",	"Pons",	"test@test.co.uk",	"Onslow Square",	"SW1", 	"London", 0);
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller) 
-    VALUES ("Cihem",	"Zine",	"test@test.co.uk",	"Ladbroke grove",	"W11",	"London", 0);
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller) 
-    VALUES ("Erica",	"Calogero",	"test@test.co.uk",	"Victor rd",	"NW10 5XE",	"London", 0);
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller) 
-    VALUES ("Jane",	"Smith",	"test@test.co.uk",	"Upper St",	"N1", 	"London", 0);
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller) 
-    VALUES ("John",	"Doe",	"test@test.co.uk",	"Hamilton Terrace",	"NW8",	"London", 0);
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller) 
-    VALUES ("Peter",	"Parker",	"test@test.co.uk",	"Bermondsey St",	"SE1",	"London", 0);
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
+    VALUES ("Alba",	"Pons",	"test@test.co.uk",	"Onslow Square",	"SW1", 	"London", 0, "albap", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
+    VALUES ("Cihem",	"Zine",	"test@test.co.uk",	"Ladbroke grove",	"W11",	"London", 0, "cihemz", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
+    VALUES ("Erica",	"Calogero",	"test@test.co.uk",	"Victor rd",	"NW10 5XE",	"London", 0, "ericac", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
+    VALUES ("Jane",	"Smith",	"test@test.co.uk",	"Upper St",	"N1", 	"London", 0, "janes", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
+    VALUES ("John",	"Doe",	"test@test.co.uk",	"Hamilton Terrace",	"NW8",	"London", 0, "johnd", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
+    VALUES ("Peter",	"Parker",	"test@test.co.uk",	"Bermondsey St",	"SE1",	"London", 0, "peterp", "testing123");
    
     INSERT INTO users_markets (user_id, market_id) 
     VALUES (1,17);
