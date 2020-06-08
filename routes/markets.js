@@ -1,8 +1,9 @@
 var express = require("express");
 var router = express.Router();
+const db = require("../model/helper");
 
 /* GET markets listing. */
-router.get("/", function (req, res, next) {
+router.get("/", function (req, res) {
   console.log("Inside get request! ");
   db(`SELECT * FROM markets;`)
     .then((results) => {
@@ -12,7 +13,7 @@ router.get("/", function (req, res, next) {
 });
 
 /* POST market listing. */
-router.post("/", function (req, res, next) {
+router.post("/", function (req, res) {
   const {
     name,
     email,
