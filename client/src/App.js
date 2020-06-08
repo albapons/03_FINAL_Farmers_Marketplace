@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Products from "./components/Products";
@@ -6,6 +5,7 @@ import Suppliers from "./components/Suppliers";
 import ContactUs from "./components/ContactUs";
 import Markets from "./components/Markets";
 import Home from "./components/Home";
+import ApiRecipe from "./ApiRecipe";
 
 import "./App.css";
 
@@ -92,10 +92,10 @@ class App extends Component {
             <i className="fab fa-whatsapp"></i>
           </div>
         </div>
+        <ApiRecipe />
       </Router>
     );
   }
-
 }
 
 export default App;

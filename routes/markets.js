@@ -32,7 +32,7 @@ router.post("/", function (req, res) {
   } = req.body;
   db(
     `INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website) 
-    VALUES (${name}, ${email}, ${address1}, ${postcode}, ${city}, ${location}, ${company_name}, ${company_no},  ${tel_no},  ${mob_no}, ${day}, ${start_time}, ${end_time}, ${website});`
+    VALUES ("${name}", "${email}", "${address1}", "${postcode}", "${city}", "${location}", "${company_name}", "${company_no}",  "${tel_no}",  "${mob_no}", "${day}", "${start_time}", "${end_time}", "${website}");`
   )
     .then((results) =>
       res.send({
