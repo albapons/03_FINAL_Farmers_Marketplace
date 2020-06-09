@@ -5,9 +5,11 @@ import Suppliers from "./components/Suppliers";
 import ContactUs from "./components/ContactUs";
 import Markets from "./components/Markets";
 import Home from "./components/Home";
-import ApiRecipe from "./ApiRecipe";
-
+import ApiRecipe from "./components/ApiRecipe";
+import ProductToDisplay from "./components/ProductToDisplay";
+import MapContainer from "./components/MapContainer";
 import "./App.css";
+
 
 class App extends Component {
   componentDidMount() {
@@ -65,6 +67,9 @@ class App extends Component {
               <i className="fas fa-chevron-circle-down fa-rotate-90 CCblue fa-3x"></i>
             </span>
             <Switch>
+              <Route path="/products/:id">
+                <ProductToDisplay />
+              </Route>
               <Route path="/products">
                 <Products />
               </Route>
@@ -74,7 +79,9 @@ class App extends Component {
               <Route path="/suppliers">
                 <Suppliers />
               </Route>
-              <Route path="/recipe">{/* <RecipeWeek /> */}</Route>
+              <Route path="/recipe">
+                <ApiRecipe />
+              </Route>
               <Route path="/contact">
                 <ContactUs />
               </Route>
@@ -92,8 +99,13 @@ class App extends Component {
             <i className="fab fa-whatsapp"></i>
           </div>
         </div>
-        <ApiRecipe />
+
+       <MapContainer />
+        
       </Router>
+
+   
+
     );
   }
 }

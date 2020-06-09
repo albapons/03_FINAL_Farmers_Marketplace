@@ -20,13 +20,11 @@ raisin: #50424b
 }
 .header {
   height: 80px;
-  border-bottom: solid #b12737 3px;
-
+  border-bottom: solid #b12737 5px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  font-family: "Abril Fatface", cursive;
   font-family: "Barlow Condensed", sans-serif;
   font-family: "Bebas Neue", cursive;
   padding: 20px;
@@ -132,14 +130,6 @@ raisin: #50424b
     #285aeb 90%
   );
   margin: 0px 2px;
-}
-
-.buyersCard {
-  padding: 10px;
-  margin: 5px;
-  display: block;
-  border: solid #9dbca6 2px;
-  background: transparent;
 }
 
 .square {
