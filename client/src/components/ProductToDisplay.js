@@ -8,17 +8,16 @@ export default function ProductsCard(product) {
     <div className="productCardDisplay">
       {console.log(product)}
       <div className="row">
-        <div className="col-md-5">
+        <div className="col-5">
           <div className="container d-flex justify-content-center my-3">
             <img
               src="https://color.romanuke.com/wp-content/uploads/2016/08/cvetovaya-palitra-2987.png"
               alt="Error"
-              width="auto"
-              height="auto"
+              width="100%"
             />
           </div>
         </div>
-        <div className="col-md-6">
+        <div className="col-6">
           <br />
           Ref. 00{product.id}
           <h3 className="mt-2">
