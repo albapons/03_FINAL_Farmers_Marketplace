@@ -33,8 +33,6 @@ export default function ProductsCard(product) {
                 .seller_id /* We need to display the company_name from users table */
           }
         </p>
-        <p>{product.product.description}</p>
-        <br />
         {product.product.unit_price.toFixed(2) + " €"}
         <br />
         <div className="d-flex justify-content-between mt-3">

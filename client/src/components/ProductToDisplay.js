@@ -21,17 +21,12 @@ export default function ProductsCard(product) {
         <div className="col-md-6">
           <br />
           Ref. 00{product.id}
-          <h6 className="mt-2">
-            <strong>{product.name}</strong>
-          </h6>
-          <p>
-            Seller id:
-            {
-              " " +
-                product.seller_id /* We need to display the company_name from users table */
-            }
-          </p>
-          <p>{product.description}</p>
+          <h3 className="mt-2">
+            <strong>{`Name: ${product.name}`}</strong>
+          </h3>
+          <p>{`Seller id: ${product.seller_id}`}</p>
+          {/* We need to display the company_name from users table */}
+          <p>{`Description: ${product.description}`}</p>
           <br />
           {/* {product.unit_price.toFixed(2) + " €"} */}
           <br />
