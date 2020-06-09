@@ -9,6 +9,7 @@ import ApiRecipe from "./components/ApiRecipe";
 
 import "./App.css";
 
+
 class App extends Component {
   componentDidMount() {
     this.closeNav();
@@ -74,7 +75,9 @@ class App extends Component {
               <Route path="/suppliers">
                 <Suppliers />
               </Route>
-              <Route path="/recipe">{/* <RecipeWeek /> */}</Route>
+              <Route path="/recipe">
+                <ApiRecipe />
+              </Route>
               <Route path="/contact">
                 <ContactUs />
               </Route>
@@ -93,7 +96,8 @@ class App extends Component {
           </div>
         </div>
 
-        <ApiRecipe />
+       
+        
       </Router>
 
    
