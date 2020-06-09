@@ -19,22 +19,17 @@ export default function Products() {
 
   return (
     <div className="body container">
-      {console.log(products)}
       <div className="row my-5">
         <div className="col-md-3 d-flex align-items-center">
           <div className="square">FILTERS</div>
         </div>
         <div className="col-md-9">
           <div className="row">
-            {products.map((product) => {
-              {
-                console.log(product);
-              }
-              // <div className="col-md-4">
-
-              //   <ProductsCard />
-              // </div>;
-            })}
+            {products.map((product, i) => (
+              <div key={i}>
+                <ProductsCard product={product} />
+              </div>
+            ))}
           </div>
           {/* Maybe we can use pagination */}
         </div>
