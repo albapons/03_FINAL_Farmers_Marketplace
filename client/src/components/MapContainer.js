@@ -137,4 +137,3 @@ export default GoogleApiWrapper({
   apiKey,
 })(MapContainer);
 
-
