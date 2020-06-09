@@ -18,7 +18,7 @@ export default function Products() {
   }, []);
 
   return (
-    <div className="body container">
+    <div className="container">
       <div className="row my-5">
         <div className="col-md-3 d-flex align-items-center">
           <div className="square">FILTERS</div>
