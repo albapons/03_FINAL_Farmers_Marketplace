@@ -1,6 +1,32 @@
 var express = require("express");
 var router = express.Router();
+var jwt = require("jsonwebtoken");
+
 const db = require("../model/helper");
+require("dotenv").config();
+
+const supersecret = process.env.SUPER_SECRET;
+
+router.post("/login", function(req, res, next){
+// Login logic
+  const {username, password} = req.body;
+  db(`SELECT * FROM users WHERE username = ${username} AND password = ${password};`)
+  .then(results => {
+    if(results.data.length) {
+
+      var token = jwt.sign({ userId: results.data[0].id}, supersecret);
+      res.send({msg: "User OK, here is your token", token})
+    }
+    else {
+      res.status(404).send({msg: "User not found!"})
+    }
+  })
+
+})
+
+router.get("profile", function(req, res, next) {
+
+});
 
 
 
