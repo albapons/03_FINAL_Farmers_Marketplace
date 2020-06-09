@@ -37,3 +37,4 @@ An online marketplace for farmers' markets.
 - React Router: `npm install react-router-dom`
 - Axios: `npm install axios`
 - Google Map: `npm install google-maps-react`
+- JWT: `npm install jsonwebtoken`

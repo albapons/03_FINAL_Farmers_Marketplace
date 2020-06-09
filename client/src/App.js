@@ -7,8 +7,9 @@ import Markets from "./components/Markets";
 import Home from "./components/Home";
 import ApiRecipe from "./components/ApiRecipe";
 import ProductToDisplay from "./components/ProductToDisplay";
-
+import MapContainer from "./components/MapContainer";
 import "./App.css";
+
 
 class App extends Component {
   componentDidMount() {
@@ -78,7 +79,9 @@ class App extends Component {
               <Route path="/suppliers">
                 <Suppliers />
               </Route>
-              <Route path="/recipe">{/* <RecipeWeek /> */}</Route>
+              <Route path="/recipe">
+                <ApiRecipe />
+              </Route>
               <Route path="/contact">
                 <ContactUs />
               </Route>
@@ -96,8 +99,13 @@ class App extends Component {
             <i className="fab fa-whatsapp"></i>
           </div>
         </div>
-        <ApiRecipe />
+
+       <MapContainer />
+        
       </Router>
+
+   
+
     );
   }
 }
