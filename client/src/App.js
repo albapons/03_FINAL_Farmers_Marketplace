@@ -6,6 +6,7 @@ import ContactUs from "./components/ContactUs";
 import Markets from "./components/Markets";
 import Home from "./components/Home";
 import ApiRecipe from "./components/ApiRecipe";
+import MapContainer from "./components/MapContainer"
 
 import "./App.css";
 
@@ -96,7 +97,7 @@ class App extends Component {
           </div>
         </div>
 
-       
+       <MapContainer />
         
       </Router>
 
