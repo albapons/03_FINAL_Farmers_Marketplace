@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import InputNumber from "./InputNumber";
-
+import api from "../utils/apiProducts";
 import "./ProductsCard.css";
 
-export default function ProductsCard(product) {
+export default function ProductsCard() {
+  let { id } = useParams();
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    api.getOneProduct(id).then((response) => {
+      setProduct(response.data);
+    });
+  }, [id]);
+
   return (
     <div className="productCardDisplay">
       {console.log(product)}
