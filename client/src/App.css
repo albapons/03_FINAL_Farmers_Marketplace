@@ -132,14 +132,6 @@ raisin: #50424b
   margin: 0px 2px;
 }
 
-.buyersCard {
-  padding: 10px;
-  margin: 5px;
-  display: block;
-  border: solid #9dbca6 2px;
-  background: transparent;
-}
-
 .square {
   width: 300px;
   height: 300px;

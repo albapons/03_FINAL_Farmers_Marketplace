@@ -6,8 +6,8 @@ import ContactUs from "./components/ContactUs";
 import Markets from "./components/Markets";
 import Home from "./components/Home";
 import ApiRecipe from "./components/ApiRecipe";
-import MapContainer from "./components/MapContainer"
-
+import ProductToDisplay from "./components/ProductToDisplay";
+import MapContainer from "./components/MapContainer";
 import "./App.css";
 
 
@@ -67,6 +67,9 @@ class App extends Component {
               <i className="fas fa-chevron-circle-down fa-rotate-90 CCblue fa-3x"></i>
             </span>
             <Switch>
+              <Route path="/products/:id">
+                <ProductToDisplay />
+              </Route>
               <Route path="/products">
                 <Products />
               </Route>

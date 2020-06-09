@@ -1,0 +1,25 @@
+.productCard {
+  padding: 10px;
+  margin: 5px;
+  display: block;
+  width: 250px;
+  border: solid #9dbca6 2px;
+  background: transparent;
+  font-size: 16px;
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+.productCard a {
+  color: black !important;
+}
+
+.productCardDisplay {
+  padding: 10px;
+  margin: 5px;
+  display: block;
+  width: 90%;
+  border: solid #9dbca6 2px;
+  background: transparent;
+  font-size: 18px;
+  font-family: "Barlow Condensed", sans-serif;
+}
