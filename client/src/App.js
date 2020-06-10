@@ -11,6 +11,7 @@ import MapContainer from "./components/MapContainer";
 import "./App.css";
 
 
+
 class App extends Component {
   componentDidMount() {
     this.closeNav();
@@ -55,7 +56,7 @@ class App extends Component {
             <div className="d-flex align-items-center">
               <h4 className="d-flex align-items-center">Register</h4>
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
-              <h4 className="d-flex align-items-center">Login</h4>
+              <Link to={"/sign-up"} className="d-flex align-items-center">Login</Link>
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
               {/* If there are a username */}
               {/* Hi username!<i className="fas fa-user-circle mx-3"></i> */}
@@ -87,8 +88,14 @@ class App extends Component {
               </Route>
               <Route path="/">
                 <Home />
-              </Route>
+             
+          </Route>
+
             </Switch>
+
+          
+             
+          
           </div>
 
           {/* FOOTER CONTAINER */}
@@ -101,6 +108,9 @@ class App extends Component {
         </div>
 
        <MapContainer />
+     
+       
+      
         
       </Router>
 

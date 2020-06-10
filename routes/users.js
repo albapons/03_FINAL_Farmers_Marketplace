@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var jwt = require("jsonwebtoken");
+var userShouldBeLoggedIn = require("../guards/userShoudBeLoggedIn")
 
 const db = require("../model/helper");
 require("dotenv").config();
@@ -10,8 +11,8 @@ const supersecret = process.env.SUPER_SECRET;
 router.post("/login", function(req, res, next){
 // Login logic
   const {username, password} = req.body;
-  db(`SELECT * FROM users WHERE username = ${username} AND password = ${password};`)
-  .then(results => {
+  db(`SELECT * FROM users WHERE username = "${username}" AND password = "${password}";`)
+  .then((results) => {
     if(results.data.length) {
 
       var token = jwt.sign({ userId: results.data[0].id}, supersecret);
@@ -24,10 +25,13 @@ router.post("/login", function(req, res, next){
 
 })
 
-router.get("profile", function(req, res, next) {
+router.get("/profile", userShouldBeLoggedIn, function(req, res, next) {
 
-});
-
+ 
+      res.send({msg: `Here is the private data for user ${userId}!`})
+      
+    });
+ 
 
 
 
@@ -79,7 +83,10 @@ router.post("/", function(req, res, next) {
     password,
     username
   } = req.body;
-  db(`INSERT INTO users (firstname, lastname, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website, isSeller, password, username) VALUES ("${firstname}", "${lastname}", "${email}, "${address1}", "${postcode}", "${city}", "${location}", "${company_name}, "${company_no}", "${tel_no}","${mob_no}", "${website}", "${isSeller}", "${password}", "$)`)
+
+  db(`INSERT INTO users (firstname, lastname, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website, isSeller, password, username) 
+  VALUES ("${firstname}", "${lastname}", "${email}, "${address1}", "${postcode}", "${city}", "${location}", "${company_name}", "${company_no}", "${tel_no}","${mob_no}", "${website}", "${isSeller}", "${password}", "${username}");`)
+
   .then((results) => {
     res.send({msg: "Your data was inputted correctly!"})
   })
