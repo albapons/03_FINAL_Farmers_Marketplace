@@ -18,8 +18,8 @@ export default {
 
   // GET products filtered list by name
   // We need to do SELECT * FROM products WHERE name LIKE
-  getProductsFiltered: (productSearched) => {
-    return axios.get(`${apiRoot}/${productSearched}`).catch(function (error) {
+  getProductsFiltered: (name) => {
+    return axios.get(`${apiRoot}/${name}`).catch(function (error) {
       console.log(error);
     });
   },

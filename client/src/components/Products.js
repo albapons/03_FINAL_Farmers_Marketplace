@@ -1,12 +1,12 @@
 import ProductsCard from "./ProductsCard";
-import { useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import api from "../utils/apiProducts";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
-  const [productSearched, setSearch] = useState("");
-  let history = useHistory();
+  const [name, setSearch] = useState("");
+  const history = useHistory();
 
   // const getProducts = () => {
   //   api.getProducts().then((response) => {
@@ -23,19 +23,19 @@ export default function Products() {
   };
 
   const performSearch = () => {
-    history.push(`/search?productSearched=${productSearched}`);
+    history.push(`/products?name=${name}`);
+  };
+
+  const getProductsFiltered = () => {
+    api.getProductsFiltered(name).then((response) => {
+      setProducts(response.data);
+    });
   };
 
   useEffect(() => {
     performSearch();
     getProductsFiltered();
-  }, [productSearched]);
-
-  const getProductsFiltered = () => {
-    api.getProductsFiltered(productSearched).then((response) => {
-      setProducts(response.data);
-    });
-  };
+  }, [name]);
 
   return (
     <div className="container">
@@ -48,7 +48,7 @@ export default function Products() {
                 id="name"
                 name="name"
                 className="form-control"
-                value={productSearched}
+                value={name}
                 onChange={(e) => handleChange(e)}
               />
               <label htmlFor="name">Search...</label>
