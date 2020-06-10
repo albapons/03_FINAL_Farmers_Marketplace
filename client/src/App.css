@@ -153,6 +153,12 @@ raisin: #50424b
   margin: 5px;
 }
 
+.text {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 18px;
+  margin: 5px;
+}
+
 .ourButton {
   background-color: #9dbca6;
   border: none;
