@@ -1,13 +1,17 @@
 import React, { Component } from "react";
-import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
+import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 import api from "../utils/apiMarkets";
 //var geocoding = require("geocoding");
 
 const apiKey = "AIzaSyD9qAIYJOoKf0haJPiuo1FbM3ec8_hiINY";
 
 const mapStyles = {
-  width: "100%",
-  height: "700px",
+  width: "100vw",
+  height: "100vh",
+};
+const style = {
+  width: "100vw",
+  height: "100vh",
 };
 
 const center = {
@@ -15,6 +19,7 @@ const center = {
   lng: 0.1278,
 };
 
+let d_service = null;
 let service = null;
 
 export class MapContainer extends Component {
@@ -49,8 +54,10 @@ export class MapContainer extends Component {
   initPlaces(mapProps, map) {
     const { google } = mapProps;
     service = new google.maps.places.PlacesService(map);
+    //console.log(google.maps);
+    d_service = new google.maps.DistanceMatrixService(map);
   }
-  //Here is the modified search using the geocode library to return lat long co-ords to draw on the map
+  //Here is the modified search using the geocode library to return lat,lng co-ords to draw on the map
   // search = () => {
   //   const { input } = this.state;
 
@@ -60,9 +67,24 @@ export class MapContainer extends Component {
   //       address: record.address1 + record.postcode + record.city,
   //     }).then(function (place) {
   //       this.setState({ ...this.state.places, place });
+  //       this.setState({ ...this.state.markets, record });
   //     });
   //   }
   // };
+  search = () => {
+    const { input } = this.state;
+    d_service.getDistanceMatrix(
+      {
+        origins: [origin],
+        destinations: [{ ...this.places }],
+        travelMode: "DRIVING",
+      },
+      (elements) => console.log(elements)
+    );
+    service.textSearch({ query: input }, (suggestions) => {
+      this.setState({ suggestions });
+    });
+  };
 
   render() {
     const { suggestions, places } = this.state;
@@ -73,38 +95,16 @@ export class MapContainer extends Component {
     }
 
     return (
-      <div className="container">
-        <nav className="navbar navbar-light bg-light">
+      <div className="container" style={{ width: "100%" }}>
+        <nav
+          className="navbar navbar-light bg-light"
+          style={{ width: "1000px" }}
+        >
           <a className="navbar-brand" href="#">
-            Find your nearest:{" "}
+            Find your nearest Market
           </a>
-          <ul>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Dropdown link
-              </a>
-              <div
-                className="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <a className="dropdown-item" href="#">
-                  Market
-                </a>
-                <a className="dropdown-item" href="#">
-                  Farmer
-                </a>
-              </div>
-            </li>
-          </ul>
-          <form className="form-inline">
+
+          <li className="input-group">
             <input
               className="form-control mr-sm-2"
               type="search"
@@ -114,48 +114,51 @@ export class MapContainer extends Component {
               placeholder="Search"
               aria-label="Search"
             />
+
             <button
               className="btn btn-outline-success my-2 my-sm-0"
               onClick={this.search}
             >
               Search
             </button>
-          </form>
+          </li>
         </nav>
         <div className="row">
           <div className="col">
-            <h3>Search results</h3>
-            <ul className="list-group">
-              {suggestions.map((place, i) => (
-                <li
-                  key={i}
-                  className="list-group-item d-flex justify-content-between align-items-center"
-                >
-                  <div>
-                    <div>
-                      <strong>{place.name}</strong>
-                    </div>
-                    <span className="text-muted">
-                      {place.formatted_address}
-                    </span>
-                  </div>
-
-                  <button
-                    className="btn btn-outline-primary"
-                    onClick={() => this.savePlace(place)}
+            <div className="card" style={{ width: "100%" }}>
+              <div className="card-header">Suggested Markets</div>
+              <ul className="list-group list-group-flush">
+                {suggestions.map((place, i) => (
+                  <li
+                    key={i}
+                    className="list-group-item d-flex justify-content-between align-items-center"
                   >
-                    Show
-                  </button>
-                </li>
-              ))}
-            </ul>
+                    <div>
+                      <div>
+                        <strong>{place.name}</strong>
+                      </div>
+                      <span className="text-muted">
+                        {place.formatted_address}
+                      </span>
+                    </div>
+
+                    <button
+                      className="btn btn-outline-primary"
+                      onClick={() => this.savePlace(place)}
+                    >
+                      Show
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
           <div className="col">
             <Map
               google={this.props.google}
               onReady={this.initPlaces}
-              zoom={14}
-              style={mapStyles}
+              zoom={8}
+              style={{ height: "500px", width: "500px" }}
               bounds={bounds}
               initialCenter={center}
             >
