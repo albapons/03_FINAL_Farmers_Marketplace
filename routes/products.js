@@ -2,17 +2,7 @@ var express = require("express");
 var router = express.Router();
 const db = require("../model/helper");
 
-/* GET products listing. */
-router.get("/:id", function (req, res, next) {
-  const { id } = req.params;
-  db(`SELECT * FROM products where id = ${id};`)
-    .then((results) => {
-      res.send(results.data);
-    })
-    .catch((err) => res.status(500).send(err));
-});
-
-// GET products filtered by name
+/* GET products filtered by name */
 router.get("/", function (req, res, next) {
   const { name } = req.query;
   let query = "";
@@ -24,6 +14,17 @@ router.get("/", function (req, res, next) {
     })
     .catch((err) => res.status(500).send(err));
 });
+
+/* GET products listing. */
+router.get("/:id", function (req, res, next) {
+  const { id } = req.params;
+  db(`SELECT * FROM products where id = ${id};`)
+    .then((results) => {
+      res.send(results.data);
+    })
+    .catch((err) => res.status(500).send(err));
+});
+
 /* POST product listing. */
 router.post("/", function (req, res, next) {
   const {

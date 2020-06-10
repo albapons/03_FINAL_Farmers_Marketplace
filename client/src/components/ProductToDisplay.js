@@ -10,7 +10,7 @@ export default function ProductsCard() {
 
   useEffect(() => {
     api.getOneProduct(id).then((response) => {
-      setProduct(response.data);
+      setProduct(response.data[0]);
     });
   }, [id]);
 
