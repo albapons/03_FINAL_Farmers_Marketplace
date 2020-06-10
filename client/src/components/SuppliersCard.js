@@ -2,7 +2,32 @@ import React, { Component } from "react";
 import "../App.css";
 
 export default class SuppliersCard extends Component {
-  render() {
+  constructor(props) {
+    super(props)
+    this.state = {
+        users: {},
+    }
+}
+
+componentDidMount() {
+    this.getUsers();
+}
+
+
+
+getUsers = () => {
+    fetch(`/users/${this.props.id}`)
+    .then(response => response.json())
+    .then(response => {
+        this.setState({ users: response})
+    })
+}
+ 
+
+render() {
+
+  const {users} = this.state;
+
     return (
       <div className="buyersCard">
         <div className="container d-flex justify-content-center my-3">
@@ -13,18 +38,21 @@ export default class SuppliersCard extends Component {
             height="200px"
           />
         </div>
+
         <br />
-        {/* ID */}001
+        {users.id}001
         <h5 className="mt-2">
-          {/* Company Name */}
-          <strong>COMPANY NAME</strong>
+         
+          <strong>{users.company_name}</strong>
         </h5>
-        {/* PostCode */}08241 - Manresa{/* City */}
+        {users.postcode} - {users.city}
         <br />
-        {/* Telf */}93 555 12 12 · 627 13 15 19{/* Mob */}
+        {users.tel_no} · {users.mob_no}
         <br />
-        {/* website */}www.website.com
+        {users.website}
+       
       </div>
+      
     );
   }
 }
