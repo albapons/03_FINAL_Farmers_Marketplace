@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
+import api from "../utils/apiMarkets";
+//var geocoding = require("geocoding");
 
-const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-
+const apiKey = "AIzaSyD9qAIYJOoKf0haJPiuo1FbM3ec8_hiINY";
 
 const mapStyles = {
   width: "100%",
@@ -49,13 +50,19 @@ export class MapContainer extends Component {
     const { google } = mapProps;
     service = new google.maps.places.PlacesService(map);
   }
+  //Here is the modified search using the geocode library to return lat long co-ords to draw on the map
+  // search = () => {
+  //   const { input } = this.state;
 
-  search = () => {
-    const { input } = this.state;
-    service.textSearch({ query: input }, (suggestions) => {
-      this.setState({suggestions, });
-    });
-  };
+  //   let records = api.getMarketsFiltered(input);
+  //   for (const record of records) {
+  //     geocoding({
+  //       address: record.address1 + record.postcode + record.city,
+  //     }).then(function (place) {
+  //       this.setState({ ...this.state.places, place });
+  //     });
+  //   }
+  // };
 
   render() {
     const { suggestions, places } = this.state;
@@ -67,22 +74,57 @@ export class MapContainer extends Component {
 
     return (
       <div className="container">
+        <nav className="navbar navbar-light bg-light">
+          <a className="navbar-brand" href="#">
+            Find your nearest:{" "}
+          </a>
+          <ul>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Dropdown link
+              </a>
+              <div
+                className="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a className="dropdown-item" href="#">
+                  Market
+                </a>
+                <a className="dropdown-item" href="#">
+                  Farmer
+                </a>
+              </div>
+            </li>
+          </ul>
+          <form className="form-inline">
+            <input
+              className="form-control mr-sm-2"
+              type="search"
+              value={this.state.input}
+              onChange={this.handleChange}
+              onKeyPress={this.handleKeyPress}
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button
+              className="btn btn-outline-success my-2 my-sm-0"
+              onClick={this.search}
+            >
+              Search
+            </button>
+          </form>
+        </nav>
         <div className="row">
           <div className="col">
-            <div className="form-inline d-flex justify-content-between mb-4">
-              <input
-                type="text"
-                value={this.state.input}
-                onChange={this.handleChange}
-                className="form-control flex-grow-1"
-                placeholder="Find Location"
-                onKeyPress={this.handleKeyPress}
-              />
-              <button onClick={this.search} className="btn btn-success ml-2 font-weight-bold">
-                Go to Map
-              </button>
-            </div>
-            <h3>Suggestions</h3>
+            <h3>Search results</h3>
             <ul className="list-group">
               {suggestions.map((place, i) => (
                 <li
@@ -136,4 +178,3 @@ export class MapContainer extends Component {
 export default GoogleApiWrapper({
   apiKey,
 })(MapContainer);
-
