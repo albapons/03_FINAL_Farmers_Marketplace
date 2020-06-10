@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
-import "./Recipe.css";
+import "./recipe.module.css";
+
 import Recipe from "./Recipe";
 
 const ApiRecipe = () => {
@@ -56,11 +57,7 @@ const ApiRecipe = () => {
           <label htmlFor="name" className="ml-3 mt-4 label">
             Search some ingredients...
           </label>
-          <button
-            className="ourButton"
-            type="submit"
-            onClick={(e) => getSearch(e)}
-          >
+          <button className="ourButton" type="submit" on={(e) => getSearch(e)}>
             Search
           </button>
         </div>
