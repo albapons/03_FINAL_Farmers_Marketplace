@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
+import "./recipe.module.css";
+
 import Recipe from "./Recipe";
 
 const ApiRecipe = () => {
@@ -32,37 +34,45 @@ const ApiRecipe = () => {
   };
 
   return (
-    <div className="App">
-      <div className="bg-light">
-        <div className="container">
-          <h5>Get your recipe</h5>
-          <form onSubmit={getSearch}>
-            <textarea
-              className="mt-4 form-control"
-              type="text"
-              rows="4"
-              cols="50"
-              placeholder="Ingredients list"
-              value={search}
-              onChange={updateSearch}
-            />
-            <button className="mt-4 btn btn-info form-control" type="submit">
-              Search
-            </button>
-          </form>
+    <div className="container">
+      <div className="row mb-5 ">
+        <div>
+          <i className="fas fa-utensils CCblue fa-2x"></i>
+          <h5 className="title">IT'S TIME TO COOK? </h5>
 
-          <div className="recipes">
-            {recipes.map((recipe) => (
-              <Recipe
-                key={recipe.label}
-                title={recipe.recipe.label}
-                image={recipe.recipe.image}
-                ingredients={recipe.recipe.ingredients}
-                calories={recipe.recipe.calories}
-              />
-            ))}
+          <div>
+            <h5 className="subtitle">Get your recipe!</h5>
           </div>
         </div>
+        <div className="col-12 md-form recipeSearch">
+          <textarea
+            type="text"
+            id="message"
+            name="message"
+            rows="4"
+            className="form-control md-textarea"
+            value={search}
+            onChange={(e) => updateSearch(e)}
+          ></textarea>
+          <label htmlFor="name" className="ml-3 mt-4 label">
+            Search some ingredients...
+          </label>
+          <button className="ourButton" type="submit" on={(e) => getSearch(e)}>
+            Search
+          </button>
+        </div>
+      </div>
+
+      <div className="recipes">
+        {recipes.map((recipe) => (
+          <Recipe
+            key={recipe.label}
+            title={recipe.recipe.label}
+            image={recipe.recipe.image}
+            ingredients={recipe.recipe.ingredients}
+            calories={recipe.recipe.calories}
+          />
+        ))}
       </div>
     </div>
   );
