@@ -18,7 +18,6 @@ export default function Products() {
 
   const getProductsFiltered = () => {
     api.getProductsFiltered(name).then((response) => {
-      console.log(response.data);
       setProducts(response.data);
     });
   };
@@ -46,11 +45,12 @@ export default function Products() {
         </div>
       </div>
       <div className="col-md-9">
-        {console.log(products)}
         {!products?.length ? (
           <div className="row">
-            {/* <i className="fas fa-exclamation-triangle text-light fa-5x my-4"></i> */}
-            <div className="alert alert-danger my-4 text-center" role="alert">
+            <div
+              className="alert alert-danger my-4 text-center w-100"
+              role="alert"
+            >
               {`Sorry, there are no products to show!`}
             </div>
           </div>

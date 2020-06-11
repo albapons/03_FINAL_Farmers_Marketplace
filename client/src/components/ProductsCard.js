@@ -9,12 +9,8 @@ export default function ProductsCard(product) {
     <div className="productCard">
       <Link to={`/products/${product.product.id}`} product={product}>
         <div className="container d-flex justify-content-center my-3">
-          <img
-            src="https://color.romanuke.com/wp-content/uploads/2016/08/cvetovaya-palitra-2987.png"
-            alt="Error"
-            width="200px"
-            height="200px"
-          />
+          {console.log(product.product.img)}
+          <img src={product.product.img} alt="Error" className="productImg" />
         </div>
         <div className="container d-flex justify-content-center mt-3">
           {/* We need to save the value of the Input Number for each product */}
@@ -33,7 +29,7 @@ export default function ProductsCard(product) {
                 .seller_id /* We need to display the company_name from users table */
           }
         </p>
-        {product.product.unit_price.toFixed(2) + " €"}
+        {product.product.unit_price.toFixed(2) + " £"}
         <br />
         <div className="d-flex justify-content-between mt-3">
           <div>

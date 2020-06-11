@@ -23,3 +23,13 @@
   font-size: 18px;
   font-family: "Barlow Condensed", sans-serif;
 }
+
+.productImg {
+  display: block;
+  position: center;
+  width: 200px;
+  height: 200px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

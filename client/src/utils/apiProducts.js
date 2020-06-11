@@ -18,7 +18,7 @@ export default {
 
   // GET products filtered list by name
   getProductsFiltered: (name) => {
-    return axios.get(`${apiRoot}/${name}`).catch(function (error) {
+    return axios.get(`${apiRoot}?name=${name}`).catch(function (error) {
       console.log(error);
     });
   },
