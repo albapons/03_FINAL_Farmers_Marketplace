@@ -13,13 +13,11 @@ const con = mysql.createConnection({
   database: DB_NAME || "farmers",
 
   multipleStatements: true,
-
 });
 
 con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
-
 
   let sql = `DROP TABLE IF EXISTS products;
     DROP TABLE IF EXISTS users;
@@ -60,6 +58,7 @@ con.connect(function (err) {
       password varchar(255),
       username varchar(255),
       PRIMARY KEY (id)
+      // afegir lat long
     
     );
     
@@ -80,7 +79,7 @@ con.connect(function (err) {
       end_time time NOT NULL,
       website varchar(255) NOT NULL,
       PRIMARY KEY (id)
-    
+      // afegir lat long
     );
     
     CREATE TABLE users_markets (
@@ -229,7 +228,6 @@ con.connect(function (err) {
   con.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Table creation `users, markets and products` was successful!");
-
 
     console.log("Closing...");
   });
