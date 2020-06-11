@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Login.css"
 
 
+
 export default class Login extends Component {
      constructor(props) {
          super(props)
@@ -77,7 +78,7 @@ const {username, password} = this.state
     </div>
 
    
-    <button className="btn btn-info btn-block my-4" type="submit" onClick={this.login} disabled={!username || !password}>Sign in</button>
+    <button className="btn btn-block my-4" type="submit" onClick={this.login} disabled={!username || !password}>Sign in</button>
 
    
     <p>Not a member?
