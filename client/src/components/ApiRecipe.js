@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
-import "./recipe.module.css";
+import "./Recipe.css";
 
 import Recipe from "./Recipe";
 
@@ -57,7 +57,11 @@ const ApiRecipe = () => {
           <label htmlFor="name" className="ml-3 mt-4 label">
             Search some ingredients...
           </label>
-          <button className="ourButton" type="submit" on={(e) => getSearch(e)}>
+          <button
+            className="ourButton"
+            type="submit"
+            onClick={(e) => getSearch(e)}
+          >
             Search
           </button>
         </div>
@@ -65,13 +69,19 @@ const ApiRecipe = () => {
 
       <div className="recipes">
         {recipes.map((recipe) => (
-          <Recipe
-            key={recipe.label}
-            title={recipe.recipe.label}
-            image={recipe.recipe.image}
-            ingredients={recipe.recipe.ingredients}
-            calories={recipe.recipe.calories}
-          />
+          <div>
+            {console.log(recipe)}
+
+            <Recipe
+              key={recipe.label}
+              title={recipe.recipe.label}
+              image={recipe.recipe.image}
+              ingredients={recipe.recipe.ingredients}
+              calories={recipe.recipe.calories}
+              source={recipe.recipe.source}
+              url={recipe.recipe.url}
+            />
+          </div>
         ))}
       </div>
     </div>
