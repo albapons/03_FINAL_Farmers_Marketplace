@@ -19,7 +19,6 @@ const center = {
   lng: 0.1278,
 };
 
-let d_service = null;
 let service = null;
 let map, infoWindow, myLocation;
 
@@ -56,12 +55,11 @@ export class MapContainer extends Component {
   initPlaces(mapProps, map) {
     const { google } = mapProps;
     service = new google.maps.places.PlacesService(map);
-    //console.log(google.maps);
-    d_service = new google.maps.DistanceMatrixService(map);
+    console.log(google.maps);
     infoWindow = new google.maps.InfoWindow();
   }
 
-  // This is the doce from Google API docs for creating a currentlocation parker
+  // This is the docs from Google API docs for creating a currentlocation parker
   // initMap() {
   //   map = new google.maps.Map(document.getElementById("map"), {
   //     center: { lat: -34.397, lng: 150.644 },
@@ -102,8 +100,8 @@ export class MapContainer extends Component {
   //   );
   //   infoWindow.open(map);
   // }
-  //Here is the modified search using the geocode library to return lat,lng co-ords to draw on the map
-  // search = () => {
+  // Here is the modified search using the geocode library to return lat,lng co-ords to draw on the map
+  // searchDB = () => {
   //   const { input } = this.state;
 
   //   let records = api.getMarketsFiltered(input);
@@ -118,23 +116,7 @@ export class MapContainer extends Component {
   // };
   search = () => {
     const { input } = this.state;
-    d_service.getDistanceMatrix(
-      {
-        origins: [center],
-        destinations: [
-          "West Hampstead, London, England",
-          "Notting Hill Gate, London, England",
-          "Ladbroke Grove, London, England, London, England",
-        ],
-        travelMode: "DRIVING",
-      },
-      (elements) => {
-        for (const rec of elements.rows[0].elements) {
-          //here is where we can set the value of the foodmiles component
-          console.log("Here are the distances: ", rec.distance.text);
-        }
-      }
-    );
+
     service.textSearch({ query: input }, (suggestions) => {
       this.setState({ suggestions });
     });
@@ -146,6 +128,7 @@ export class MapContainer extends Component {
     let bounds = new this.props.google.maps.LatLngBounds();
     for (let i = 0; i < places.length; i++) {
       bounds.extend(places[i].geometry.location);
+      console.log("Here are the LatLngBounds: ", bounds.toJSON());
     }
 
     return (
