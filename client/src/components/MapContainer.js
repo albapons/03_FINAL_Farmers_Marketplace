@@ -3,7 +3,7 @@ import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 import api from "../utils/apiMarkets";
 //var geocoding = require("geocoding");
 
-const apiKey = "AIzaSyD9qAIYJOoKf0haJPiuo1FbM3ec8_hiINY";
+const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
 const mapStyles = {
   width: "100vw",
@@ -21,6 +21,7 @@ const center = {
 
 let d_service = null;
 let service = null;
+let map, infoWindow, myLocation;
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -56,7 +57,50 @@ export class MapContainer extends Component {
     service = new google.maps.places.PlacesService(map);
     //console.log(google.maps);
     d_service = new google.maps.DistanceMatrixService(map);
+    infoWindow = new google.maps.InfoWindow();
   }
+
+  // This is the doce from Google API docs for creating a currentlocation parker
+  // initMap() {
+  //   map = new google.maps.Map(document.getElementById("map"), {
+  //     center: { lat: -34.397, lng: 150.644 },
+  //     zoom: 6,
+  //   });
+  //   infoWindow = new google.maps.InfoWindow();
+
+  //   // Try HTML5 geolocation.
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       function (position) {
+  //         var pos = {
+  //           lat: position.coords.latitude,
+  //           lng: position.coords.longitude,
+  //         };
+
+  //         infoWindow.setPosition(pos);
+  //         infoWindow.setContent("Location found.");
+  //         infoWindow.open(map);
+  //         map.setCenter(pos);
+  //       },
+  //       function () {
+  //         handleLocationError(true, infoWindow, map.getCenter());
+  //       }
+  //     );
+  //   } else {
+  //     // Browser doesn't support Geolocation
+  //     handleLocationError(false, infoWindow, map.getCenter());
+  //   }
+  // }
+
+  // handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  //   infoWindow.setPosition(pos);
+  //   infoWindow.setContent(
+  //     browserHasGeolocation
+  //       ? "Error: The Geolocation service failed."
+  //       : "Error: Your browser doesn't support geolocation."
+  //   );
+  //   infoWindow.open(map);
+  // }
   //Here is the modified search using the geocode library to return lat,lng co-ords to draw on the map
   // search = () => {
   //   const { input } = this.state;
@@ -75,11 +119,20 @@ export class MapContainer extends Component {
     const { input } = this.state;
     d_service.getDistanceMatrix(
       {
-        origins: [origin],
-        destinations: [{ ...this.places }],
+        origins: [center],
+        destinations: [
+          "West Hampstead, London, ENgland",
+          "Notting Hill Gate, London, England",
+          "Ladbroke Grove, London, England, London, England",
+        ],
         travelMode: "DRIVING",
       },
-      (elements) => console.log(elements)
+      (elements) => {
+        for (const rec of elements.rows[0].elements) {
+          //here is where we can set the value of the foodmiles component
+          console.log("Here are the distances: ", rec.distance.text);
+        }
+      }
     );
     service.textSearch({ query: input }, (suggestions) => {
       this.setState({ suggestions });
