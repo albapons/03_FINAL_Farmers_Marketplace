@@ -20,11 +20,7 @@ export default function ProductsCard() {
       <div className="row">
         <div className="col-5">
           <div className="container d-flex justify-content-center my-3">
-            <img
-              src="https://color.romanuke.com/wp-content/uploads/2016/08/cvetovaya-palitra-2987.png"
-              alt="Error"
-              width="100%"
-            />
+            <img src={product.img} alt="Error" width="100%" />
           </div>
         </div>
         <div className="col-6">
@@ -52,6 +48,10 @@ export default function ProductsCard() {
             </div>
             <div className="col-md-4 d-flex justify-content-center">
               <i className="fas fa-cart-plus mx-3 CCblue fa-2x"></i>
+            </div>
+            <div className="my-4">
+              <p>Lat is: {product.lat}</p>
+              <p>Long is: {product.lng}</p>
             </div>
           </div>
         </div>
