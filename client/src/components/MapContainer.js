@@ -21,7 +21,7 @@ const center = {
 
 let service = null;
 let map, infoWindow, myLocation;
-
+let bounds;
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
@@ -55,7 +55,7 @@ export class MapContainer extends Component {
   initPlaces(mapProps, map) {
     const { google } = mapProps;
     service = new google.maps.places.PlacesService(map);
-    console.log(google.maps);
+    //console.log(google.maps);
     infoWindow = new google.maps.InfoWindow();
   }
 
@@ -78,7 +78,7 @@ export class MapContainer extends Component {
 
   //         infoWindow.setPosition(pos);
   //         infoWindow.setContent("Location found.");
-  //         infoWindow.open(map);
+  //         infoWindows.open(map);
   //         map.setCenter(pos);
   //       },
   //       function () {
@@ -101,31 +101,27 @@ export class MapContainer extends Component {
   //   infoWindow.open(map);
   // }
   // Here is the modified search using the geocode library to return lat,lng co-ords to draw on the map
-  // searchDB = () => {
-  //   const { input } = this.state;
-
-  //   let records = api.getMarketsFiltered(input);
-  //   for (const record of records) {
-  //     geocoding({
-  //       address: record.address1 + record.postcode + record.city,
-  //     }).then(function (place) {
-  //       this.setState({ ...this.state.places, place });
-  //       this.setState({ ...this.state.markets, record });
-  //     });
-  //   }
-  // };
+  searchDB = () => {
+    // let records = api.getMarketsFiltered(bounds);
+    // for (const record of records) {
+    //     this.setState({ ...this.state.places, place });
+    //     this.setState({ ...this.state.markets, record });
+    //   });
+    // }
+  };
   search = () => {
     const { input } = this.state;
 
     service.textSearch({ query: input }, (suggestions) => {
       this.setState({ suggestions });
+      console.log(suggestions);
     });
   };
 
   render() {
     const { suggestions, places } = this.state;
 
-    let bounds = new this.props.google.maps.LatLngBounds();
+    bounds = new this.props.google.maps.LatLngBounds();
     for (let i = 0; i < places.length; i++) {
       bounds.extend(places[i].geometry.location);
       console.log("Here are the LatLngBounds: ", bounds.toJSON());

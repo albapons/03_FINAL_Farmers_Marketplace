@@ -8,7 +8,6 @@ let d_service = null;
 class FoodMilesNumber extends Component {
   constructor(props) {
     super(props);
-    console.log("Props", props);
 
     this.state = {
       start: this.props.start,
