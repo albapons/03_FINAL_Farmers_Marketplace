@@ -1,5 +1,6 @@
 
 import React, { Component } from "react";
+import "./Register.css"
 
 
 export default class SignUp extends Component {
@@ -20,7 +21,7 @@ export default class SignUp extends Component {
   }
 
   getUsers = () => {
-    fetch(`/users/signup`)
+    fetch(`/users`)
       .then((response) => response.json())
       .then((response) => {
         this.setState({ users: response });
@@ -37,7 +38,7 @@ export default class SignUp extends Component {
       email,
     } = this.state;
 
-    fetch(`/users/signup`, {
+    fetch(`/users`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -66,9 +67,9 @@ export default class SignUp extends Component {
       lastname,
       email,
     } = this.state;
-    
+
     return (
-      <div>
+      <div className="register">
        
 <div className="text-center border border-light p-5" action="#!">
 
@@ -113,8 +114,8 @@ export default class SignUp extends Component {
         <label className="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
     </div>
 
-    <button className="btn btn-info my-4 btn-block" type="submit"  onClick={this.addUsers}>Sign in</button>
-
+    <button className="buttonregister btn my-4 btn-block" type="submit"  onClick={this.addUsers}>Sign in</button>
+  
    
     <p>or sign up with:</p>
 

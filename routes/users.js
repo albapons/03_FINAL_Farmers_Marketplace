@@ -111,45 +111,7 @@ router.delete("/:id", function(req, res, next) {
 })
 
 
-// Register Logic
 
-router.get("/signup", function (req, res, next) {
-  db(`SELECT * FROM users;`)
-    .then((results) => {
-      res.send(results.data);
-    })
-    .catch((err) => res.status(500).send(err));
-});
-
-router.get("/signup/:id", function (req, res, next) {
-  const { id } = req.params;
-  db(`SELECT * FROM users WHERE id = ${id}`)
-    .then((results) => {
-      res.send(results.data[0]);
-    })
-    .catch((err) => res.status(500).send(err));
-});
-
-router.post("/signup", function (req, res, next) {
-  const { username, password, firstname, lastname, email } = req.body;
-  db(
-    `INSERT INTO users (username, password, firstname, lastname, email) VALUES("${username}", "${password}", "${firstname}", "${lastname}", "${email}");`
-  )
-    .then((results) => {
-      res.send({ message: "Your data was inputted correctly!" });
-    })
-    .catch((err) => res.status(500).send(err));
-});
-
-router.delete("/signup/:id", function (req, res, next) {
-  const { id } = req.params;
-
-  db(`DELETE FROM users WHERE id = ${id};`)
-    .then((results) => {
-      res.send({ message: "Your data was deleted correctly!" });
-    })
-    .catch((err) => res.status(500).send(err));
-});
 
 
 
