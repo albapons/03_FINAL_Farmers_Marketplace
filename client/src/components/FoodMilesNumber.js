@@ -5,9 +5,10 @@ const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
 let d_service = null;
 
-export class FoodMilesNumber extends Component {
+class FoodMilesNumber extends Component {
   constructor(props) {
     super(props);
+    console.log("Props", props);
 
     this.state = {
       start: this.props.start,
@@ -16,11 +17,13 @@ export class FoodMilesNumber extends Component {
     };
   }
 
-  initPlaces(mapProps, map) {
-    const { google } = mapProps;
-    d_service = new google.maps.DistanceMatrixService(map);
+  componentDidMount() {
+    const { google } = this.props;
+    d_service = new google.maps.DistanceMatrixService(
+      document.createElement("div")
+    );
+    this.search();
   }
-
   search = () => {
     const { start, end } = this.state;
     d_service.getDistanceMatrix(
@@ -29,21 +32,18 @@ export class FoodMilesNumber extends Component {
         destinations: [end],
         travelMode: "DRIVING",
       },
-      (element) => {
+      (elements) => {
         //here is where we can set the value of the foodmiles component
-        this.setState({ distance: element.distance.text });
+        this.setState({ distance: elements.rows[0].elements[0].distance.text });
+        // console.log(elements.rows[0].elements[0].distance.text);
       }
     );
+    return this.state.distance;
   };
 
   render() {
     const { distance } = this.state;
-
-    return (
-      <div className="container" style={{ width: "100%" }}>
-        <h5>{distance}</h5>
-      </div>
-    );
+    return <span>{distance}</span>;
   }
 }
 
