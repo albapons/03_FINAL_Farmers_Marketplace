@@ -9,7 +9,9 @@ import ApiRecipe from "./components/ApiRecipe";
 import ProductToDisplay from "./components/ProductToDisplay";
 import MapContainer from "./components/MapContainer";
 import "./App.css";
-import Profile from "./components/Profile";
+import Login from "./components/Login"
+
+import Register from "./components/Register";
 
 
 
@@ -55,9 +57,9 @@ class App extends Component {
             </div>
 
             <div className="d-flex align-items-center">
-              <h4 className="d-flex align-items-center">Register</h4>
+              <Link to={"/register"}className="d-flex align-items-center">Register</Link>
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
-              <Link to={"/sign-up"} className="d-flex align-items-center">Login</Link>
+              <Link to={"/login"} className="d-flex align-items-center">Login</Link>
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
               {/* If there are a username */}
               {/* Hi username!<i className="fas fa-user-circle mx-3"></i> */}
@@ -69,6 +71,11 @@ class App extends Component {
               <i className="fas fa-chevron-circle-down fa-rotate-90 CCblue fa-3x"></i>
             </span>
             <Switch>
+
+            <Route path="/login" component={Login} />
+
+              <Route path="/register" component={Register} />
+
               <Route path="/products/:id">
                 <ProductToDisplay />
               </Route>
@@ -108,13 +115,7 @@ class App extends Component {
           </div>
         </div>
 
-       {/* <MapContainer /> */}
-       <Profile />
-    
-       
-      
-        
-      </Router>
+    </Router>
 
    
 

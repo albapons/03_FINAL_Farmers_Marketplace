@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from "axios";
 
+
+
 export default class Login extends Component {
      constructor(props) {
          super(props)
@@ -47,24 +49,25 @@ const {username, password} = this.state
         const { username, password} = this.state;
 
         return (
+
             <div>
      
-<div class="text-center border border-light p-5" action="#!">
+<div className="text-center border border-light p-5" action="#!">
 
-    <p class="h4 mb-4">Sign in</p>
+    <p className="h4 mb-4">Sign in</p>
 
   
-    <input type="email" id="defaultLoginFormUsername" class="form-control mb-4" placeholder="Username" name="username" value={username} onChange={this.handleChange}/>
+    <input type="email" id="defaultLoginFormUsername" className="form-control mb-4" placeholder="Username" name="username" value={username} onChange={this.handleChange}/>
 
    
-    <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" name="password" value={password} onChange={this.handleChange}/>
+    <input type="password" id="defaultLoginFormPassword" className="form-control mb-4" placeholder="Password" name="password" value={password} onChange={this.handleChange}/>
 
-    <div class="d-flex justify-content-around">
+    <div className="d-flex justify-content-around">
         <div>
           
-            <div class="custom-control custom-checkbox">
+            <div className="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember"/>
-                <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                <label className="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
             </div>
         </div>
         <div>
@@ -74,7 +77,7 @@ const {username, password} = this.state
     </div>
 
    
-    <button class="btn btn-info btn-block my-4" type="submit" onClick={this.login} disabled={!username || !password}>Sign in</button>
+    <button className="btn btn-info btn-block my-4" type="submit" onClick={this.login} disabled={!username || !password}>Sign in</button>
 
    
     <p>Not a member?
@@ -87,8 +90,7 @@ const {username, password} = this.state
     <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
     <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
     <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
-    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
-
+    
 </div>
 
        

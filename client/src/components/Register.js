@@ -1,12 +1,12 @@
 
 import React, { Component } from "react";
-// import axios from "axios";
 
-export default class Register extends Component {
+
+export default class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: {},
+      users: [],
       username: "",
       password: "",
       firstname: "",
@@ -20,7 +20,7 @@ export default class Register extends Component {
   }
 
   getUsers = () => {
-    fetch(`/users`)
+    fetch(`/users/signup`)
       .then((response) => response.json())
       .then((response) => {
         this.setState({ users: response });
@@ -30,10 +30,14 @@ export default class Register extends Component {
   addUsers = () => {
     const {
       users,
-      
+      username,
+      password,
+      firstname,
+      lastname,
+      email,
     } = this.state;
 
-    fetch(`/users`, {
+    fetch(`/users/signup`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -62,80 +66,71 @@ export default class Register extends Component {
       lastname,
       email,
     } = this.state;
+    
     return (
       <div>
-        <h3>Sign Up</h3>
+       
+<div className="text-center border border-light p-5" action="#!">
 
-        <div className="form-group">
-          <label>Username</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Username"
-            value={username}
-            name="username"
-            onChange={this.handleInput}
-          />
-        </div>
+    <p className="h4 mb-4">Sign up</p>
 
-        <div className="form-group">
-          <label>First name</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="First name"
-            value={firstname}
+    <div className="form-row mb-4">
+        <div className="col">
+           
+            <input type="text" id="defaultRegisterFormFirstName" className="form-control" placeholder="First name"  value={firstname}
             name="firstname"
-            onChange={this.handleInput}
-          />
+            onChange={this.handleInput}/>
         </div>
-
-        <div className="form-group">
-          <label>Last name</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Last name"
-            value={lastname}
+        <div className="col">
+           
+            <input type="text" id="defaultRegisterFormLastName" className="form-control" placeholder="Last name"  value={lastname}
             name="lastname"
-            onChange={this.handleInput}
-          />
+            onChange={this.handleInput}/>
         </div>
+    </div>
 
-        <div className="form-group">
-          <label>Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Enter email"
-            value={email}
+    <input type="username" id="defaultRegisterFormUsername" className="form-control mb-4" placeholder="Username"  value={username}
+            name="username"
+            onChange={this.handleInput}/>
+   
+    <input type="email" id="defaultRegisterFormEmail" className="form-control mb-4" placeholder="E-mail"  value={email}
             name="email"
-            onChange={this.handleInput}
-          />
-        </div>
+            onChange={this.handleInput}/>
 
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Enter password"
-            value={password}
+   
+    <input type="password" id="defaultRegisterFormPassword" className="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" value={password}
             name="password"
-            onChange={this.handleInput}
-          />
-        </div>
+            onChange={this.handleInput}/>
+    <small id="defaultRegisterFormPasswordHelpBlock" className="form-text text-muted mb-4">
+       
+    </small>
 
-        <button
-          type="submit"
-          className="btn btn-primary btn-block"
-          onClick={this.addUsers}
-        >
-          Sign Up
-        </button>
-        <p className="forgot-password text-right">
-          Already registered <a href="#">sign in?</a>
-        </p>
+   
+    
+
+    <div className="custom-control custom-checkbox">
+        <input type="checkbox" className="custom-control-input" id="defaultRegisterFormNewsletter"/>
+        <label className="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
+    </div>
+
+    <button className="btn btn-info my-4 btn-block" type="submit"  onClick={this.addUsers}>Sign in</button>
+
+   
+    <p>or sign up with:</p>
+
+    <a href="#" className="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+    <a href="#" className="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+    <a href="#" className="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+    
+    <hr></hr>
+
+    <p>By clicking</p>
+        <em>Sign up</em> you agree to our
+        <a href="" target="_blank"> terms of service</a>
+
+</div>
+
+      
       </div>
     );
   }
