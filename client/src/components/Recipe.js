@@ -8,9 +8,6 @@ const Recipe = ({ title, ingredients, image, calories, source, url }) => {
     <div className={style.recipe}>
       <h1 className="title my-3">{title}</h1>
       <img className={style.image} src={image} alt="" />
-      <p>
-        {source} ·{url}
-      </p>
       <ul>
         {ingredients.map((ingredient) => (
           <li key={ingredient.text}>
@@ -22,8 +19,11 @@ const Recipe = ({ title, ingredients, image, calories, source, url }) => {
         <strong>Calories: </strong>
         {Math.round(calories)}
       </p>
+      <i className="fas fa-angle-double-right fa-rotate-90 CCblue fa-2x mb-3"></i>
       <p>
-        {source} ·{url}
+        {source}
+        <strong> · </strong>
+        <a href={url}>{url}</a>
       </p>
     </div>
   );
