@@ -6,8 +6,7 @@ export default class Suppliers extends Component {
   
 
   render() {
-    
-
+   
     return (
       <div className="container">
         <div className="d-flex justify-content-center  my-5">
@@ -18,6 +17,7 @@ export default class Suppliers extends Component {
           <SuppliersCard id="3"/>
           <SuppliersCard id="4"/>
           <SuppliersCard id="5" /> 
+        
           
          
           

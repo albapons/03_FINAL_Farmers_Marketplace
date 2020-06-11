@@ -9,6 +9,7 @@ import ApiRecipe from "./components/ApiRecipe";
 import ProductToDisplay from "./components/ProductToDisplay";
 import MapContainer from "./components/MapContainer";
 import "./App.css";
+import Profile from "./components/Profile";
 
 
 
@@ -107,7 +108,8 @@ class App extends Component {
           </div>
         </div>
 
-       <MapContainer />
+       {/* <MapContainer /> */}
+       <Profile />
      
        
       
