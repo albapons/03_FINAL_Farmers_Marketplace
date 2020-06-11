@@ -40,7 +40,8 @@ render() {
         </div>
 
         <br />
-        {users.id}001
+
+         {users.id}001
         <h5 className="mt-2">
          
           <strong>{users.company_name}</strong>
@@ -49,7 +50,7 @@ render() {
         <br />
         {users.tel_no} · {users.mob_no}
         <br />
-        {users.website}
+        {users.website} */
        
       </div>
       
