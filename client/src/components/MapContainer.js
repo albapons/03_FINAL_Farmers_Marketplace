@@ -31,6 +31,7 @@ export class MapContainer extends Component {
       input: "",
       suggestions: [],
       places: [],
+      markets: [],
     };
   }
 
@@ -121,7 +122,7 @@ export class MapContainer extends Component {
       {
         origins: [center],
         destinations: [
-          "West Hampstead, London, ENgland",
+          "West Hampstead, London, England",
           "Notting Hill Gate, London, England",
           "Ladbroke Grove, London, England, London, England",
         ],
