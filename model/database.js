@@ -36,6 +36,8 @@ con.connect(function (err) {
       shelf_life_count int NOT NULL,
       shelf_life_units varchar(255) NOT NULL,
       seller_id int NOT NULL,
+      img varchar(512) NOT NULL,
+      
       PRIMARY KEY (id)
     
     );
@@ -57,9 +59,9 @@ con.connect(function (err) {
       isSeller binary(1),
       password varchar(255),
       username varchar(255),
-      PRIMARY KEY (id)
-      // afegir lat long
-    
+      lat varchar(255),
+      long varchar(255),   
+      PRIMARY KEY (id) 
     );
     
     CREATE TABLE markets (
@@ -78,8 +80,9 @@ con.connect(function (err) {
       start_time time NOT NULL,
       end_time time NOT NULL,
       website varchar(255) NOT NULL,
+      lat varchar(255),
+      long varchar(255),   
       PRIMARY KEY (id)
-      // afegir lat long
     );
     
     CREATE TABLE users_markets (
@@ -200,29 +203,29 @@ con.connect(function (err) {
     INSERT INTO users_markets (user_id, market_id) 
     VALUES (9,9);
 
-    INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units) 
-    VALUES ("Angelica (Archangelica)",	2.7,	"#",	"MONOCARPIC. Ht 1-2.5m. Angelica is best known as a decorative confectionery for cakes. You can add the leaves to stewing rhubarb or gooseberries to add a sweetness without adding excess sugar. Being monocarpic it tends to have a three-year lifespan.",
-      "1",8,	1,	3,	"yrs");
+    INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
+    VALUES ("Angelica (Archangelica)",	2.5,	"#",	"MONOCARPIC. Ht 1-2.5m. Angelica is best known as a decorative confectionery for cakes. You can add the leaves to stewing rhubarb or gooseberries to add a sweetness without adding excess sugar. Being monocarpic it tends to have a three-year lifespan.",
+      "1",8,	1,	3,	"yrs", "https://www.victoriananursery.co.uk/images/250/sq_angelica_002.jpg");
       
-    INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units) 
-    VALUES ("Basil",	2.7,	"#",	"TENDER ANNUAL. Ht 30cm. This basil originates from Mexico. The leaves have a hint of purple and are highly cinnamon-scented when rubbed.  The leaves can be used in spicy dishes, curries and salad dressings. Plant somewhere sheltered from the wind in rich, fertile, well-drained soil in full sun.",
-    "1",8,	1,	3,	"yrs");
+    INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
+    VALUES ("Basil",	2.3,	"#",	"TENDER ANNUAL. Ht 30cm. This basil originates from Mexico. The leaves have a hint of purple and are highly cinnamon-scented when rubbed.  The leaves can be used in spicy dishes, curries and salad dressings. Plant somewhere sheltered from the wind in rich, fertile, well-drained soil in full sun.",
+    "1",8,	1,	3,	"yrs", "https://www.plantsguru.com/image/cache/herb/sweet-basil-800x800.jpg");
 
-    INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units) 
-    VALUES ("Lovage (Levisticum officinale)",	2.7,	"#",	"HARDY PERENNIAL. Ht 1.5m. This plant produces large celery scented leaves and stems with fleshy roots. It adds a meaty flavour to food and can be used in salads, to flavour soups, stews, stocks and savoury dishes. Rub the leaves on chicken or around salad bowls. The young shoots and leaf stalks can be blanched and eaten as a vegetable.",
-    "1",8,	1,	3,	"yrs");
+    INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
+    VALUES ("Lovage (Levisticum officinale)",	3.15,	"#",	"HARDY PERENNIAL. Ht 1.5m. This plant produces large celery scented leaves and stems with fleshy roots. It adds a meaty flavour to food and can be used in salads, to flavour soups, stews, stocks and savoury dishes. Rub the leaves on chicken or around salad bowls. The young shoots and leaf stalks can be blanched and eaten as a vegetable.",
+    "1",8,	1,	3,	"yrs", "https://www.diet-health.info/images/recipes/1400/liebstoeckel-im-garten-lovage-by-juefraphoto-fotolia-51701952.jpg");
 
-    INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units) 
-    VALUES ("Mint (eau de cologne)",	2.7,	"#",	"HARDY PERENNIAL. Ht 60-80cm. This plant is also known as bergamot mint with a slight citrus scent. It is a vigorous grower with undertones of lemon, orange and lavender. Add the fresh leaves to fruit salads, summer drinks and light summer salads. It can also be added to potpourri or hot bathwater.",
-    "1",8,	1,	3,	"yrs");
+    INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
+    VALUES ("Mint (eau de cologne)",	2.9,	"#",	"HARDY PERENNIAL. Ht 60-80cm. This plant is also known as bergamot mint with a slight citrus scent. It is a vigorous grower with undertones of lemon, orange and lavender. Add the fresh leaves to fruit salads, summer drinks and light summer salads. It can also be added to potpourri or hot bathwater.",
+    "1",8,	1,	3,	"yrs", "https://www.victoriananursery.co.uk/images/800/sq_eau_de_cologne_mint_001.jpg");
 
-    INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units) 
-    VALUES ("Mizuna (Brassica Rapa Japoinca)",	2.7,	"#",	"HARDY ANNUAL. Ht 30cm. Mizuna is a Japanese leafy vegetable, which can be used as a cut and come again salad leaf. Very easy to grow with a light peppery, cabbage flavour and can be picked all year round. Add the leaves raw in mixed salads or cooked and seasoned in stir-fries. Plant in fertile, rich soil in a shady spot.",
-    "1",8,	1,	3,	"yrs");
+    INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
+    VALUES ("Mizuna (Brassica Rapa Japoinca)",	3.3,	"#",	"HARDY ANNUAL. Ht 30cm. Mizuna is a Japanese leafy vegetable, which can be used as a cut and come again salad leaf. Very easy to grow with a light peppery, cabbage flavour and can be picked all year round. Add the leaves raw in mixed salads or cooked and seasoned in stir-fries. Plant in fertile, rich soil in a shady spot.",
+    "1",8,	1,	3,	"yrs", "https://dp2o72xxh5dh5.cloudfront.net/wp-content/uploads/2019/03/agrilution-Mizuna-7-1-uai-3499x2333.jpg");
 
-    INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units) 
-    VALUES ("Sweet Cicely (Myrrhis odorata)",	2.7,	"#",	"HARDY PERENNIAL. Ht 50-100cm. This plant is one of the first to emerge after winter. It can be used as a substitute for sugar and has a sweet aniseed flavour. Add chopped leaves into salads, dressings, omelettes, soups and stews. Try adding the leaves to boiling water when cooking cabbage or cooking fruit, such as blackcurrants, plums, rhubarb or gooseberries.",
-    "1",8,	1,	3,	"yrs");
+    INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
+    VALUES ("Sweet Cicely (Myrrhis odorata)",	1.2,	"#",	"HARDY PERENNIAL. Ht 50-100cm. This plant is one of the first to emerge after winter. It can be used as a substitute for sugar and has a sweet aniseed flavour. Add chopped leaves into salads, dressings, omelettes, soups and stews. Try adding the leaves to boiling water when cooking cabbage or cooking fruit, such as blackcurrants, plums, rhubarb or gooseberries.",
+    "1",8,	1,	3,	"yrs", "https://hillfarmnursery.files.wordpress.com/2014/11/myrrhis-odorata-may-23-2014-4.jpg");
 
     `;
   con.query(sql, function (err, result) {
