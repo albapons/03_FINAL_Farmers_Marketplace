@@ -2,12 +2,27 @@ var express = require("express");
 var router = express.Router();
 const db = require("../model/helper");
 
+// /* GET products filtered by name */
+// router.get("/", function (req, res, next) {
+//   const { name } = req.query;
+//   let query = "";
+//   if (name) query = `SELECT * FROM products WHERE name LIKE "%${name}%";`;
+//   else query = `SELECT * FROM products;`;
+//   db(query)
+//     .then((results) => {
+//       res.send(results.data);
+//     })
+//     .catch((err) => res.status(500).send(err));
+// });
+
 /* GET products filtered by name */
 router.get("/", function (req, res, next) {
   const { name } = req.query;
   let query = "";
-  if (name) query = `SELECT * FROM products WHERE name LIKE "%${name}%";`;
-  else query = `SELECT * FROM products;`;
+  if (name)
+    query = `SELECT * FROM products LEFT JOIN users ON users.id = products.seller_id WHERE name LIKE "%${name}%";`;
+  else
+    query = `SELECT * FROM products LEFT JOIN users ON users.id = products.seller_id;`;
   db(query)
     .then((results) => {
       res.send(results.data);
@@ -15,10 +30,22 @@ router.get("/", function (req, res, next) {
     .catch((err) => res.status(500).send(err));
 });
 
+// /* GET products listing. */
+// router.get("/:id", function (req, res, next) {
+//   const { id } = req.params;
+//   db(`SELECT * FROM products where id = ${id};`)
+//     .then((results) => {
+//       res.send(results.data);
+//     })
+//     .catch((err) => res.status(500).send(err));
+// });
+
 /* GET products listing. */
-router.get("/:id", function (req, res, next) {
+router.get("/:id/", function (req, res, next) {
   const { id } = req.params;
-  db(`SELECT * FROM products where id = ${id};`)
+  db(
+    `SELECT * FROM products LEFT JOIN users ON users.id = products.seller_id WHERE products.id = ${id};`
+  )
     .then((results) => {
       res.send(results.data);
     })
