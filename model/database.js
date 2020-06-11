@@ -79,7 +79,7 @@ con.connect(function (err) {
       end_time time NOT NULL,
       website varchar(255) NOT NULL,
       lat varchar(255),
-      lng varchar(255),   
+      lng varchar(255),  
       PRIMARY KEY (id)
     );
     
@@ -131,6 +131,7 @@ con.connect(function (err) {
 
    
 
+<<<<<<< HEAD
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng) 
     VALUES ("Adrian", "Izzard", "adrian@wildco.co.uk",  "11 Chalky rd", "CB21 6AT", "Cambridge","",   "Wild Country Organics", "", "", "", "http://www.wildco.co.uk/",  1, "52.103484", "0.232812");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng) 
@@ -152,6 +153,7 @@ con.connect(function (err) {
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng) 
     VALUES ("Stein",  "Leenders", "steinleenders@gmail.com",  "Brambletye Ln, Forest Row",  "RH18", "East Grinstead", "",   "Bramble Tye Fruit Farm", "", "", "", "-",  1, "51.102900", "0.025270");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng) 
+
     VALUES ("David",  "Lucas",  "info@edenfarms.co.uk", "Rectory Lane, Old Bolingbroke",  "PE23 4EY",  "Spilsby", "",   "Eden Farms", "", "", "", "www.edenfarms.co.uk", 1, "53.163248", "0.027059");
     INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
     VALUES ("Alba",	"Pons",	"test@test.co.uk",	"Onslow Square",	"SW1", 	"London", 0, "albap", "testing123");
