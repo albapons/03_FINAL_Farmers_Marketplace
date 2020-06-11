@@ -16,17 +16,17 @@ export default function Products() {
     setSearch(e.target.value);
   };
 
-  const getProductsFiltered = () => {
-    api.getProductsFiltered(name).then((response) => {
-      console.log(response.data);
-      setProducts(response.data);
-    });
-  };
+  // const getProductsFiltered = () => {
+  //   api.getProductsFiltered(name).then((response) => {
+  //     console.log(response.data);
+  //     setProducts(response.data);
+  //   });
+  // };
 
-  useEffect(() => {
-    performSearch();
-    getProductsFiltered();
-  }, [name]);
+  // useEffect(() => {
+  //   performSearch();
+  //   getProductsFiltered();
+  // }, [name]);
 
   return (
     <div className="row">
