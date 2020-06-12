@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import "./ProductsCard.css";
 import InputNumber from "./InputNumber";
+import FoodMilesNumber from "./FoodMilesNumber";
 
 export default function ProductsCard(product) {
   return (
@@ -42,6 +42,11 @@ export default function ProductsCard(product) {
         <div className="my-4">
           <p>Lat is: {product.product.lat}</p>
           <p>Long is: {product.product.lng}</p>
+          <FoodMilesNumber
+            start={"Barcelona, Spain"}
+            end={"Madrid, Spain"}
+            // end={`lat: ${product.product.lat}, lng: ${product.product.lng}`}
+          />
         </div>
       </Link>
     </div>

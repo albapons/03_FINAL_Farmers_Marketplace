@@ -20,7 +20,7 @@ export default function ProductsCard() {
       <div className="row">
         <div className="col-5">
           <div className="container d-flex justify-content-center my-3">
-            <img src={product.img} alt="Error" width="100%" />
+            {/* <img src={product.img} alt="Error" width="100%" /> */}
           </div>
         </div>
         <div className="col-6">
