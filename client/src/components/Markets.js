@@ -8,10 +8,7 @@ export default class Markets extends Component {
     return (
       <div className="container">
         <div className="d-flex row">
-          <FoodMilesNumber
-            start="Barcelona, Spain"
-            end="16, Victor rd, London"
-          />
+          
           <MapContainer />
         </div>
         <div className="d-flex row"></div>
