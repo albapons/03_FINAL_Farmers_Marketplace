@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import "./ProductsCard.css";
 import InputNumber from "./InputNumber";
+import FoodMilesNumber from "./FoodMilesNumber";
 
 export default function ProductsCard(product) {
   return (
     <div className="productCard">
       <Link to={`/products/${product.product.id}`} product={product}>
         <div className="container d-flex justify-content-center my-3">
-          {console.log(product.product.img)}
           <img src={product.product.img} alt="Error" className="productImg" />
         </div>
         <div className="container d-flex justify-content-center mt-3">
@@ -39,6 +38,15 @@ export default function ProductsCard(product) {
             10 km
           </div>
           <i className="fas fa-cart-plus mx-3 CCblue fa-2x"></i>
+        </div>
+        <div className="my-4">
+          <p>Lat is: {product.product.lat}</p>
+          <p>Long is: {product.product.lng}</p>
+          <FoodMilesNumber
+            start={"Barcelona, Spain"}
+            end={"Madrid, Spain"}
+            // end={`lat: ${product.product.lat}, lng: ${product.product.lng}`}
+          />
         </div>
       </Link>
     </div>
