@@ -7,13 +7,12 @@ import Markets from "./components/Markets";
 import Home from "./components/Home";
 import ApiRecipe from "./components/ApiRecipe";
 import ProductToDisplay from "./components/ProductToDisplay";
-import MapContainer from "./components/MapContainer";
+import GeoLocator from "./components/GeoLocator";
+
 import "./App.css";
-import Login from "./components/Login"
+import Login from "./components/Login";
 
 import Register from "./components/Register";
-
-
 
 class App extends Component {
   componentDidMount() {
@@ -46,7 +45,6 @@ class App extends Component {
             <Link to="/contact">Contact</Link>
           </div>
         </div>
-
         <div id="main">
           {/* TOP CONTAINER */}
           <div className="header">
@@ -57,9 +55,13 @@ class App extends Component {
             </div>
 
             <div className="d-flex align-items-center">
-              <Link to={"/register"}className="d-flex align-items-center">Register</Link>
+              <Link to={"/register"} className="d-flex align-items-center">
+                Register
+              </Link>
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
-              <Link to={"/login"} className="d-flex align-items-center">Login</Link>
+              <Link to={"/login"} className="d-flex align-items-center">
+                Login
+              </Link>
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
               {/* If there are a username */}
               {/* Hi username!<i className="fas fa-user-circle mx-3"></i> */}
@@ -71,11 +73,8 @@ class App extends Component {
               <i className="fas fa-chevron-circle-down fa-rotate-90 CCblue fa-3x"></i>
             </span>
             <Switch>
-
-            <Route path="/login" component={Login} />
-
+              <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
-
               <Route path="/products/:id">
                 <ProductToDisplay />
               </Route>
@@ -96,14 +95,8 @@ class App extends Component {
               </Route>
               <Route path="/">
                 <Home />
-             
-          </Route>
-
+              </Route>
             </Switch>
-
-          
-             
-          
           </div>
 
           {/* FOOTER CONTAINER */}
@@ -114,11 +107,8 @@ class App extends Component {
             <i className="fab fa-whatsapp"></i>
           </div>
         </div>
-
-    </Router>
-
-   
-
+        <GeoLocator />
+      </Router>
     );
   }
 }

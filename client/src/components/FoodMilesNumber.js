@@ -12,6 +12,7 @@ class FoodMilesNumber extends Component {
     this.state = {
       start: this.props.start,
       end: this.props.end,
+
       distance: "",
     };
   }
@@ -25,6 +26,7 @@ class FoodMilesNumber extends Component {
   }
   search = () => {
     const { start, end } = this.state;
+
     d_service.getDistanceMatrix(
       {
         origins: [start],

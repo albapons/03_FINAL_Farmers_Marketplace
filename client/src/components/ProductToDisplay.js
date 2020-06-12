@@ -20,7 +20,7 @@ export default function ProductsCard() {
       <div className="row">
         <div className="col-5">
           <div className="container d-flex justify-content-center my-3">
-            {/* <img src={product.img} alt="Error" width="100%" /> */}
+            <img src={product.img} alt="Error" width="100%" />
           </div>
         </div>
         <div className="col-6">
@@ -29,7 +29,9 @@ export default function ProductsCard() {
           <h3 className="mt-2">
             <strong>{`Name: ${product.name}`}</strong>
           </h3>
-          <p>{`Seller id: ${product.seller_id}`}</p>
+          <p>
+            Seller: <a href={product.website}>{product.company_name}</a>
+          </p>
           {/* We need to display the company_name from users table */}
           <p>{`Description: ${product.description}`}</p>
           <br />
