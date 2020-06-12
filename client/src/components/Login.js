@@ -10,7 +10,7 @@ export default class Login extends Component {
          this.state = {
 
            username: "test",
-           password: "test"
+           password: "test",
 
          }
      }
@@ -47,7 +47,7 @@ const {username, password} = this.state
 
     render() {
 
-        const { username, password} = this.state;
+        const { username, password } = this.state;
 
         return (
 

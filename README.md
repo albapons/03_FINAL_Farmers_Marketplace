@@ -38,3 +38,4 @@ An online marketplace for farmers' markets.
 - Axios: `npm install axios`
 - Google Map: `npm install google-maps-react`
 - JWT: `npm install jsonwebtoken`
+- Passport facebook : `npm install passport-facebook`

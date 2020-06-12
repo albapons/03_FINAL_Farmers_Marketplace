@@ -70,12 +70,22 @@ router.post("/", function(req, res, next) {
     firstname, 
     lastname, 
     email, 
+    address1, 
+    postcode, 
+    city, 
+    location, 
+    company_name, 
+    company_no, 
+    tel_no, 
+    mob_no, 
+    website, 
+    isSeller, 
     password,
     username
   } = req.body;
 
   db(`INSERT INTO users (firstname, lastname, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website, isSeller, password, username) 
-  VALUES ("${firstname}", "${lastname}", "${email}, "${password}", "${username}");`)
+  VALUES ("${firstname}", "${lastname}", "${email}, "${address1}", "${postcode}", "${city}", "${location}", "${company_name}", "${company_no}", "${tel_no}","${mob_no}", "${website}", "${isSeller}", "${password}", "${username}");`)
 
   .then((results) => {
     res.send({msg: "Your data was inputted correctly!"})

@@ -16,6 +16,9 @@ import Register from "./components/Register";
 
 
 class App extends Component {
+  state = {
+    login: false
+  }
   componentDidMount() {
     this.closeNav();
   }
@@ -59,10 +62,16 @@ class App extends Component {
             <div className="d-flex align-items-center">
               <Link to={"/register"}className="d-flex align-items-center">Register</Link>
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
+              
+              
               <Link to={"/login"} className="d-flex align-items-center">Login</Link>
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
-              {/* If there are a username */}
-              {/* Hi username!<i className="fas fa-user-circle mx-3"></i> */}
+              
+                 {/* //if login show username */}
+              <Link to={"/username"}>Hi username!</Link>
+              <i className="fas fa-user-circle mx-3"></i> 
+              
+
             </div>
           </div>
 
@@ -71,7 +80,7 @@ class App extends Component {
               <i className="fas fa-chevron-circle-down fa-rotate-90 CCblue fa-3x"></i>
             </span>
             <Switch>
-
+            
             <Route path="/login" component={Login} />
 
               <Route path="/register" component={Register} />
