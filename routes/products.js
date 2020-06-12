@@ -20,9 +20,12 @@ router.get("/", function (req, res, next) {
   const { name } = req.query;
   let query = "";
   if (name)
-    query = `SELECT * FROM products LEFT JOIN users ON users.id = products.seller_id WHERE name LIKE "%${name}%";`;
+    query = `SELECT p.*, u.lat, u.lng, u.company_name, u.website FROM products AS p 
+    LEFT JOIN users AS u ON u.id = p.seller_id 
+     WHERE p.name LIKE "%${name}%";`;
   else
-    query = `SELECT * FROM products LEFT JOIN users ON users.id = products.seller_id;`;
+    query = `SELECT p.*, u.lat, u.lng, u.company_name, u.website  FROM products AS p 
+    LEFT JOIN users AS u ON u.id = p.seller_id ;`;
   db(query)
     .then((results) => {
       res.send(results.data);
@@ -44,7 +47,9 @@ router.get("/", function (req, res, next) {
 router.get("/:id/", function (req, res, next) {
   const { id } = req.params;
   db(
-    `SELECT * FROM products LEFT JOIN users ON users.id = products.seller_id WHERE products.id = ${id};`
+    `SELECT p.*, u.lat, u.lng, u.company_name, u.website  FROM products AS p 
+    LEFT JOIN users AS u ON u.id = p.seller_id 
+    WHERE p.id = ${id};`
   )
     .then((results) => {
       res.send(results.data);

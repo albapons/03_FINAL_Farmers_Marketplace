@@ -5,6 +5,12 @@ import InputNumber from "./InputNumber";
 import FoodMilesNumber from "./FoodMilesNumber";
 
 export default function ProductsCard(product) {
+  let locationStart = { lat: 55.93, lng: -3.118 };
+  let locationEnd = {
+    lat: parseFloat(product.product.lat),
+    lng: parseFloat(product.product.lng),
+  };
+
   return (
     <div className="productCard">
       <Link to={`/products/${product.product.id}`} product={product}>
@@ -20,14 +26,7 @@ export default function ProductsCard(product) {
         <h6 className="mt-2">
           <strong>{product.product.name}</strong>
         </h6>
-        <p>
-          Seller id:
-          {
-            " " +
-              product.product
-                .seller_id /* We need to display the company_name from users table */
-          }
-        </p>
+        <p>{`Seller: ${product.product.company_name}`}</p>
         {product.product.unit_price.toFixed(2) + " £"}
         <br />
         <div className="d-flex justify-content-between mt-3">
@@ -40,13 +39,7 @@ export default function ProductsCard(product) {
           <i className="fas fa-cart-plus mx-3 CCblue fa-2x"></i>
         </div>
         <div className="my-4">
-          <p>Lat is: {product.product.lat}</p>
-          <p>Long is: {product.product.lng}</p>
-          <FoodMilesNumber
-            start={"Barcelona, Spain"}
-            end={"Madrid, Spain"}
-            // end={`lat: ${product.product.lat}, lng: ${product.product.lng}`}
-          />
+          <FoodMilesNumber start={locationStart} end={locationEnd} />
         </div>
       </Link>
     </div>
