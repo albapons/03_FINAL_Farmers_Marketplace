@@ -15,6 +15,10 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { lat: "", lng: "", user: "" };
+  }
   componentDidMount() {
     this.closeNav();
   }
@@ -26,6 +30,11 @@ class App extends Component {
   closeNav = () => {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "20px";
+  };
+
+  setLocation = (lat, lng) => {
+    this.setState({ lat });
+    this.setState({ lng });
   };
 
   render() {
@@ -107,7 +116,11 @@ class App extends Component {
             <i className="fab fa-whatsapp"></i>
           </div>
         </div>
-        <GeoLocator />
+        <GeoLocator
+          lat=""
+          lng=""
+          setLocation={(lat, lng) => this.setLocation(lat, lng)}
+        />
       </Router>
     );
   }
