@@ -88,13 +88,13 @@ class App extends Component {
                 <ProductToDisplay />
               </Route>
               <Route path="/products">
-                <Products />
+                <Products lat={this.state.lat} lng={this.state.lng} />
               </Route>
               <Route path="/markets">
-                <Markets />
+                <Markets lat={this.state.lat} lng={this.state.lng} />
               </Route>
               <Route path="/suppliers">
-                <Suppliers />
+                <Suppliers lat={this.state.lat} lng={this.state.lng} />
               </Route>
               <Route path="/recipe">
                 <ApiRecipe />

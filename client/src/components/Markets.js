@@ -4,15 +4,21 @@ import MapContainer from "./MapContainer";
 import FoodMilesNumber from "./FoodMilesNumber";
 
 export default class Markets extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lat: this.props.lat,
+      lng: this.props.lng,
+      location: { lat: this.props.lat, lng: this.props.lng },
+    };
+  }
   render() {
     return (
       <div className="container">
         <div className="d-flex row">
-          <FoodMilesNumber
-            start="Barcelona, Spain"
-            end="16, Victor rd, London"
-          />
-          <MapContainer />
+          {/*This works now*/}
+          {/*<FoodMilesNumber start={this.state.location} end="Barcelona, Spain" />*/}
+          <MapContainer lat={this.state.lat} lng={this.state.lng} />
         </div>
         <div className="d-flex row"></div>
         <div className="d-flex justify-content-between"></div>
