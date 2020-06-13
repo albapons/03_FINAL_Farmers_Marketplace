@@ -78,8 +78,8 @@ con.connect(function (err) {
       start_time time NOT NULL,
       end_time time NOT NULL,
       website varchar(255) NOT NULL,
-      lat varchar(255),
-      lng varchar(255),  
+      lat decimal(10,8),
+      lng decimal(10,8),  
       PRIMARY KEY (id)
     );
     

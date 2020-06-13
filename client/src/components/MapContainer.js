@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 import api from "../utils/apiMarkets";
-//var geocoding = require("geocoding");
 
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
@@ -60,17 +59,16 @@ export class MapContainer extends Component {
   }
 
   // Here is the modified search using the geocode library to return lat,lng co-ords to draw on the map
-  searchDB = () => {
-    // let records = api.getMarketsFiltered(bounds);
-    // for (const record of records) {
-    //     this.setState({ ...this.state.places, place });
-    //     this.setState({ ...this.state.markets, record });
-    //   });
-    // }
+  searchDB = async () => {
+    let res = await api.getMarketsFiltered(bounds.toJSON());
+    console.log(res.data);
+    for (const record of res.data) {
+      this.setState({ suggestions: [...this.state.suggestions, record] });
+    }
   };
+
   search = () => {
     const { input } = this.state;
-
     service.textSearch({ query: input }, (suggestions) => {
       this.setState({ suggestions });
       console.log(suggestions);
@@ -109,7 +107,7 @@ export class MapContainer extends Component {
 
             <button
               className="btn btn-outline-success my-2 my-sm-0"
-              onClick={this.search}
+              onClick={this.searchDB}
             >
               Search
             </button>
@@ -152,7 +150,7 @@ export class MapContainer extends Component {
               zoom={8}
               style={{ height: "500px", width: "500px" }}
               bounds={bounds}
-              initialCenter={{ lat: this.state.lat, lng: this.state.lng }}
+              initialCenter={center}
             >
               {places.map((marker, i) => (
                 <Marker
