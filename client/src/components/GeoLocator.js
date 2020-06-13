@@ -36,14 +36,15 @@ export default class GeoLocator extends Component {
     }
 
     // This doesn't work
-    // this.setState({ location: { lat: this.state.lat, lng: this.state.lng } });
+    //Yes it does! Erica
+    this.setState({ location: { lat: this.state.lat, lng: this.state.lng } });
   };
 
   render() {
     const { lat, lng, location } = this.state;
     return (
       <div>
-        {console.log(`Location: ${location}`)}
+        {console.log(`Location: ${JSON.stringify(location)}`)}
         {console.log(`Lat: ${lat}`)}
         {console.log(`Lng: ${lng}`)}
         {/* <ProductsCard lat={this.state.lat} lng={this.state.lng} /> */}
