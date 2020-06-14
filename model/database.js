@@ -129,7 +129,7 @@ con.connect(function (err) {
     INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Wimbledon Farmers' Market", "info@lfm.org.uk", "Havana Rd", "SW19 8EG", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.438928", "-0.195700");
 
-       INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng) 
+    INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng) 
     VALUES ("Adrian", "Izzard", "adrian@wildco.co.uk",  "11 Chalky rd", "CB21 6AT", "Cambridge","",   "Wild Country Organics", "", "", "", "http://www.wildco.co.uk/",  1, "52.103484", "0.232812");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng) 
     VALUES ("Jan",  "Urbanowski", "info@urbogreens.com",  "Bermondsey","",    "London","",    "Urbogreens", "", "", "", "http://www.urbogreens.com", 1, "51.492705", "-0.064974");
