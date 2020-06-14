@@ -7,17 +7,28 @@ import Markets from "./components/Markets";
 import Home from "./components/Home";
 import ApiRecipe from "./components/ApiRecipe";
 import ProductToDisplay from "./components/ProductToDisplay";
-import MapContainer from "./components/MapContainer";
+import GeoLocator from "./components/GeoLocator";
+
 import "./App.css";
-import Login from "./components/Login"
+import Login from "./components/Login";
 
 import Register from "./components/Register";
 
-
-
 class App extends Component {
-  state = {
-    login: false
+
+ 
+   
+
+  constructor(props) {
+    super(props);
+    this.state = { lat: "", lng: "", user: "" ,
+                   login: false
+                 
+                 
+                 
+                 };
+    
+
   }
   componentDidMount() {
     this.closeNav();
@@ -30,6 +41,11 @@ class App extends Component {
   closeNav = () => {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "20px";
+  };
+
+  setLocation = (lat, lng) => {
+    this.setState({ lat });
+    this.setState({ lng });
   };
 
   render() {
@@ -49,7 +65,6 @@ class App extends Component {
             <Link to="/contact">Contact</Link>
           </div>
         </div>
-
         <div id="main">
           {/* TOP CONTAINER */}
           <div className="header">
@@ -60,11 +75,18 @@ class App extends Component {
             </div>
 
             <div className="d-flex align-items-center">
-              <Link to={"/register"}className="d-flex align-items-center">Register</Link>
+              <Link to={"/register"} className="d-flex align-items-center">
+                Register
+              </Link>
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
+
               
               
-              <Link to={"/login"} className="d-flex align-items-center">Login</Link>
+
+              <Link to={"/login"} className="d-flex align-items-center">
+                Login
+              </Link>
+
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
               
                  {/* //if login show username */}
@@ -80,22 +102,23 @@ class App extends Component {
               <i className="fas fa-chevron-circle-down fa-rotate-90 CCblue fa-3x"></i>
             </span>
             <Switch>
+
             
-            <Route path="/login" component={Login} />
+
+              <Route path="/login" component={Login} />
 
               <Route path="/register" component={Register} />
-
               <Route path="/products/:id">
                 <ProductToDisplay />
               </Route>
               <Route path="/products">
-                <Products />
+                <Products lat={this.state.lat} lng={this.state.lng} />
               </Route>
               <Route path="/markets">
-                <Markets />
+                <Markets lat={this.state.lat} lng={this.state.lng} />
               </Route>
               <Route path="/suppliers">
-                <Suppliers />
+                <Suppliers lat={this.state.lat} lng={this.state.lng} />
               </Route>
               <Route path="/recipe">
                 <ApiRecipe />
@@ -105,14 +128,8 @@ class App extends Component {
               </Route>
               <Route path="/">
                 <Home />
-             
-          </Route>
-
+              </Route>
             </Switch>
-
-          
-             
-          
           </div>
 
           {/* FOOTER CONTAINER */}
@@ -123,11 +140,12 @@ class App extends Component {
             <i className="fab fa-whatsapp"></i>
           </div>
         </div>
-
-    </Router>
-
-   
-
+        <GeoLocator
+          lat=""
+          lng=""
+          setLocation={(lat, lng) => this.setLocation(lat, lng)}
+        />
+      </Router>
     );
   }
 }

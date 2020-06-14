@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 import api from "../utils/apiMarkets";
-//var geocoding = require("geocoding");
 
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
@@ -59,59 +58,17 @@ export class MapContainer extends Component {
     infoWindow = new google.maps.InfoWindow();
   }
 
-  // This is the docs from Google API docs for creating a currentlocation parker
-  // initMap() {
-  //   map = new google.maps.Map(document.getElementById("map"), {
-  //     center: { lat: -34.397, lng: 150.644 },
-  //     zoom: 6,
-  //   });
-  //   infoWindow = new google.maps.InfoWindow();
-
-  //   // Try HTML5 geolocation.
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(
-  //       function (position) {
-  //         var pos = {
-  //           lat: position.coords.latitude,
-  //           lng: position.coords.longitude,
-  //         };
-
-  //         infoWindow.setPosition(pos);
-  //         infoWindow.setContent("Location found.");
-  //         infoWindows.open(map);
-  //         map.setCenter(pos);
-  //       },
-  //       function () {
-  //         handleLocationError(true, infoWindow, map.getCenter());
-  //       }
-  //     );
-  //   } else {
-  //     // Browser doesn't support Geolocation
-  //     handleLocationError(false, infoWindow, map.getCenter());
-  //   }
-  // }
-
-  // handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  //   infoWindow.setPosition(pos);
-  //   infoWindow.setContent(
-  //     browserHasGeolocation
-  //       ? "Error: The Geolocation service failed."
-  //       : "Error: Your browser doesn't support geolocation."
-  //   );
-  //   infoWindow.open(map);
-  // }
   // Here is the modified search using the geocode library to return lat,lng co-ords to draw on the map
-  searchDB = () => {
-    // let records = api.getMarketsFiltered(bounds);
-    // for (const record of records) {
-    //     this.setState({ ...this.state.places, place });
-    //     this.setState({ ...this.state.markets, record });
-    //   });
-    // }
+  searchDB = async () => {
+    let res = await api.getMarketsFiltered(bounds.toJSON());
+    console.log(res.data);
+    for (const record of res.data) {
+      this.setState({ suggestions: [...this.state.suggestions, record] });
+    }
   };
+
   search = () => {
     const { input } = this.state;
-
     service.textSearch({ query: input }, (suggestions) => {
       this.setState({ suggestions });
       console.log(suggestions);
@@ -150,7 +107,7 @@ export class MapContainer extends Component {
 
             <button
               className="btn btn-outline-success my-2 my-sm-0"
-              onClick={this.search}
+              onClick={this.searchDB}
             >
               Search
             </button>
