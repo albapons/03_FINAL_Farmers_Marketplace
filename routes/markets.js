@@ -15,10 +15,10 @@ router.get("/", function (req, res) {
 /* GET filtered markets listing. 
 By location. ot sure how to pass an object through the GET request*/
 router.get("/", function (req, res) {
-  let south = req.query.south;
-  let west = req.query.west;
-  let north = req.query.north;
-  let east = req.query.east;
+  let south = req.params.south;
+  let west = req.params.west;
+  let north = req.params.north;
+  let east = req.params.east;
 
   console.log(
     "south: ",

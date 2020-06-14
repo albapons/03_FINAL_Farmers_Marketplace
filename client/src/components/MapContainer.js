@@ -20,7 +20,7 @@ const center = {
 
 let service = null;
 let map, infoWindow, myLocation;
-let bounds;
+let bounds, location;
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +28,27 @@ export class MapContainer extends Component {
     this.state = {
       input: "",
       suggestions: [],
-      places: [],
+      places: [
+        {
+          address1: "Hydethorpe Rd",
+          city: "London",
+          company_name: "London Farmers' Markets",
+          company_no: "3815770",
+          day: "Saturday",
+          email: "info@lfm.org.uk",
+          end_time: "13:00:00",
+          id: 1,
+          lat: 51.444015,
+          lng: -0.14432,
+          location: "bla",
+          mob_no: "0207833 0338",
+          name: "Balham Farmers' Market",
+          postcode: "SW12 OJA",
+          start_time: "09:00:00",
+          tel_no: "0207833 0338",
+          website: "http://www.lfm.org.uk",
+        },
+      ],
       markets: [],
     };
   }
@@ -43,7 +63,7 @@ export class MapContainer extends Component {
 
   handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      this.search();
+      this.searchDB();
     }
   };
 
@@ -80,8 +100,9 @@ export class MapContainer extends Component {
 
     bounds = new this.props.google.maps.LatLngBounds();
     for (let i = 0; i < places.length; i++) {
-      bounds.extend(places[i].geometry.location);
-      console.log("Here are the LatLngBounds: ", bounds.toJSON());
+      let location = { lat: places[i].lat, lng: places[i].lng };
+      bounds.extend(location);
+      //console.log("Here are the LatLngBounds: ", bounds.toJSON());
     }
 
     return (
@@ -118,18 +139,16 @@ export class MapContainer extends Component {
             <div className="card" style={{ width: "100%" }}>
               <div className="card-header">Suggested Markets</div>
               <ul className="list-group list-group-flush">
-                {suggestions.map((place, i) => (
+                {suggestions.map((place) => (
                   <li
-                    key={i}
+                    key={place.id}
                     className="list-group-item d-flex justify-content-between align-items-center"
                   >
                     <div>
                       <div>
                         <strong>{place.name}</strong>
                       </div>
-                      <span className="text-muted">
-                        {place.formatted_address}
-                      </span>
+                      <span className="text-muted">{place.address1}</span>
                     </div>
 
                     <button
@@ -147,17 +166,17 @@ export class MapContainer extends Component {
             <Map
               google={this.props.google}
               onReady={this.initPlaces}
-              zoom={8}
+              zoom={14}
               style={{ height: "500px", width: "500px" }}
               bounds={bounds}
-              initialCenter={center}
+              initialCenter={{ lat: places[0].lat, lng: places[0].lng }}
             >
-              {places.map((marker, i) => (
+              {places.map((market) => (
                 <Marker
                   onClick={this.onMarkerClick}
-                  name={marker.name}
-                  position={marker.geometry.location}
-                  key={i}
+                  name={market.name}
+                  position={{ lat: market.lat, lng: market.lng }}
+                  key={market.id}
                 />
               ))}
             </Map>
