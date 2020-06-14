@@ -72,9 +72,8 @@ class App extends Component {
 
               <Link
                 to={"/login"}
-                className="d-flex align-items-center"
-                setLogin={this.setLogin}
-              >
+                className="d-flex align-items-center">
+               
                 Login
               </Link>
 

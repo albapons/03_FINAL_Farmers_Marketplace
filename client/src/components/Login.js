@@ -25,10 +25,7 @@ export default class Login extends Component {
         username,
         password,
       },
-    }).then((response) => {
-    
-        this.props.setLogin(this.state.username);
-
+   
     })
       .then((response) => {
         localStorage.setItem("token", response.data.token);
