@@ -16,8 +16,8 @@ import Register from "./components/Register";
 
 class App extends Component {
   state = {
-    login: false
-  }
+    login: false,
+  };
   componentDidMount() {
     this.closeNav();
   }
@@ -29,6 +29,13 @@ class App extends Component {
   closeNav = () => {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "20px";
+  };
+
+  setLogin = (username) => {
+    this.setState({
+      login: true,
+    });
+    console.log(this.state.login);
   };
 
   render() {
@@ -62,24 +69,20 @@ class App extends Component {
                 Register
               </Link>
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
-<<<<<<< HEAD
-              <Link to={"/login"} className="d-flex align-items-center">
+
+              <Link
+                to={"/login"}
+                className="d-flex align-items-center"
+                setLogin={this.setLogin}
+              >
                 Login
               </Link>
-||||||| merged common ancestors
-              <Link to={"/login"} className="d-flex align-items-center">Login</Link>
-=======
-              
-              
-              <Link to={"/login"} className="d-flex align-items-center">Login</Link>
->>>>>>> saving
-              <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
-              
-                 {/* //if login show username */}
-              <Link to={"/username"}>Hi username!</Link>
-              <i className="fas fa-user-circle mx-3"></i> 
-              
 
+              <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
+
+              {/* //if login show username */}
+              <Link to={"/username"}>Hi username!</Link>
+              <i className="fas fa-user-circle mx-3"></i>
             </div>
           </div>
 
@@ -88,17 +91,10 @@ class App extends Component {
               <i className="fas fa-chevron-circle-down fa-rotate-90 CCblue fa-3x"></i>
             </span>
             <Switch>
-<<<<<<< HEAD
               <Route path="/login" component={Login} />
-||||||| merged common ancestors
 
-            <Route path="/login" component={Login} />
+              <Route path="/login" component={Login} />
 
-=======
-            
-            <Route path="/login" component={Login} />
-
->>>>>>> saving
               <Route path="/register" component={Register} />
               <Route path="/products/:id">
                 <ProductToDisplay />
