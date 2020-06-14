@@ -4,7 +4,7 @@ import InputNumber from "./InputNumber";
 import api from "../utils/apiProducts";
 import "./ProductsCard.css";
 
-export default function ProductsCard() {
+export default function ProductsCard(props) {
   let { id } = useParams();
   const [product, setProduct] = useState([]);
 
@@ -52,8 +52,8 @@ export default function ProductsCard() {
               <i className="fas fa-cart-plus mx-3 CCblue fa-2x"></i>
             </div>
             <div className="my-4">
-              <p>Lat is: {product.lat}</p>
-              <p>Long is: {product.lng}</p>
+              <p>Lat is: {props.lat}</p>
+              <p>Long is: {props.lng}</p>
             </div>
           </div>
         </div>
