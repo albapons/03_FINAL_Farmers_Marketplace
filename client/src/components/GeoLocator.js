@@ -44,9 +44,9 @@ export default class GeoLocator extends Component {
     const { lat, lng, location } = this.state;
     return (
       <div>
-        {console.log(`Location: ${JSON.stringify(location)}`)}
+        {/* {console.log(`Location: ${JSON.stringify(location)}`)}
         {console.log(`Lat: ${lat}`)}
-        {console.log(`Lng: ${lng}`)}
+        {console.log(`Lng: ${lng}`)} */}
         {/* <ProductsCard lat={this.state.lat} lng={this.state.lng} /> */}
       </div>
     );

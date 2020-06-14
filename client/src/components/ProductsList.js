@@ -3,10 +3,12 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import api from "../utils/apiProducts";
 
-export default function Products() {
+export default function Products(props) {
   const [products, setProducts] = useState([]);
   const [name, setSearch] = useState("");
   const history = useHistory();
+  const [lat, setLat] = useState(props.lat);
+  const [lng, setLng] = useState(props.lng);
 
   const performSearch = () => {
     history.push(`/products?name=${name}`);
@@ -58,7 +60,7 @@ export default function Products() {
           <div className="row">
             {products.map((product, i) => (
               <div key={i}>
-                <ProductsCard product={product} />
+                <ProductsCard product={product} lat={lat} lng={lng} />
               </div>
             ))}
           </div>

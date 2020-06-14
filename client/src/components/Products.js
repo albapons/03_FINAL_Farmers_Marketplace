@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+
 import ProductList from "./ProductsList";
 
-export default function Products() {
+export default function Products(props) {
+  const [lat, setLat] = useState(props.lat);
+  const [lng, setLng] = useState(props.lng);
+
   return (
     <div className="container">
       <div className="row">
@@ -11,7 +15,7 @@ export default function Products() {
           <h5 className="subtitle">Get your products!</h5>
         </div>
       </div>
-      <ProductList />
+      <ProductList lat={lat} lng={lng} />
     </div>
   );
 }
