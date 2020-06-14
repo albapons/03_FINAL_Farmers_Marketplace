@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import InputNumber from "./InputNumber";
+import FoodMilesNumber from "./FoodMilesNumber";
 import api from "../utils/apiProducts";
 import "./ProductsCard.css";
 
@@ -41,8 +42,14 @@ export default function ProductsCard(props) {
             <div className="col-md-4">
               <i className="fas fa-car-side fa-2x CCblue mr-2"></i>{" "}
               <strong>Food Miles: </strong>
+              {console.log(
+                `This is start and end: ${props.start}, ${props.end}`
+              )}
+              <FoodMilesNumber
+                start={props.start}
+                end={props.end}
+              ></FoodMilesNumber>
               {/* We need to do (user_CP) - (seller postcode from users table)  */}{" "}
-              10 km
             </div>
             <div className="col-md-4 d-flex justify-content-center">
               {/* We need to save the value of the Input Number for each product */}
@@ -54,6 +61,7 @@ export default function ProductsCard(props) {
             <div className="my-4">
               <p>Lat is: {props.lat}</p>
               <p>Long is: {props.lng}</p>
+              {console.log(`This is lat and lng: ${props.lat}, ${props.lng}`)}
             </div>
           </div>
         </div>

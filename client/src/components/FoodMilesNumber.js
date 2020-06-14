@@ -8,11 +8,9 @@ let d_service = null;
 class FoodMilesNumber extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      start: this.props.start,
-      end: this.props.end,
-
+      start: JSON.stringify(this.props.start),
+      end: JSON.stringify(this.props.end),
       distance: "",
     };
   }
@@ -43,6 +41,11 @@ class FoodMilesNumber extends Component {
   };
 
   render() {
+    {
+      console.log(
+        `FOODMILES: This is start and end: ${this.state.start}, ${this.state.end}`
+      );
+    }
     const { distance } = this.state;
     return <span>{distance}</span>;
   }
