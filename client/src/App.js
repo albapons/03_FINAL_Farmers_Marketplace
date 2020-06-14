@@ -109,7 +109,7 @@ class App extends Component {
 
               <Route path="/register" component={Register} />
               <Route path="/products/:id">
-                <ProductToDisplay />
+                <ProductToDisplay lat={this.state.lat} lng={this.state.lng} />
               </Route>
               <Route path="/products">
                 <Products lat={this.state.lat} lng={this.state.lng} />
