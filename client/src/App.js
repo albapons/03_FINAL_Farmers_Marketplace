@@ -15,9 +15,20 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 
 class App extends Component {
+
+ 
+   
+
   constructor(props) {
     super(props);
-    this.state = { lat: "", lng: "", user: "" };
+    this.state = { lat: "", lng: "", user: "" ,
+                   login: false
+                 
+                 
+                 
+                 };
+    
+
   }
   componentDidMount() {
     this.closeNav();
@@ -68,12 +79,21 @@ class App extends Component {
                 Register
               </Link>
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
+
+              
+              
+
               <Link to={"/login"} className="d-flex align-items-center">
                 Login
               </Link>
+
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
-              {/* If there are a username */}
-              {/* Hi username!<i className="fas fa-user-circle mx-3"></i> */}
+              
+                 {/* //if login show username */}
+              <Link to={"/username"}>Hi username!</Link>
+              <i className="fas fa-user-circle mx-3"></i> 
+              
+
             </div>
           </div>
 
@@ -82,7 +102,11 @@ class App extends Component {
               <i className="fas fa-chevron-circle-down fa-rotate-90 CCblue fa-3x"></i>
             </span>
             <Switch>
+
+            
+
               <Route path="/login" component={Login} />
+
               <Route path="/register" component={Register} />
               <Route path="/products/:id">
                 <ProductToDisplay />
