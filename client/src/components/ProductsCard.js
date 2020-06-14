@@ -16,7 +16,17 @@ export default function ProductsCard(props) {
 
   return (
     <div className="productCard">
-      <Link to={`/products/${props.product.id}`} product={props.product}>
+      {console.log(
+        `PRODUCTSCARD: This is locationStart and locationEnd ${JSON.stringify(
+          locationStart
+        )}, ${JSON.stringify(locationEnd)}`
+      )}
+      <Link
+        to={`/products/${props.product.id}`}
+        product={props.product}
+        start={locationStart}
+        end={locationEnd}
+      >
         <div className="container d-flex justify-content-center my-3">
           <img src={props.product.img} alt="Error" className="productImg" />
         </div>
@@ -36,7 +46,7 @@ export default function ProductsCard(props) {
           <div className="ml-1 row">
             <i className="fas fa-car-side fa-2x CCblue mr-2"></i>{" "}
             <strong>Food Miles: </strong>
-            <FoodMilesNumber start={locationStart} end={locationEnd} />
+            {/* <FoodMilesNumber start={locationStart} end={locationEnd} /> */}
           </div>
           <i className="fas fa-cart-plus mx-3 CCblue fa-2x"></i>
         </div>
