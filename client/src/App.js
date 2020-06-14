@@ -17,11 +17,13 @@ import Register from "./components/Register";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { lat: "", lng: "", user: "" };
+    this.state = { lat: "", lng: "", user: "", login: false };
   }
+
   componentDidMount() {
     this.closeNav();
   }
+
   openNav = () => {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
@@ -37,9 +39,14 @@ class App extends Component {
     this.setState({ lng });
   };
 
+  // onSetLogin = () => {
+  //   this.setState({ login: true });
+  // };
+
   render() {
     return (
       <Router>
+        {console.log(this.state.login)}
         <div className="App">
           {/* SIDENAV CONTAINER */}
           <div id="mySidenav" className="sidenav">
@@ -68,12 +75,16 @@ class App extends Component {
                 Register
               </Link>
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
+
               <Link to={"/login"} className="d-flex align-items-center">
                 Login
               </Link>
+
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
-              {/* If there are a username */}
-              {/* Hi username!<i className="fas fa-user-circle mx-3"></i> */}
+
+              {/* //if login show username */}
+              <Link to={"/username"}>Hi username!</Link>
+              <i className="fas fa-user-circle mx-3"></i>
             </div>
           </div>
 
@@ -83,9 +94,10 @@ class App extends Component {
             </span>
             <Switch>
               <Route path="/login" component={Login} />
+
               <Route path="/register" component={Register} />
               <Route path="/products/:id">
-                <ProductToDisplay />
+                <ProductToDisplay lat={this.state.lat} lng={this.state.lng} />
               </Route>
               <Route path="/products">
                 <Products lat={this.state.lat} lng={this.state.lng} />

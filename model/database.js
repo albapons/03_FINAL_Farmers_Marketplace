@@ -129,7 +129,7 @@ con.connect(function (err) {
     INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Wimbledon Farmers' Market", "info@lfm.org.uk", "Havana Rd", "SW19 8EG", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.438928", "-0.195700");
 
-       INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng) 
+    INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng) 
     VALUES ("Adrian", "Izzard", "adrian@wildco.co.uk",  "11 Chalky rd", "CB21 6AT", "Cambridge","",   "Wild Country Organics", "", "", "", "http://www.wildco.co.uk/",  1, "52.103484", "0.232812");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng) 
     VALUES ("Jan",  "Urbanowski", "info@urbogreens.com",  "Bermondsey","",    "London","",    "Urbogreens", "", "", "", "http://www.urbogreens.com", 1, "51.492705", "-0.064974");
@@ -206,6 +206,7 @@ con.connect(function (err) {
     INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
     VALUES ("Basil",	2.3,	"#",	"TENDER ANNUAL. Ht 30cm. This basil originates from Mexico. The leaves have a hint of purple and are highly cinnamon-scented when rubbed.  The leaves can be used in spicy dishes, curries and salad dressings. Plant somewhere sheltered from the wind in rich, fertile, well-drained soil in full sun.",
     "1", 2,	1,	3,	"yrs", "https://www.plantsguru.com/image/cache/herb/sweet-basil-800x800.jpg");
+
 
     INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
     VALUES ("Lovage (Levisticum officinale)",	3.15,	"#",	"HARDY PERENNIAL. Ht 1.5m. This plant produces large celery scented leaves and stems with fleshy roots. It adds a meaty flavour to food and can be used in salads, to flavour soups, stews, stocks and savoury dishes. Rub the leaves on chicken or around salad bowls. The young shoots and leaf stalks can be blanched and eaten as a vegetable.",
