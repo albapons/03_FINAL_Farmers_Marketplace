@@ -205,7 +205,8 @@ con.connect(function (err) {
       
     INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
     VALUES ("Basil",	2.3,	"#",	"TENDER ANNUAL. Ht 30cm. This basil originates from Mexico. The leaves have a hint of purple and are highly cinnamon-scented when rubbed.  The leaves can be used in spicy dishes, curries and salad dressings. Plant somewhere sheltered from the wind in rich, fertile, well-drained soil in full sun.",
-    "1",2,	1,	3,	"yrs", "https://www.plantsguru.com/image/cache/herb/sweet-basil-800x800.jpg");
+    "1", 2,	1,	3,	"yrs", "https://www.plantsguru.com/image/cache/herb/sweet-basil-800x800.jpg");
+
 
     INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
     VALUES ("Lovage (Levisticum officinale)",	3.15,	"#",	"HARDY PERENNIAL. Ht 1.5m. This plant produces large celery scented leaves and stems with fleshy roots. It adds a meaty flavour to food and can be used in salads, to flavour soups, stews, stocks and savoury dishes. Rub the leaves on chicken or around salad bowls. The young shoots and leaf stalks can be blanched and eaten as a vegetable.",
