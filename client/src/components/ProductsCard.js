@@ -6,9 +6,10 @@ import FoodMilesNumber from "./FoodMilesNumber";
 
 export default function ProductsCard(props) {
   let locationStart = {
-    lat: parseFloat(props.lat),
-    lng: parseFloat(props.lng),
+    lat: parseFloat(localStorage.getItem("lat")),
+    lng: parseFloat(localStorage.getItem("lng")),
   };
+
   let locationEnd = {
     lat: parseFloat(props.product.lat),
     lng: parseFloat(props.product.lng),
@@ -16,11 +17,6 @@ export default function ProductsCard(props) {
 
   return (
     <div className="productCard">
-      {console.log(
-        `PRODUCTSCARD: This is locationStart and locationEnd ${JSON.stringify(
-          locationStart
-        )}, ${JSON.stringify(locationEnd)}`
-      )}
       <Link
         to={`/products/${props.product.id}`}
         product={props.product}
@@ -46,7 +42,7 @@ export default function ProductsCard(props) {
           <div className="ml-1 row">
             <i className="fas fa-car-side fa-2x CCblue mr-2"></i>{" "}
             <strong>Food Miles: </strong>
-            {/* <FoodMilesNumber start={locationStart} end={locationEnd} /> */}
+            <FoodMilesNumber start={locationStart} end={locationEnd} />
           </div>
           <i className="fas fa-cart-plus mx-3 CCblue fa-2x"></i>
         </div>
