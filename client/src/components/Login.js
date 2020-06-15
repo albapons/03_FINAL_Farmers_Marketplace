@@ -25,31 +25,17 @@ export default class Login extends Component {
         username,
         password,
       },
-
     })
       .then((response) => {
         localStorage.setItem("token", response.data.token);
         console.log(response);
         this.props.history.push("/");
         console.log(this.props);
-
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
-
-  render() {
-    const { username, password } = this.state;
-
-    return (
-      <div className="login">
-        {console.log(this.state.login)}
-
-        <div className="text-center border border-light p-5" action="#!">
-          <p className="h4 mb-4">Sign in</p>
-
 
   render() {
     const { username, password } = this.state;
@@ -113,10 +99,6 @@ export default class Login extends Component {
             Not a member?
             <a href="">Register</a>
           </p>
-
-
-
-
 
           <p>or sign in with:</p>
 

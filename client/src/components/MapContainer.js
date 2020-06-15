@@ -30,7 +30,7 @@ export class MapContainer extends Component {
       suggestions: [],
       places: [
         {
-          address1: "Hydethorpe Rd",
+          address1: "Torrington Square Rd",
           city: "London",
           company_name: "London Farmers' Markets",
           company_no: "3815770",
@@ -38,12 +38,12 @@ export class MapContainer extends Component {
           email: "info@lfm.org.uk",
           end_time: "13:00:00",
           id: 1,
-          lat: 51.444015,
-          lng: -0.14432,
+          lat: 51.523124,
+          lng: -0.130947,
           location: "bla",
           mob_no: "0207833 0338",
-          name: "Balham Farmers' Market",
-          postcode: "SW12 OJA",
+          name: "Bloomsbury Farmers' Market",
+          postcode: "WC1E 7HY",
           start_time: "09:00:00",
           tel_no: "0207833 0338",
           website: "http://www.lfm.org.uk",
@@ -73,23 +73,30 @@ export class MapContainer extends Component {
 
   initPlaces(mapProps, map) {
     const { google } = mapProps;
-    service = new google.maps.places.PlacesService(map);
+    //service = new google.maps.places.PlacesService(map);
     //console.log(google.maps);
     infoWindow = new google.maps.InfoWindow();
   }
 
-  // componentDidMount() {
-  //   let myBounds = document.getElementById("myMap").getBounds();
-  //   console.log("Here are the bounds: ", myBounds);
-  // }
+  componentDidMount() {
+    let myBounds = document.getElementById("myMap")?.getBounds();
+    console.log("Here are the bounds: ", myBounds);
+  }
 
   // Here is the modified search using the geocode library to return lat,lng co-ords to draw on the map
   searchDB = async () => {
     console.log(bounds.toJSON());
-    let res = await api.getMarketsFiltered(bounds.toJSON());
+    let myBounds = {
+      east: -0.07,
+      north: 51.6,
+      south: 51.4,
+      west: -0.3,
+    };
+    let res = await api.getMarketsFiltered(myBounds);
     console.log(res.data);
     for (const record of res.data) {
       this.setState({ suggestions: [...this.state.suggestions, record] });
+      this.setState({ places: [...this.state.places, record] });
     }
   };
 
@@ -105,10 +112,20 @@ export class MapContainer extends Component {
     const { suggestions, places } = this.state;
 
     bounds = new this.props.google.maps.LatLngBounds();
+    console.log(
+      `Here is the localstorage lat: ${localStorage.getItem(
+        "lat"
+      )}, and lng: ${localStorage.getItem("lng")}`
+    );
+    console.log("There are this many places: ", places.length);
     for (let i = 0; i < places.length; i++) {
       let location = { lat: places[i].lat, lng: places[i].lng };
       bounds.extend(location);
-      //console.log("Here are the LatLngBounds: ", bounds.toJSON());
+      console.log(
+        `Here are the LatLngBounds for ${places[i].name}: ${JSON.stringify(
+          bounds.toJSON()
+        )}`
+      );
     }
 
     return (
@@ -175,15 +192,14 @@ export class MapContainer extends Component {
               onReady={this.initPlaces}
               zoom={14}
               style={{ height: "500px", width: "500px" }}
-              bounds={bounds}
-              initialCenter={{ lat: places[0].lat, lng: places[0].lng }}
+              initialCenter={{ lat: localStorage.lat, lng: localStorage.lng }}
             >
-              {places.map((market) => (
+              {places.map((market, i) => (
                 <Marker
                   onClick={this.onMarkerClick}
                   name={market.name}
                   position={{ lat: market.lat, lng: market.lng }}
-                  key={market.id}
+                  key={i}
                 />
               ))}
             </Map>
