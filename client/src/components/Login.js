@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./Login.css";
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "test",
-      password: "test",
+      username: "",
+      password: "",
     };
   }
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
+
   login = () => {
     const { username, password } = this.state;
     axios("/users/login", {
@@ -25,19 +28,24 @@ export default class Login extends Component {
     })
       .then((response) => {
         localStorage.setItem("token", response.data.token);
-        console.log(response);
-        this.props.history.push("/");
-        console.log(this.props);
+        localStorage.setItem("username", username);
+        // console.log(response);
+        this.props.onLogin(username, this.props.history);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  componentDidMount = () => {
+    if (localStorage.getItem("username"))
+      this.setState({ username: localStorage.getItem("username") });
+  };
+
   render() {
     const { username, password } = this.state;
     return (
       <div className="login">
-        {console.log(this.state.login)}
         <div className="text-center border border-light p-5" action="#!">
           <p className="h4 mb-4">Sign in</p>
           <input
@@ -91,14 +99,14 @@ export default class Login extends Component {
             <a href="">Register</a>
           </p>
           <p>or sign in with:</p>
-          <a href="#" class="mx-2" role="button">
-            <i class="fab fa-facebook-f light-blue-text"></i>
+          <a href="#" className="mx-2" role="button">
+            <i className="fab fa-facebook-f light-blue-text"></i>
           </a>
-          <a href="#" class="mx-2" role="button">
-            <i class="fab fa-twitter light-blue-text"></i>
+          <a href="#" className="mx-2" role="button">
+            <i className="fab fa-twitter light-blue-text"></i>
           </a>
-          <a href="#" class="mx-2" role="button">
-            <i class="fab fa-linkedin-in light-blue-text"></i>
+          <a href="#" className="mx-2" role="button">
+            <i className="fab fa-linkedin-in light-blue-text"></i>
           </a>
         </div>
       </div>

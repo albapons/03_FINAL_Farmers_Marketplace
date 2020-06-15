@@ -1,20 +1,16 @@
 import React, { Component } from "react";
 import { GoogleApiWrapper } from "google-maps-react";
-
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-
 let d_service = null;
-
 class FoodMilesNumber extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      start: JSON.stringify(this.props.start),
-      end: JSON.stringify(this.props.end),
+      start: this.props.start,
+      end: this.props.end,
       distance: "",
     };
   }
-
   componentDidMount() {
     const { google } = this.props;
     d_service = new google.maps.DistanceMatrixService(
@@ -24,7 +20,6 @@ class FoodMilesNumber extends Component {
   }
   search = () => {
     const { start, end } = this.state;
-
     d_service.getDistanceMatrix(
       {
         origins: [start],
@@ -39,18 +34,11 @@ class FoodMilesNumber extends Component {
     );
     return this.state.distance;
   };
-
   render() {
-    {
-      console.log(
-        `FOODMILES: This is start and end: ${this.state.start}, ${this.state.end}`
-      );
-    }
     const { distance } = this.state;
     return <span>{distance}</span>;
   }
 }
-
 export default GoogleApiWrapper({
   apiKey,
 })(FoodMilesNumber);

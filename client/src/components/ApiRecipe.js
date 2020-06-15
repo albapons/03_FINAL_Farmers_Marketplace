@@ -70,8 +70,6 @@ const ApiRecipe = () => {
       <div className="recipes">
         {recipes.map((recipe) => (
           <div>
-            {console.log(recipe)}
-
             <Recipe
               key={recipe.label}
               title={recipe.recipe.label}

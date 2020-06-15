@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import ApiRecipe from "./components/ApiRecipe";
 import ProductToDisplay from "./components/ProductToDisplay";
 import GeoLocator from "./components/GeoLocator";
+import TermsService from "./components/TermsService";
 
 import "./App.css";
 import Login from "./components/Login";
@@ -17,11 +18,13 @@ import Register from "./components/Register";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { lat: "", lng: "", user: "", login: false };
+    this.state = { lat: "", lng: "", username: "", login: false };
   }
 
   componentDidMount() {
     this.closeNav();
+    if (localStorage.getItem("username"))
+      this.setState({ username: localStorage.getItem("username") });
   }
 
   openNav = () => {
@@ -35,18 +38,24 @@ class App extends Component {
   };
 
   setLocation = (lat, lng) => {
-    this.setState({ lat });
-    this.setState({ lng });
+    localStorage.setItem("lat", lat);
+    localStorage.setItem("lng", lng);
   };
 
-  // onSetLogin = () => {
-  //   this.setState({ login: true });
-  // };
+  onLogin = (username, history) => {
+    this.setState({ username });
+    history.push("/");
+  };
+
+  logOut = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("token");
+    this.setState({ username: "" });
+  };
 
   render() {
     return (
       <Router>
-        {console.log(this.state.login)}
         <div className="App">
           {/* SIDENAV CONTAINER */}
           <div id="mySidenav" className="sidenav">
@@ -61,6 +70,7 @@ class App extends Component {
             <Link to="/contact">Contact</Link>
           </div>
         </div>
+
         <div id="main">
           {/* TOP CONTAINER */}
           <div className="header">
@@ -71,20 +81,33 @@ class App extends Component {
             </div>
 
             <div className="d-flex align-items-center">
-              <Link to={"/register"} className="d-flex align-items-center">
-                Register
-              </Link>
-              <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
+              {this.state.username ? (
+                <div>
+                  {/* If we have logged in, show the username */}
+                  <Link to={"/username"}>
+                    Hi {this.state.username}!
+                    <i className="fas fa-user-circle mx-3 CCblue fa-2x"></i>
+                  </Link>
 
-              <Link to={"/login"} className="d-flex align-items-center">
-                Login
-              </Link>
+                  {/* Logout */}
+                  <span onClick={() => this.logOut()}>
+                    <i className="fas fa-power-off CCblue fa-2x"></i>
+                  </span>
+                  {console.log(this.state.username)}
+                </div>
+              ) : (
+                <div>
+                  <Link to={"/register"} className="d-flex align-items-center">
+                    Register
+                    <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
+                  </Link>
 
-              <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
-
-              {/* //if login show username */}
-              <Link to={"/username"}>Hi username!</Link>
-              <i className="fas fa-user-circle mx-3"></i>
+                  <Link to={"/login"} className="d-flex align-items-center">
+                    Login
+                    <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
 
@@ -93,20 +116,22 @@ class App extends Component {
               <i className="fas fa-chevron-circle-down fa-rotate-90 CCblue fa-3x"></i>
             </span>
             <Switch>
-              <Route path="/login" component={Login} />
-
+              <Route
+                path="/login"
+                render={(props) => <Login onLogin={this.onLogin} {...props} />}
+              />
               <Route path="/register" component={Register} />
               <Route path="/products/:id">
-                <ProductToDisplay lat={this.state.lat} lng={this.state.lng} />
+                <ProductToDisplay />
               </Route>
               <Route path="/products">
-                <Products lat={this.state.lat} lng={this.state.lng} />
+                <Products />
               </Route>
               <Route path="/markets">
-                <Markets lat={this.state.lat} lng={this.state.lng} />
+                <Markets />
               </Route>
               <Route path="/suppliers">
-                <Suppliers lat={this.state.lat} lng={this.state.lng} />
+                <Suppliers />
               </Route>
               <Route path="/recipe">
                 <ApiRecipe />
