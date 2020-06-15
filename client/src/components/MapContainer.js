@@ -78,8 +78,14 @@ export class MapContainer extends Component {
     infoWindow = new google.maps.InfoWindow();
   }
 
+  // componentDidMount() {
+  //   let myBounds = document.getElementById("myMap").getBounds();
+  //   console.log("Here are the bounds: ", myBounds);
+  // }
+
   // Here is the modified search using the geocode library to return lat,lng co-ords to draw on the map
   searchDB = async () => {
+    console.log(bounds.toJSON());
     let res = await api.getMarketsFiltered(bounds.toJSON());
     console.log(res.data);
     for (const record of res.data) {
@@ -164,6 +170,7 @@ export class MapContainer extends Component {
           </div>
           <div className="col">
             <Map
+              id="myMap"
               google={this.props.google}
               onReady={this.initPlaces}
               zoom={14}
