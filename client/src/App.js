@@ -15,10 +15,12 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = { lat: "", lng: "", user: "", login: false };
   }
+
 
   componentDidMount() {
     this.closeNav();
@@ -34,6 +36,15 @@ class App extends Component {
     document.getElementById("main").style.marginLeft = "20px";
   };
 
+
+  setLogin = (username) => {
+    this.setState({
+      login: true,
+    });
+    console.log(this.state.login);
+  };
+
+
   setLocation = (lat, lng) => {
     this.setState({ lat });
     this.setState({ lng });
@@ -42,6 +53,7 @@ class App extends Component {
   // onSetLogin = () => {
   //   this.setState({ login: true });
   // };
+
 
   render() {
     return (
@@ -76,7 +88,9 @@ class App extends Component {
               </Link>
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
 
+
               <Link to={"/login"} className="d-flex align-items-center">
+
                 Login
               </Link>
 

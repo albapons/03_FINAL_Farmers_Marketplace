@@ -16,9 +16,14 @@ export default class Markets extends Component {
     return (
       <div className="container">
         <div className="d-flex row">
+
+          
+          <MapContainer />
+
           {/*This works now*/}
           <FoodMilesNumber start={this.state.location} end="Barcelona, Spain" />
           <MapContainer lat={this.state.lat} lng={this.state.lng} />
+
         </div>
         <div className="d-flex row"></div>
         <div className="d-flex justify-content-between"></div>
