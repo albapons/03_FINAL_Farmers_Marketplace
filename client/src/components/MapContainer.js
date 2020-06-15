@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 import api from "../utils/apiMarkets";
-//var geocoding = require("geocoding");
 
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
@@ -21,7 +20,7 @@ const center = {
 
 let service = null;
 let map, infoWindow, myLocation;
-let bounds;
+let bounds, location;
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +28,27 @@ export class MapContainer extends Component {
     this.state = {
       input: "",
       suggestions: [],
-      places: [],
+      places: [
+        {
+          address1: "Hydethorpe Rd",
+          city: "London",
+          company_name: "London Farmers' Markets",
+          company_no: "3815770",
+          day: "Saturday",
+          email: "info@lfm.org.uk",
+          end_time: "13:00:00",
+          id: 1,
+          lat: 51.444015,
+          lng: -0.14432,
+          location: "bla",
+          mob_no: "0207833 0338",
+          name: "Balham Farmers' Market",
+          postcode: "SW12 OJA",
+          start_time: "09:00:00",
+          tel_no: "0207833 0338",
+          website: "http://www.lfm.org.uk",
+        },
+      ],
       markets: [],
     };
   }
@@ -44,7 +63,7 @@ export class MapContainer extends Component {
 
   handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      this.search();
+      this.searchDB();
     }
   };
 
@@ -59,59 +78,17 @@ export class MapContainer extends Component {
     infoWindow = new google.maps.InfoWindow();
   }
 
-  // This is the docs from Google API docs for creating a currentlocation parker
-  // initMap() {
-  //   map = new google.maps.Map(document.getElementById("map"), {
-  //     center: { lat: -34.397, lng: 150.644 },
-  //     zoom: 6,
-  //   });
-  //   infoWindow = new google.maps.InfoWindow();
-
-  //   // Try HTML5 geolocation.
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(
-  //       function (position) {
-  //         var pos = {
-  //           lat: position.coords.latitude,
-  //           lng: position.coords.longitude,
-  //         };
-
-  //         infoWindow.setPosition(pos);
-  //         infoWindow.setContent("Location found.");
-  //         infoWindows.open(map);
-  //         map.setCenter(pos);
-  //       },
-  //       function () {
-  //         handleLocationError(true, infoWindow, map.getCenter());
-  //       }
-  //     );
-  //   } else {
-  //     // Browser doesn't support Geolocation
-  //     handleLocationError(false, infoWindow, map.getCenter());
-  //   }
-  // }
-
-  // handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  //   infoWindow.setPosition(pos);
-  //   infoWindow.setContent(
-  //     browserHasGeolocation
-  //       ? "Error: The Geolocation service failed."
-  //       : "Error: Your browser doesn't support geolocation."
-  //   );
-  //   infoWindow.open(map);
-  // }
   // Here is the modified search using the geocode library to return lat,lng co-ords to draw on the map
-  searchDB = () => {
-    // let records = api.getMarketsFiltered(bounds);
-    // for (const record of records) {
-    //     this.setState({ ...this.state.places, place });
-    //     this.setState({ ...this.state.markets, record });
-    //   });
-    // }
+  searchDB = async () => {
+    let res = await api.getMarketsFiltered(bounds.toJSON());
+    console.log(res.data);
+    for (const record of res.data) {
+      this.setState({ suggestions: [...this.state.suggestions, record] });
+    }
   };
+
   search = () => {
     const { input } = this.state;
-
     service.textSearch({ query: input }, (suggestions) => {
       this.setState({ suggestions });
       console.log(suggestions);
@@ -123,8 +100,9 @@ export class MapContainer extends Component {
 
     bounds = new this.props.google.maps.LatLngBounds();
     for (let i = 0; i < places.length; i++) {
-      bounds.extend(places[i].geometry.location);
-      console.log("Here are the LatLngBounds: ", bounds.toJSON());
+      let location = { lat: places[i].lat, lng: places[i].lng };
+      bounds.extend(location);
+      //console.log("Here are the LatLngBounds: ", bounds.toJSON());
     }
 
     return (
@@ -150,7 +128,7 @@ export class MapContainer extends Component {
 
             <button
               className="btn btn-outline-success my-2 my-sm-0"
-              onClick={this.search}
+              onClick={this.searchDB}
             >
               Search
             </button>
@@ -161,18 +139,16 @@ export class MapContainer extends Component {
             <div className="card" style={{ width: "100%" }}>
               <div className="card-header">Suggested Markets</div>
               <ul className="list-group list-group-flush">
-                {suggestions.map((place, i) => (
+                {suggestions.map((place) => (
                   <li
-                    key={i}
+                    key={place.id}
                     className="list-group-item d-flex justify-content-between align-items-center"
                   >
                     <div>
                       <div>
                         <strong>{place.name}</strong>
                       </div>
-                      <span className="text-muted">
-                        {place.formatted_address}
-                      </span>
+                      <span className="text-muted">{place.address1}</span>
                     </div>
 
                     <button
@@ -190,17 +166,17 @@ export class MapContainer extends Component {
             <Map
               google={this.props.google}
               onReady={this.initPlaces}
-              zoom={8}
+              zoom={14}
               style={{ height: "500px", width: "500px" }}
               bounds={bounds}
-              initialCenter={center}
+              initialCenter={{ lat: places[0].lat, lng: places[0].lng }}
             >
-              {places.map((marker, i) => (
+              {places.map((market) => (
                 <Marker
                   onClick={this.onMarkerClick}
-                  name={marker.name}
-                  position={marker.geometry.location}
-                  key={i}
+                  name={market.name}
+                  position={{ lat: market.lat, lng: market.lng }}
+                  key={market.id}
                 />
               ))}
             </Map>

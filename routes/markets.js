@@ -15,19 +15,29 @@ router.get("/", function (req, res) {
 /* GET filtered markets listing. 
 By location. ot sure how to pass an object through the GET request*/
 router.get("/", function (req, res) {
-  let bounds = req.query.bounds || {
-    east: -0.2,
-    north: 51.54,
-    south: 51.5,
-    west: -0.23,
-  };
+  let south = req.params.south;
+  let west = req.params.west;
+  let north = req.params.north;
+  let east = req.params.east;
+
+  console.log(
+    "south: ",
+    south,
+    "west: ",
+    west,
+    "north: ",
+    north,
+    "east: ",
+    east
+  );
+
   console.log("Inside get request! ");
   db(
     `SELECT * FROM markets 
-    WHERE lat > ${bounds.south} 
-    AND lat < ${bounds.north} 
-    AND lng < ${bounds.east} 
-    AND lng > ${bounds.west};`
+    WHERE lat > ${south} 
+    AND lat < ${north} 
+    AND lng < ${east} 
+    AND lng > ${west};`
   )
     .then((results) => {
       res.send(results.data);

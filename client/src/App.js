@@ -15,12 +15,17 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 
 class App extends Component {
-  state = {
-    login: false,
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = { lat: "", lng: "", user: "", login: false };
+  }
+
+
   componentDidMount() {
     this.closeNav();
   }
+
   openNav = () => {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
@@ -31,6 +36,7 @@ class App extends Component {
     document.getElementById("main").style.marginLeft = "20px";
   };
 
+
   setLogin = (username) => {
     this.setState({
       login: true,
@@ -38,9 +44,21 @@ class App extends Component {
     console.log(this.state.login);
   };
 
+
+  setLocation = (lat, lng) => {
+    this.setState({ lat });
+    this.setState({ lng });
+  };
+
+  // onSetLogin = () => {
+  //   this.setState({ login: true });
+  // };
+
+
   render() {
     return (
       <Router>
+        {console.log(this.state.login)}
         <div className="App">
           {/* SIDENAV CONTAINER */}
           <div id="mySidenav" className="sidenav">
@@ -70,10 +88,9 @@ class App extends Component {
               </Link>
               <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
 
-              <Link
-                to={"/login"}
-                className="d-flex align-items-center">
-               
+
+              <Link to={"/login"} className="d-flex align-items-center">
+
                 Login
               </Link>
 
@@ -92,20 +109,18 @@ class App extends Component {
             <Switch>
               <Route path="/login" component={Login} />
 
-              <Route path="/login" component={Login} />
-
               <Route path="/register" component={Register} />
               <Route path="/products/:id">
-                <ProductToDisplay />
+                <ProductToDisplay lat={this.state.lat} lng={this.state.lng} />
               </Route>
               <Route path="/products">
-                <Products />
+                <Products lat={this.state.lat} lng={this.state.lng} />
               </Route>
               <Route path="/markets">
-                <Markets />
+                <Markets lat={this.state.lat} lng={this.state.lng} />
               </Route>
               <Route path="/suppliers">
-                <Suppliers />
+                <Suppliers lat={this.state.lat} lng={this.state.lng} />
               </Route>
               <Route path="/recipe">
                 <ApiRecipe />
@@ -127,7 +142,11 @@ class App extends Component {
             <i className="fab fa-whatsapp"></i>
           </div>
         </div>
-        <GeoLocator />
+        <GeoLocator
+          lat=""
+          lng=""
+          setLocation={(lat, lng) => this.setLocation(lat, lng)}
+        />
       </Router>
     );
   }
