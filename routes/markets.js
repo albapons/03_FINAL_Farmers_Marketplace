@@ -2,23 +2,23 @@ var express = require("express");
 var router = express.Router();
 const db = require("../model/helper");
 
-/* GET markets listing. */
-router.get("/", function (req, res) {
-  console.log("Inside get request! ");
-  db(`SELECT * FROM markets;`)
-    .then((results) => {
-      res.send(results.data);
-    })
-    .catch((err) => res.status(500).send(err));
-});
+// /* GET markets listing. */
+// router.get("/", function (req, res) {
+//   console.log("Inside get request! ");
+//   db(`SELECT * FROM markets;`)
+//     .then((results) => {
+//       res.send(results.data);
+//     })
+//     .catch((err) => res.status(500).send(err));
+// });
 
 /* GET filtered markets listing. 
 By location. ot sure how to pass an object through the GET request*/
 router.get("/", function (req, res) {
-  let south = req.params.south;
-  let west = req.params.west;
-  let north = req.params.north;
-  let east = req.params.east;
+  let south = req.query.south;
+  let west = req.query.west;
+  let north = req.query.north;
+  let east = req.query.east;
 
   console.log(
     "south: ",
