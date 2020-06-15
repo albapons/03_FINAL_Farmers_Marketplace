@@ -52,7 +52,7 @@ router.get("/:id/", function (req, res, next) {
     WHERE p.id = ${id};`
   )
     .then((results) => {
-      res.send(results.data);
+      res.send(results.data[0]);
     })
     .catch((err) => res.status(500).send(err));
 });

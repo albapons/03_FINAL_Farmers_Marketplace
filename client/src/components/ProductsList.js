@@ -7,8 +7,6 @@ export default function Products(props) {
   const [products, setProducts] = useState([]);
   const [name, setSearch] = useState("");
   const history = useHistory();
-  // const [lat, setLat] = useState(props.lat);
-  // const [lng, setLng] = useState(props.lng);
 
   const performSearch = () => {
     history.push(`/products?name=${name}`);
@@ -31,11 +29,6 @@ export default function Products(props) {
 
   return (
     <div className="row">
-      {console.log(
-        `PRODUCTLIST: This is props.lat lng: ${props.lat}, ${props.lng}`
-      )}
-      {/* {console.log(`This is lat and lng: ${lat}, ${lng}`)} */}
-
       <div className="col-md-3 d-flex">
         <div className="row">
           <div className="md-form mb-0">

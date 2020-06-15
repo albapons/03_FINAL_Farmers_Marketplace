@@ -6,8 +6,8 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "test",
-      password: "test",
+      username: "",
+      password: "",
     };
   }
 
@@ -25,40 +25,29 @@ export default class Login extends Component {
         username,
         password,
       },
-
     })
       .then((response) => {
         localStorage.setItem("token", response.data.token);
-        console.log(response);
-        this.props.history.push("/");
-        console.log(this.props);
-
+        localStorage.setItem("username", username);
+        // console.log(response);
+        this.props.onLogin(username, this.props.history);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-
-  render() {
-    const { username, password } = this.state;
-
-    return (
-      <div className="login">
-        {console.log(this.state.login)}
-
-        <div className="text-center border border-light p-5" action="#!">
-          <p className="h4 mb-4">Sign in</p>
-
+  componentDidMount = () => {
+    if (localStorage.getItem("username"))
+      this.setState({ username: localStorage.getItem("username") });
+  };
 
   render() {
     const { username, password } = this.state;
     return (
       <div className="login">
-        {console.log(this.state.login)}
         <div className="text-center border border-light p-5" action="#!">
           <p className="h4 mb-4">Sign in</p>
-
           <input
             type="email"
             id="defaultLoginFormUsername"
@@ -68,7 +57,6 @@ export default class Login extends Component {
             value={username}
             onChange={this.handleChange}
           />
-
           <input
             type="password"
             id="defaultLoginFormPassword"
@@ -78,7 +66,6 @@ export default class Login extends Component {
             value={password}
             onChange={this.handleChange}
           />
-
           <div className="d-flex justify-content-around">
             <div>
               <div className="custom-control custom-checkbox">
@@ -99,7 +86,6 @@ export default class Login extends Component {
               <a href="">Forgot password?</a>
             </div>
           </div>
-
           <button
             className="btn btn-block my-4"
             type="submit"
@@ -108,26 +94,19 @@ export default class Login extends Component {
           >
             Sign in
           </button>
-
           <p>
             Not a member?
             <a href="">Register</a>
           </p>
-
-
-
-
-
           <p>or sign in with:</p>
-
-          <a href="#" class="mx-2" role="button">
-            <i class="fab fa-facebook-f light-blue-text"></i>
+          <a href="#" className="mx-2" role="button">
+            <i className="fab fa-facebook-f light-blue-text"></i>
           </a>
-          <a href="#" class="mx-2" role="button">
-            <i class="fab fa-twitter light-blue-text"></i>
+          <a href="#" className="mx-2" role="button">
+            <i className="fab fa-twitter light-blue-text"></i>
           </a>
-          <a href="#" class="mx-2" role="button">
-            <i class="fab fa-linkedin-in light-blue-text"></i>
+          <a href="#" className="mx-2" role="button">
+            <i className="fab fa-linkedin-in light-blue-text"></i>
           </a>
         </div>
       </div>

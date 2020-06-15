@@ -8,12 +8,18 @@ export default class ContactUs extends Component {
   render() {
     return (
       <div className="container">
-        <h2 className="h1-responsive font-weight-bold text-center my-4">
-          CONTACT US
-        </h2>
-        <p className="text-center w-responsive mx-auto mb-5" />
-        Do you have any questions? Please do not hesitate to contact us
-        directly. Our team will come back to you within
+        <div className="row">
+          <div>
+            <i className="fas fa-envelope CCblue fa-2x"></i>
+            <h5 className="title">CONTACT US </h5>
+            <h5 className="subtitle">Do you have any questions? </h5>
+            <p className="text my-2">
+              Please do not hesitate to contact us directly. Our team will come
+              back to you within
+            </p>
+          </div>
+        </div>
+
         <div className="container d-flex justify-content-center my-3" />
         <div className="row">
           <div className="col mb-md-0 mb-5">
@@ -98,17 +104,15 @@ export default class ContactUs extends Component {
           </div>
           <div className="col text-center">
             <i className="fas fa-phone mt-4 fa-2x CCbeige"></i>
-            <p>+ 01 234 567 89</p>
+            <p>+44 1632 960230</p>
           </div>
 
           <div className="col text-center">
             <i className="fas fa-envelope mt-4 fa-2x CCbeige"></i>
-            <p>contact@mdbootstrap.com</p>
+            <p>info@farmersmarketplace.com</p>
           </div>
         </div>
       </div>
     );
   }
 }
-
-
