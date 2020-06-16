@@ -38,8 +38,7 @@ export class MapContainer extends Component {
     let res = await api.getMarketsFiltered(localStorage.getItem("bounds"));
     this.setState({ places: [] });
     this.setState({ suggestions: [] });
-    console.log(res.data);
-    if (res.data) {
+    if (res?.data) {
       for (let i = 0; i < res.data.length; i++) {
         let record = res.data[i];
         this.setState({ suggestions: [...this.state.suggestions, record] });
