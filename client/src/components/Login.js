@@ -28,14 +28,19 @@ export default class Login extends Component {
     })
       .then((response) => {
         localStorage.setItem("token", response.data.token);
+        console.log(response);
+        this.props.history.push("/");
+        console.log(this.props);
         localStorage.setItem("username", username);
         // console.log(response);
         this.props.onLogin(username, this.props.history);
+
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
 
   componentDidMount = () => {
     if (localStorage.getItem("username"))
@@ -98,6 +103,7 @@ export default class Login extends Component {
             Not a member?
             <a href="">Register</a>
           </p>
+
           <p>or sign in with:</p>
           <a href="#" className="mx-2" role="button">
             <i className="fab fa-facebook-f light-blue-text"></i>
