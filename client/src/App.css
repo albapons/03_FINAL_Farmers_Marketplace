@@ -24,7 +24,7 @@ raisin: #50424b
 }
 
 .CCbeige {
-  color: #e3c080;
+  color: #ffd700;
 }
 
 .header {
@@ -168,9 +168,9 @@ raisin: #50424b
   margin-top: 10px;
 }
 
-a {
+/* a {
   color: #b12737 !important;
-}
+} */
 
 .ourButton {
   background-color: #9dbca6;
