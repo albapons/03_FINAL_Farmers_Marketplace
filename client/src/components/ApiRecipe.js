@@ -37,7 +37,7 @@ const ApiRecipe = () => {
     <div className="container">
       <div className="row mb-5 ">
         <div>
-          <i className="fas fa-utensils CCblue fa-2x"></i>
+          <i className="fas fa-utensils CCbeige fa-2x"></i>
           <h5 className="title">IT'S TIME TO COOK? </h5>
 
           <div>

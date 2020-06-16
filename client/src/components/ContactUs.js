@@ -10,7 +10,7 @@ export default class ContactUs extends Component {
       <div className="container">
         <div className="row">
           <div>
-            <i className="fas fa-envelope CCblue fa-2x"></i>
+            <i className="fas fa-envelope CCbeige fa-2x"></i>
             <h5 className="title">CONTACT US </h5>
             <h5 className="subtitle">Do you have any questions? </h5>
             <p className="text my-2">
@@ -19,16 +19,9 @@ export default class ContactUs extends Component {
             </p>
           </div>
         </div>
-
-        <div className="container d-flex justify-content-center my-3" />
-        <div className="row">
-          <div className="col mb-md-0 mb-5">
-            <div
-              id="contact-form"
-              name="contact-form"
-              //   action="mail.php"
-              //   method="POST"
-            >
+        <div className="text-center borderCard p-5 my-3" action="#!">
+          <div className="row">
+            <div className="col mb-md-0 mb-5">
               <div className="row">
                 <div className="col">
                   <div className="md-form mb-0">
@@ -43,7 +36,6 @@ export default class ContactUs extends Component {
                 </div>
                 <div className="col">
                   <div className="md-form mb-0">
-                    {" "}
                     <input
                       type="text"
                       id="email"
@@ -81,17 +73,12 @@ export default class ContactUs extends Component {
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="d-flex justify-content-center">
-              <button
-                className="button"
-                // onClick="document.getElementById('contact-form').submit();"
-              >
-                Send
-              </button>
+              <div className="d-flex justify-content-center">
+                <button className="button">Send</button>
+              </div>
+              {/* <div className="status"></div> */}
             </div>
-            {/* <div className="status"></div> */}
           </div>
         </div>
         <div className="d-flex justify-content-center  my-5">
@@ -100,16 +87,16 @@ export default class ContactUs extends Component {
         <div className="row mt-4">
           <div className="col text-center">
             <i className="fas fa-map-marker-alt mt-4 fa-2x CCbeige"></i>
-            <p>San Francisco, CA 94126, USA</p>
+            <p className="text">San Francisco, CA 94126, USA</p>
           </div>
           <div className="col text-center">
             <i className="fas fa-phone mt-4 fa-2x CCbeige"></i>
-            <p>+44 1632 960230</p>
+            <p className="text">+44 1632 960230</p>
           </div>
 
           <div className="col text-center">
             <i className="fas fa-envelope mt-4 fa-2x CCbeige"></i>
-            <p>info@farmersmarketplace.com</p>
+            <p className="text">info@farmersmarketplace.com</p>
           </div>
         </div>
       </div>
