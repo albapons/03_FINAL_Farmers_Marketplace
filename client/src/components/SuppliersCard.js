@@ -1,36 +1,26 @@
 import React, { Component } from "react";
 import "../App.css";
+import Suppliers from "./Suppliers";
 
 export default class SuppliersCard extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-        users: {},
-    }
-}
-
-componentDidMount() {
-    this.getUsers();
-}
+ constructor(props) {
+   super(props)
+   
+ }
 
 
 
-getUsers = () => {
-    fetch(`/users/${this.props.id}`)
-    .then(response => response.json())
-    .then(response => {
-        this.setState({ users: response})
-    })
-}
  
 
 render() {
 
-  const {users} = this.state;
+ const {user} = this.props
 
     return (
+
       <div className="buyersCard">
-        <div className="container d-flex justify-content-center my-3">
+        <div className="d-flex justify-content-center my-3">
+          {console.log(this.props.user)}
           <img
             src="https://color.romanuke.com/wp-content/uploads/2016/08/cvetovaya-palitra-2987.png"
             alt="Error"
@@ -39,18 +29,28 @@ render() {
           />
         </div>
 
+          
+      
+
+
         <br />
 
-         {users.id}001
+       
+
+        
+
+     {user.id}
         <h5 className="mt-2">
          
-          <strong>{users.company_name}</strong>
+         
+    <strong>{user.company_name}</strong>
         </h5>
-        {users.postcode} - {users.city}
+       
+      {user.postcode} - {user.city}
         <br />
-        {users.tel_no} · {users.mob_no}
+        {user.tel_no} 
         <br />
-        {users.website} */
+    {user.website} 
        
       </div>
       
