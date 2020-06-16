@@ -28,14 +28,19 @@ export default class Login extends Component {
     })
       .then((response) => {
         localStorage.setItem("token", response.data.token);
+        console.log(response);
+        this.props.history.push("/");
+        console.log(this.props);
         localStorage.setItem("username", username);
         // console.log(response);
         this.props.onLogin(username, this.props.history);
+
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
 
   componentDidMount = () => {
     if (localStorage.getItem("username"))
