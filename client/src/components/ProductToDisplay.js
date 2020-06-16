@@ -68,7 +68,7 @@ export default function ProductsCard(props) {
             </div>
           </div>
         </div>
-      </div>{" "}
+      </div>
     </div>
   );
 }

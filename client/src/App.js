@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Products from "./components/Products";
 import Suppliers from "./components/Suppliers";
+import Supplier from "./components/Supplier";
 import ContactUs from "./components/ContactUs";
 import Markets from "./components/Markets";
+import Market from "./components/Market";
 import Home from "./components/Home";
 import ApiRecipe from "./components/ApiRecipe";
 import ProductToDisplay from "./components/ProductToDisplay";
@@ -132,8 +134,14 @@ class App extends Component {
               <Route path="/products">
                 <Products />
               </Route>
+              <Route path="/markets/:id">
+                <Market />
+              </Route>
               <Route path="/markets">
                 <Markets />
+              </Route>
+              <Route path="suppliers/:id">
+                <Supplier />
               </Route>
               <Route path="/suppliers">
                 <Suppliers />

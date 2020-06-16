@@ -1,7 +1,7 @@
 import React from "react";
 import ProductsCard from "./ProductsCard";
 
-export default function Products(products, lat, lng) {
+export default function Products({ products, lat, lng }) {
   return (
     <div>
       {console.log(products)}
