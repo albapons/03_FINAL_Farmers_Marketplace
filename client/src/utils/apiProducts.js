@@ -22,4 +22,13 @@ export default {
       console.log(error);
     });
   },
+
+  // // GET products filtered list by name
+  // getProductsFiltered: (name, market_id) => {
+  //   return axios
+  //     .get(`${apiRoot}?name=${name}&market_id=${market_id}`)
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // },
 };

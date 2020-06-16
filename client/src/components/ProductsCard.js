@@ -40,11 +40,11 @@ export default function ProductsCard(props) {
         <br />
         <div className="d-flex justify-content-between mt-3">
           <div className="ml-1 row">
-            <i className="fas fa-car-side fa-2x CCblue mr-2"></i>{" "}
+            <i className="fas fa-car-side fa-2x CCbeige mr-2"></i>{" "}
             <strong>Food Miles: </strong>
             <FoodMilesNumber start={locationStart} end={locationEnd} />
           </div>
-          <i className="fas fa-cart-plus mx-3 CCblue fa-2x"></i>
+          <i className="fas fa-cart-plus mx-3 CCcherry fa-2x"></i>
         </div>
       </Link>
     </div>

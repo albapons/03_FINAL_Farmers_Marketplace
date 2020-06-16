@@ -3,14 +3,9 @@ import { useHistory } from "react-router-dom";
 import api from "../utils/apiProducts";
 import ProductsList from "./ProductsList";
 
-export default function Products(props) {
+export default function Supplier(props) {
   const [products, setProducts] = useState([]);
   const [name, setSearch] = useState("");
-  const history = useHistory();
-
-  const performSearch = () => {
-    history.push(`/products?name=${name}`);
-  };
 
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -23,7 +18,6 @@ export default function Products(props) {
   };
 
   useEffect(() => {
-    performSearch();
     getProductsFiltered();
   }, [name]);
 
@@ -32,7 +26,7 @@ export default function Products(props) {
       <div className="row">
         <div>
           <i className="fas fa-shopping-basket CCbeige fa-2x"></i>
-          <h5 className="title">IT'S TIME TO DO THE SHOPPING? </h5>
+          <h5 className="title">IT'S TIME TO GO TO *****supplier name***? </h5>
           <h5 className="subtitle">Get your products!</h5>
         </div>
       </div>

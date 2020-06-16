@@ -19,7 +19,7 @@ const Recipe = ({ title, ingredients, image, calories, source, url }) => {
         <strong>Calories: </strong>
         {Math.round(calories)}
       </p>
-      <i className="fas fa-angle-double-right fa-rotate-90 CCblue fa-2x mb-3"></i>
+      <i className="fas fa-angle-double-right fa-rotate-90 CCbeige fa-2x mb-3"></i>
       <p>
         {source}
         <strong> · </strong>
