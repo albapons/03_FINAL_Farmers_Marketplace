@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ProductsCard from "./ProductsCard";
 
 export default class GeoLocator extends Component {
   constructor(props) {
@@ -42,13 +41,6 @@ export default class GeoLocator extends Component {
 
   render() {
     const { lat, lng, location } = this.state;
-    return (
-      <div>
-        {/* {console.log(`Location: ${JSON.stringify(location)}`)}
-        {console.log(`Lat: ${lat}`)}
-        {console.log(`Lng: ${lng}`)} */}
-        {/* <ProductsCard lat={this.state.lat} lng={this.state.lng} /> */}
-      </div>
-    );
+    return <div></div>;
   }
 }

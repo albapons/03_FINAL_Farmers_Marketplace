@@ -11,61 +11,66 @@ export default function ProductsCard(props) {
 
   useEffect(() => {
     api.getOneProduct(id).then((response) => {
-      setProduct(response.data[0]);
+      setProduct(response.data);
     });
   }, [id]);
 
+  let locationStart = {
+    lat: parseFloat(localStorage.getItem("lat")),
+    lng: parseFloat(localStorage.getItem("lng")),
+  };
+
+  let locationEnd = {
+    lat: parseFloat(product.lat),
+    lng: parseFloat(product.lng),
+  };
+
   return (
-    <div className="productCardDisplay">
-      {console.log(product)}
+    <div className="container">
       <div className="row">
-        <div className="col-5">
-          <div className="container d-flex justify-content-center my-3">
-            <img src={product.img} alt="Error" width="100%" />
-          </div>
-        </div>
-        <div className="col-6">
-          <br />
-          Ref. 00{product.id}
-          <h3 className="mt-2">
-            <strong>{`Name: ${product.name}`}</strong>
-          </h3>
-          <p>
-            Seller: <a href={product.website}>{product.company_name}</a>
-          </p>
-          {/* We need to display the company_name from users table */}
-          <p>{`Description: ${product.description}`}</p>
-          <br />
-          {/* {product.unit_price.toFixed(2) + " €"} */}
-          <br />
-          <div className="row d-flex justify-content-between mt-3">
-            <div className="col-md-4">
-              <i className="fas fa-car-side fa-2x CCblue mr-2"></i>{" "}
-              <strong>Food Miles: </strong>
-              {console.log(
-                `This is start and end: ${props.start}, ${props.end}`
-              )}
-              <FoodMilesNumber
-                start={props.start}
-                end={props.end}
-              ></FoodMilesNumber>
-              {/* We need to do (user_CP) - (seller postcode from users table)  */}{" "}
-            </div>
-            <div className="col-md-4 d-flex justify-content-center">
-              {/* We need to save the value of the Input Number for each product */}
-              <InputNumber />
-            </div>
-            <div className="col-md-4 d-flex justify-content-center">
-              <i className="fas fa-cart-plus mx-3 CCblue fa-2x"></i>
-            </div>
-            <div className="my-4">
-              <p>Lat is: {props.lat}</p>
-              <p>Long is: {props.lng}</p>
-              {console.log(`This is lat and lng: ${props.lat}, ${props.lng}`)}
-            </div>
-          </div>
+        <div>
+          <i className="fas fa-shopping-basket CCblue fa-2x"></i>
+          <h5 className="title">IT'S TIME TO DO THE SHOPPING? </h5>
+          <h5 className="subtitle">Get your products!</h5>
         </div>
       </div>
+      <div className="productCardDisplay mt-3">
+        <div className="row">
+          <div className="col-5">
+            <div className="container d-flex justify-content-center my-3">
+              <img src={product.img} alt="Error" width="100%" />
+            </div>
+          </div>
+          <div className="col-6">
+            <br />
+            Ref. 00{product.id}
+            <h3 className="mt-2">
+              <strong>{`Name: ${product.name}`}</strong>
+            </h3>
+            <p>
+              Seller: <a href={product.website}>{product.company_name}</a>
+            </p>
+            <p>{`Description: ${product.description}`}</p>
+            <br />
+            {/* {product.unit_price.toFixed(2) + " €"} */}
+            <br />
+            <div className="row d-flex justify-content-between mt-3">
+              <div className="col-md-4">
+                <i className="fas fa-car-side fa-2x CCblue mr-2"></i>{" "}
+                <strong>Food Miles: </strong>
+                <FoodMilesNumber start={locationStart} end={locationEnd} />
+              </div>
+              <div className="col-md-4 d-flex justify-content-center">
+                {/* We need to save the value of the Input Number for each product */}
+                <InputNumber />
+              </div>
+              <div className="col-md-4 d-flex justify-content-center">
+                <i className="fas fa-cart-plus mx-3 CCblue fa-2x"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>{" "}
     </div>
   );
 }
