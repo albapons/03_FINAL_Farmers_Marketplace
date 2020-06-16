@@ -29,7 +29,7 @@ export default function ProductsCard(props) {
     <div className="container">
       <div className="row">
         <div>
-          <i className="fas fa-shopping-basket CCblue fa-2x"></i>
+          <i className="fas fa-shopping-basket CCbeige fa-2x"></i>
           <h5 className="title">IT'S TIME TO DO THE SHOPPING? </h5>
           <h5 className="subtitle">Get your products!</h5>
         </div>
@@ -51,11 +51,9 @@ export default function ProductsCard(props) {
               Seller: <a href={product.website}>{product.company_name}</a>
             </p>
             <p>{`Description: ${product.description}`}</p>
-            <br />
-            {/* {product.unit_price.toFixed(2) + " €"} */}
-            <br />
+            {/* {product.unit_price.toFixed(2) + " £"} */}
             <div className="row d-flex justify-content-between mt-3">
-              <div className="col-md-4">
+              <div className="col-md-6">
                 <i className="fas fa-car-side fa-2x CCblue mr-2"></i>
                 <strong>Food Miles: </strong>
                 <FoodMilesNumber start={locationStart} end={locationEnd} />
@@ -64,7 +62,7 @@ export default function ProductsCard(props) {
                 {/* We need to save the value of the Input Number for each product */}
                 <InputNumber />
               </div>
-              <div className="col-md-4 d-flex justify-content-center">
+              <div className="col-md-2 d-flex justify-content-center">
                 <i className="fas fa-cart-plus mx-3 CCblue fa-2x"></i>
               </div>
             </div>

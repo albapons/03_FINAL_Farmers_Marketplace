@@ -7,6 +7,14 @@ raisin: #50424b
 */
 
 /* COLOR CARD */
+.CCcherry {
+  color: #b12737;
+}
+
+.CCraisin {
+  color: #50424b;
+}
+
 .CCblue {
   color: #9dbca6;
 }
@@ -18,6 +26,7 @@ raisin: #50424b
 .CCbeige {
   color: #e3c080;
 }
+
 .header {
   height: 80px;
   border-bottom: solid #b12737 5px;
@@ -157,6 +166,10 @@ raisin: #50424b
   font-family: "Barlow Condensed", sans-serif;
   font-size: 18px;
   margin-top: 10px;
+}
+
+a {
+  color: #b12737 !important;
 }
 
 .ourButton {

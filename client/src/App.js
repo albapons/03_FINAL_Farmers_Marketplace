@@ -8,8 +8,6 @@ import Home from "./components/Home";
 import ApiRecipe from "./components/ApiRecipe";
 import ProductToDisplay from "./components/ProductToDisplay";
 import GeoLocator from "./components/GeoLocator";
-import TermsService from "./components/TermsService";
-
 import "./App.css";
 import Login from "./components/Login";
 
@@ -81,13 +79,13 @@ class App extends Component {
         <div id="main">
           {/* TOP CONTAINER */}
           <div className="header">
-            <div>
+            <div className="">
               <Link to="/">
                 <h1 className=""> FARMER'S MARKETPLACE</h1>
               </Link>
             </div>
 
-            <div className="d-flex align-items-center">
+            <div className="">
               {this.state.username ? (
                 <div>
                   {/* If we have logged in, show the username */}
@@ -98,19 +96,19 @@ class App extends Component {
 
                   {/* Logout */}
                   <span onClick={() => this.logOut()}>
-                    <i className="fas fa-power-off CCblue fa-2x"></i>
+                    <i className="fas fa-sign-out-alt CCblue fa-2x"></i>
                   </span>
                   {console.log(this.state.username)}
                 </div>
               ) : (
-                <div>
+                <div className="row">
                   <Link to={"/register"} className="d-flex align-items-center">
-                    Register
-                    <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
+                    <h5 className="d-inline align-middle">Register</h5>
+                    <i className="fas fa-file-alt mx-3 CCblue fa-2x d-inline align-middle"></i>
                   </Link>
 
                   <Link to={"/login"} className="d-flex align-items-center">
-                    Login
+                    <h5>Login</h5>
                     <i className="fas fa-sign-in-alt mx-3 CCblue fa-2x"></i>
                   </Link>
                 </div>

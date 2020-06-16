@@ -31,7 +31,6 @@ class FoodMilesNumber extends Component {
         this.setState({
           distance: elements?.rows[0]?.elements[0]?.distance?.text,
         });
-        // console.log(elements.rows[0].elements[0].distance.text);
       }
     );
     return this.state.distance;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./Login.css";
+import "./ContactUs.css";
 
 export default class Login extends Component {
   constructor(props) {
@@ -34,13 +34,11 @@ export default class Login extends Component {
         localStorage.setItem("username", username);
         // console.log(response);
         this.props.onLogin(username, this.props.history);
-
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
 
   componentDidMount = () => {
     if (localStorage.getItem("username"))
@@ -50,27 +48,72 @@ export default class Login extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <div className="login">
-        <div className="text-center border border-light p-5" action="#!">
-          <p className="h4 mb-4">Sign in</p>
-          <input
-            type="email"
-            id="defaultLoginFormUsername"
-            className="form-control mb-4"
-            placeholder="Username"
-            name="username"
-            value={username}
-            onChange={this.handleChange}
-          />
-          <input
-            type="password"
-            id="defaultLoginFormPassword"
-            className="form-control mb-4"
-            placeholder="Password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
+      <div className="container">
+        <div className="row">
+          <div>
+            <i className="fas fa-file-alt CCbeige fa-2x"></i>
+            <h5 className="title">IT'S TIME TO SAY HELLO! </h5>
+            <h5 className="subtitle">Welcome! Sign in...</h5>
+          </div>
+        </div>
+        <div className="d-flex justify-content-center">
+          <div className="text-center borderCard p-5 my-3 w-75" action="#!">
+            <div className="row">
+              <div className="col mb-md-0 mb-5">
+                <div className="row">
+                  <div className="col">
+                    <div className="md-form mb-0">
+                      <input
+                        type="email"
+                        id="username"
+                        className="form-control mb-4"
+                        name="username"
+                        value={username}
+                        onChange={this.handleChange}
+                      />
+                      <label htmlFor="username">UserName</label>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col">
+                    <div className="md-form mb-0">
+                      <input
+                        type="password"
+                        id="defaultLoginFormPassword"
+                        className="form-control mb-4"
+                        name="password"
+                        value={password}
+                        onChange={this.handleChange}
+                      />
+                      <label htmlFor="password">Password</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="d-flex justify-content-center">
+              <button
+                className="button"
+                type="submit"
+                onClick={this.login}
+                disabled={!username || !password}
+              >
+                Sign in
+              </button>
+            </div>
+            <div className="text mt-4">
+              <p>
+                Not a member?
+                <a href="/register"> Register</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* This is not working! */}
+        {/* <div className="text-center border border-light p-5" action="#!">
           <div className="d-flex justify-content-around">
             <div>
               <div className="custom-control custom-checkbox">
@@ -91,19 +134,6 @@ export default class Login extends Component {
               <a href="">Forgot password?</a>
             </div>
           </div>
-          <button
-            className="btn btn-block my-4"
-            type="submit"
-            onClick={this.login}
-            disabled={!username || !password}
-          >
-            Sign in
-          </button>
-          <p>
-            Not a member?
-            <a href="">Register</a>
-          </p>
-
           <p>or sign in with:</p>
           <a href="#" className="mx-2" role="button">
             <i className="fab fa-facebook-f light-blue-text"></i>
@@ -114,7 +144,7 @@ export default class Login extends Component {
           <a href="#" className="mx-2" role="button">
             <i className="fab fa-linkedin-in light-blue-text"></i>
           </a>
-        </div>
+        </div> */}
       </div>
     );
   }
