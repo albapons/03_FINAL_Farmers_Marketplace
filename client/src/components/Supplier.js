@@ -26,7 +26,7 @@ export default function Supplier(props) {
       <div className="row">
         <div>
           <i className="fas fa-shopping-basket CCbeige fa-2x"></i>
-          <h5 className="title">IT'S TIME TO GO TO *****supplier name***? </h5>
+          <h5 className="title">IT'S TIME TO GO TO *****SUPPLIER*****? </h5>
           <h5 className="subtitle">Get your products!</h5>
         </div>
       </div>
