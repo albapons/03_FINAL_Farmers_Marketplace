@@ -51,7 +51,7 @@ export default class Login extends Component {
       <div className="container">
         <div className="row">
           <div>
-            <i className="fas fa-file-alt CCbeige fa-2x"></i>
+            <i className="fas fa-sign-in-alt CCbeige fa-2x"></i>
             <h5 className="title">IT'S TIME TO SAY HELLO! </h5>
             <h5 className="subtitle">Welcome! Sign in...</h5>
           </div>
