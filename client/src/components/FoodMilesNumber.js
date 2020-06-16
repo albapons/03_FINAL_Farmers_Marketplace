@@ -28,7 +28,9 @@ class FoodMilesNumber extends Component {
       },
       (elements) => {
         //here is where we can set the value of the foodmiles component
-        this.setState({ distance: elements.rows[0].elements[0].distance.text });
+        this.setState({
+          distance: elements?.rows[0]?.elements[0]?.distance?.text,
+        });
         // console.log(elements.rows[0].elements[0].distance.text);
       }
     );
