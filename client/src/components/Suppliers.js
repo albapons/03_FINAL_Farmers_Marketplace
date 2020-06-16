@@ -24,7 +24,6 @@ export default class Suppliers extends Component {
     const { users } = this.state;
     return (
       <div className="container">
-        {console.log(users)}
         <div className="d-flex justify-content-center  my-5">
           <div className="square"></div>
         </div>
