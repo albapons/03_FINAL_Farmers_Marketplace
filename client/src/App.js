@@ -47,7 +47,6 @@ class App extends Component {
   setLocation = (lat, lng) => {
     localStorage.setItem("lat", lat);
     localStorage.setItem("lng", lng);
-<<<<<<< HEAD
   };
 
   onLogin = (username, history) => {
@@ -55,15 +54,6 @@ class App extends Component {
     history.push("/");
   };
 
-=======
-  };
-
-  onLogin = (username, history) => {
-    this.setState({ username });
-    history.push("/");
-  };
-
->>>>>>> 9ba0f5ed1645e9fbfecb55b6a84a2bb0bd9d082a
   logOut = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("token");

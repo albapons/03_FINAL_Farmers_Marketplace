@@ -56,7 +56,7 @@ export default function ProductsCard(props) {
             <br />
             <div className="row d-flex justify-content-between mt-3">
               <div className="col-md-4">
-                <i className="fas fa-car-side fa-2x CCblue mr-2"></i>{" "}
+                <i className="fas fa-car-side fa-2x CCblue mr-2"></i>
                 <strong>Food Miles: </strong>
                 <FoodMilesNumber start={locationStart} end={locationEnd} />
               </div>
