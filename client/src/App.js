@@ -140,7 +140,7 @@ class App extends Component {
               <Route path="/markets">
                 <Markets />
               </Route>
-              <Route path="suppliers/:id">
+              <Route path="/suppliers/:id">
                 <Supplier />
               </Route>
               <Route path="/suppliers">
