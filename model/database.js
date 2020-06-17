@@ -32,7 +32,7 @@ con.connect(function (err) {
       description varchar(512) NOT NULL,
       tax_code varchar(255) NOT NULL,
       category_id int,
-      isPerishable binary(1) NOT NULL,
+      isPerishable TINYINT(1) NOT NULL,
       shelf_life_count int NOT NULL,
       shelf_life_units varchar(255) NOT NULL,
       seller_id int NOT NULL,
@@ -54,7 +54,7 @@ con.connect(function (err) {
       tel_no varchar(255),
       mob_no varchar(255),
       website varchar(255),
-      isSeller TINYINT(1),
+      isSeller binary(1),
       password varchar(255),
       username varchar(255),
       lat varchar(255),
@@ -150,18 +150,18 @@ con.connect(function (err) {
     VALUES ("Stein",  "Leenders", "steinleenders@gmail.com",  "Brambletye Ln, Forest Row",  "RH18", "East Grinstead", "",   "Bramble Tye Fruit Farm", "", "", "", "-",  1, "51.102900", "0.025270");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng) 
     VALUES ("David",  "Lucas",  "info@edenfarms.co.uk", "Rectory Lane, Old Bolingbroke",  "PE23 4EY",  "Spilsby", "",   "Eden Farms", "", "", "", "www.edenfarms.co.uk", 1, "53.163248", "0.027059");
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
-    VALUES ("Alba",	"Pons",	"test@test.co.uk",	"Onslow Square",	"SW1", 	"London", 0, "albap", "testing123");
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
-    VALUES ("Cihem",	"Zine",	"test@test.co.uk",	"Ladbroke grove",	"W11",	"London", 0, "cihemz", "testing123");
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
-    VALUES ("Erica",	"Calogero",	"test@test.co.uk",	"Victor rd",	"NW10 5XE",	"London", 0, "ericac", "testing123");
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
-    VALUES ("Jane",	"Smith",	"test@test.co.uk",	"Upper St",	"N1", 	"London", 0, "janes", "testing123");
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
-    VALUES ("John",	"Doe",	"test@test.co.uk",	"Hamilton Terrace",	"NW8",	"London", 0, "johnd", "testing123");
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
-    VALUES ("Peter",	"Parker",	"test@test.co.uk",	"Bermondsey St",	"SE1",	"London", 0, "peterp", "testing123");
+   INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	company_name, isSeller, username, password) 
+    VALUES ("Alba",	"Pons",	"test@test.co.uk",	"Onslow Square",	"08002", 	"Barcelona","Sunday Farmers Market", 0, "albap", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	company_name, isSeller, username, password) 
+    VALUES ("Cihem",	"Zine",	"test@test.co.uk",	"Ladbroke grove",	"W11",	"Barcelona", "Santa Caterina Market", 0, "cihemz", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city, company_name,	isSeller, username, password) 
+    VALUES ("Erica",	"Calogero",	"test@test.co.uk",	"Victor rd",	"NW10 5XE",	"London", "Islington Farmers' Market", 0, "ericac", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city, company_name,	isSeller, username, password) 
+    VALUES ("Jane",	"Smith",	"test@test.co.uk",	"Upper St",	"N1", 	"London", "Notting Hill Farmers' Market", 0, "janes", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city, company_name,	isSeller, username, password) 
+    VALUES ("John",	"Doe",	"test@test.co.uk",	"Hamilton Terrace",	"NW8",	"London", "West Hampstead Farmers' Market", 0, "johnd", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city, company_name,	isSeller, username, password) 
+    VALUES ("Peter", "Parker", "test@test.co.uk", "Bermondsey St", "SE1",	"London", "South Kensington Saturday Farmers' Market", 0, "peterp", "testing123");
    
     INSERT INTO users_markets (user_id, market_id) 
     VALUES (1,17);
