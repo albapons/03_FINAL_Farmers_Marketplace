@@ -105,7 +105,7 @@ export class MapContainer extends Component {
             >
               {places.map((market, i) => (
                 <Marker
-                  onClick={this.onMarkerClick}
+                  onMouseover={this.onMarkerMouseover}
                   name={market.name}
                   position={{ lat: market.lat, lng: market.lng }}
                   key={i}
