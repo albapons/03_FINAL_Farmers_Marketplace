@@ -16,6 +16,8 @@ export default class Markets extends Component {
     return (
       <div className="container">
         <div className="d-flex row">
+          {/*This works now*/}
+
           <MapContainer lat={this.state.lat} lng={this.state.lng} />
         </div>
         <div className="d-flex row"></div>
