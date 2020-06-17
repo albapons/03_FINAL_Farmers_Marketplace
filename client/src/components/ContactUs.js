@@ -81,9 +81,9 @@ export default class ContactUs extends Component {
             </div>
           </div>
         </div>
-        <div className="d-flex justify-content-center  my-5">
+        {/* <div className="d-flex justify-content-center  my-5">
           <div className="square">GOOGLE MAP HERE</div>
-        </div>
+        </div> */}
         <div className="row mt-4">
           <div className="col text-center">
             <i className="fas fa-map-marker-alt mt-4 fa-2x CCbeige"></i>

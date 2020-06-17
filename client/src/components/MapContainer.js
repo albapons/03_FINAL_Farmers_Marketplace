@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 import api from "../utils/apiMarkets";
 
@@ -55,52 +56,67 @@ export class MapContainer extends Component {
     return (
       <div className="container" style={{ width: "100%" }}>
         <nav
-          className="navbar navbar-light bg-light"
+          className="navbar navbar-light bg-light mt-4"
           style={{ width: "1000px" }}
         >
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand subtitle" href="#">
             Find your nearest Market
           </a>
         </nav>
         <div className="row">
-          <div className="col">
-            <div className="card" style={{ width: "100%" }}>
-              <div className="card-header">Suggested Markets</div>
-              <ul className="list-group list-group-flush">
-                {suggestions.map((place) => (
-                  <li
-                    key={place.id}
-                    className="list-group-item d-flex justify-content-between align-items-center"
-                  >
-                    <div>
-                      <div>
-                        <strong>{place.name}</strong>
-                      </div>
-                      <span className="text-muted">{place.address1}</span>
-                    </div>
-                    <div>
-                      <span className="text-muted">{`Day: ${place.day}     ${place.start_time} - ${place.end_time}`}</span>
-                    </div>
-                    <button
-                      className="btn btn-link"
-                      onClick={() =>
-                        /* navigate to that market page*/ this.state
-                      }
-                    >
-                      More Info
-                    </button>
-                  </li>
-                ))}
-              </ul>
+          {/* LIST CONTAINER */}
+          <div className="col-md-6">
+            <div className="card w-100">
+              <div className="card-header text">Suggested Markets</div>
             </div>
-          </div>
-          <div className="col">
+            {!suggestions?.length ? (
+              <ul className="list-group list-group-flush">
+                <div
+                  className="alert alert-danger my-4 text text-center"
+                  role="alert"
+                >
+                  {`Sorry, there are no markets to show around you!`}
+                </div>
+              </ul>
+            ) : (
+              <div>
+                {suggestions.map((place) => (
+                  <ul className="list-group list-group-flush border-left border-bottom border-right border-light">
+                    <li
+                      key={place.id}
+                      className="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                      <div classsName="row">
+                        <span classsName="text">
+                          <strong>{place.name}</strong>
+                        </span>
+                        <br />
+                        <span className="text text-muted">
+                          {place.address1}
+                        </span>
+                        <br />
+
+                        <span className="text text-muted">{`Day: ${place.day}     ${place.start_time} - ${place.end_time}`}</span>
+                      </div>
+                      <button className="btn btn-link">
+                        <Link to={`/markets/${place.id}`}>
+                          <i class="fas fa-info-circle CCblue fa-2x"></i>
+                        </Link>
+                      </button>
+                    </li>
+                  </ul>
+                ))}
+              </div>
+            )}
+          </div>{" "}
+          {/* MAP CONTAINER */}
+          <div className="col-md-6">
             <Map
               id="myMap"
               google={this.props.google}
               onReady={(mapProps, map) => this.initPlaces(mapProps, map, this)}
               zoom={14}
-              style={{ height: "500px", width: "500px" }}
+              style={{ height: "500px", width: "485px" }}
               initialCenter={{ lat: localStorage.lat, lng: localStorage.lng }}
             >
               {places.map((market, i) => (

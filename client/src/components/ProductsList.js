@@ -4,11 +4,10 @@ import ProductsCard from "./ProductsCard";
 export default function Products({ products, lat, lng }) {
   return (
     <div>
-      {console.log(products)}
       {!products?.length ? (
         <div className="row">
           <div
-            className="alert alert-danger my-4 text-center w-100"
+            className="alert alert-danger text my-4 text-center w-100"
             role="alert"
           >
             {`Sorry, there are no products to show!`}
