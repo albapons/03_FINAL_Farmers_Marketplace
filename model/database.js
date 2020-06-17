@@ -113,11 +113,11 @@ con.connect(function (err) {
     INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Pimlico Road Farmers' Market", "info@lfm.org.uk", "Pimlico Rd", "SW1W 8UT", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.490853", "-0.150743");
     INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
-    VALUES ("Queens Park Farmers' Market", "info@lfm.org.uk", "Salusbury Rd", "NW6 6RG", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.536827", "-0.205834");
+    VALUES ("Queens Park Farmers' Market", "info@lfm.org.uk", "Salusbury Rd", "NW6 6RG", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Sunday", "10:00", "14:00", "http://www.lfm.org.uk", "51.536827", "-0.205834");
     INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("South Kensington Farmers' Market", "info@lfm.org.uk", "Bute St", "SW7 3EX", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.493630", "-0.176313");
     INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
-    VALUES ("Swiss Cottage Farmers' Market", "info@lfm.org.uk", "Eton Ave", "NW3 3EU", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.544086", "-0.173968");
+    VALUES ("Swiss Cottage Farmers' Market", "info@lfm.org.uk", "Eton Ave", "NW3 3EU", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Wednesday", "10:00", "14:00", "http://www.lfm.org.uk", "51.544086", "-0.173968");
     INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Twickenham Farmers' Market", "info@lfm.org.uk", "Holly Rd", "TW1 4HF", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.446491", "-0.331241");
     INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
@@ -151,18 +151,18 @@ con.connect(function (err) {
     VALUES ("Stein",  "Leenders", "steinleenders@gmail.com",  "Brambletye Ln, Forest Row",  "RH18", "East Grinstead", "",   "Bramble Tye Fruit Farm", "", "", "", "-",  1, "51.102900", "0.025270");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng) 
     VALUES ("David",  "Lucas",  "info@edenfarms.co.uk", "Rectory Lane, Old Bolingbroke",  "PE23 4EY",  "Spilsby", "",   "Eden Farms", "", "", "", "www.edenfarms.co.uk", 1, "53.163248", "0.027059");
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
-    VALUES ("Alba",	"Pons",	"test@test.co.uk",	"Onslow Square",	"SW1", 	"London", 0, "albap", "testing123");
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
-    VALUES ("Cihem",	"Zine",	"test@test.co.uk",	"Ladbroke grove",	"W11",	"London", 0, "cihemz", "testing123");
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
-    VALUES ("Erica",	"Calogero",	"test@test.co.uk",	"Victor rd",	"NW10 5XE",	"London", 0, "ericac", "testing123");
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
-    VALUES ("Jane",	"Smith",	"test@test.co.uk",	"Upper St",	"N1", 	"London", 0, "janes", "testing123");
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
-    VALUES ("John",	"Doe",	"test@test.co.uk",	"Hamilton Terrace",	"NW8",	"London", 0, "johnd", "testing123");
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	isSeller, username, password) 
-    VALUES ("Peter",	"Parker",	"test@test.co.uk",	"Bermondsey St",	"SE1",	"London", 0, "peterp", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city, location, company_name, website,isSeller, username, password) 
+    VALUES ("Alba",	"Pons",	"test@test.co.uk",	"Onslow Square",	"08002", 	"Barcelona","Sunday Farmers Market" , "albap", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	company_name, isSeller, username, password) 
+    VALUES ("Cihem",	"Zine",	"test@test.co.uk",	"Ladbroke grove",	"W11",	"Barcelona", "Santa Caterina Market", 0, "cihemz", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city, company_name,	isSeller, username, password) 
+    VALUES ("Erica",	"Calogero",	"test@test.co.uk",	"Victor rd",	"NW10 5XE",	"London", "Islington Farmers' Market", 0, "ericac", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city, company_name,	isSeller, username, password) 
+    VALUES ("Jane",	"Smith",	"test@test.co.uk",	"Upper St",	"N1", 	"London", "Notting Hill Farmers' Market", 0, "janes", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city, company_name,	isSeller, username, password) 
+    VALUES ("John",	"Doe",	"test@test.co.uk",	"Hamilton Terrace",	"NW8",	"London", "West Hampstead Farmers' Market", 0, "johnd", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city, comnpany_name,	isSeller, username, password) 
+    VALUES ("Peter",	"Parker",	"test@test.co.uk",	"Bermondsey St",	"SE1",	"London", "South Kensington Saturday Farmers"' Market, 0, "peterp", "testing123");
    
     INSERT INTO users_markets (user_id, market_id) 
     VALUES (1,17);
