@@ -17,7 +17,6 @@ export default function Market(props) {
 
   const getOneMarket = () => {
     apiMarkets.getOneMarket(id).then((response) => {
-      console.log(response);
       setMarket(response.data);
     });
   };
