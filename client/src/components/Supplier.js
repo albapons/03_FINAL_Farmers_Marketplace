@@ -37,8 +37,8 @@ export default function Supplier(props) {
       <div className="row">
         <div>
           <i className="fas fa-shopping-basket CCbeige fa-2x"></i>
-          <h5 className="title">IT'S TIME TO GO TO *****SUPPLIER*****? </h5>
-          <h5 className="subtitle">Get your products!</h5>
+          <h5 className="title">IT'S TIME TO GO TO {supplier.name}? </h5>
+          <h5 className="subtitle">Let's see their products!</h5>
         </div>
       </div>
       <div className="d-flex justify-content-center">
@@ -74,9 +74,9 @@ export default function Supplier(props) {
             </div>
           </div>
         </div>
-      </div>
-      <div className="col-md-9">
-        <ProductsList products={products} />
+        <div className="col-md-9">
+          <ProductsList products={products} />
+        </div>
       </div>
     </div>
   );
