@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SuppliersCard from "./SuppliersCard";
+import { SupplierMap } from "./SupplierMap";
 
 export default class Suppliers extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ export default class Suppliers extends Component {
         </div>
         {/* MAP CONTAINER */}
         <div className="d-flex justify-content-center  my-5">
-          <div className="square">GOOGLE MAP HERE</div>
+          <SupplierMap />
         </div>
 
         <div className="d-flex justify-content-between">
