@@ -80,7 +80,8 @@ con.connect(function (err) {
       end_time time NOT NULL,
       website varchar(255) NOT NULL,
       lat decimal(10,8),
-      lng decimal(10,8),  
+      lng decimal(10,8),
+      img varchar(255),  
       PRIMARY KEY (id)
     );
     
@@ -91,68 +92,68 @@ con.connect(function (err) {
       PRIMARY KEY (id)    
     );
     
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Balham Farmers' Market", "info@lfm.org.uk", "Hydethorpe Rd", "SW12 OJA", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.444015", "-0.144320");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Blackheath Farmers' Market", "info@lfm.org.uk", "Blackheath Station Car Park", "SE3 9LA", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.465881", "0.007321");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Bloomsbury Farmers' Market", "info@lfm.org.uk", "Torrington Square", "WC1E 7HY", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.523124", "-0.130947");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Ealing Farmers' Market", "info@lfm.org.uk", "Leeland Rd", "W13 9HH", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.509868", "-0.323552");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Islington Farmers' Market", "info@lfm.org.uk", "Chapel Market", "N1 9PZ", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.533465", "-0.109626");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Ladbroke Grove Farmers' Market", "info@lfm.org.uk", "Portobello Rd", "W10 5SZ", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.520545", "-0.208870");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("London Bridge Farmers' Market", "info@lfm.org.uk", "Kings College, Guys Campus, Guys & St. Thomas Hospital", "SE1 1UL", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.503597", "-0.088643");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Marylebone Farmers' Market", "info@lfm.org.uk", "Aybrook St", "W1U 4DF", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.518981", "-0.152651");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Notting Hill Farmers' Market", "info@lfm.org.uk", "Kensington Church St", "W11 3LQ", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.508442", "-0.195252");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Parliament Hill Farmers' Market", "info@lfm.org.uk", "Highgate Rd", "NW5 1RN", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.559565", "-0.151631");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Pimlico Road Farmers' Market", "info@lfm.org.uk", "Pimlico Rd", "SW1W 8UT", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.490853", "-0.150743");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Queens Park Farmers' Market", "info@lfm.org.uk", "Salusbury Rd", "NW6 6RG", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Sunday", "10:00", "14:00", "http://www.lfm.org.uk", "51.536827", "-0.205834");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("South Kensington Farmers' Market", "info@lfm.org.uk", "Bute St", "SW7 3EX", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.493630", "-0.176313");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Swiss Cottage Farmers' Market", "info@lfm.org.uk", "Eton Ave", "NW3 3EU", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Wednesday", "10:00", "14:00", "http://www.lfm.org.uk", "51.544086", "-0.173968");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Twickenham Farmers' Market", "info@lfm.org.uk", "Holly Rd", "TW1 4HF", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.446491", "-0.331241");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Walthamstow Farmers' Market", "info@lfm.org.uk", "High Street", "E17 7JN", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.584836", "-0.021410");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("West Hampstead Farmers' Market", "info@lfm.org.uk", "Iverson Rd", "NW6 1PF", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.548228", "-0.191399");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Westminster Bridge Farmers' Market", "info@lfm.org.uk", "Westminster Bridge Rd", "SE1 7EP", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.500852", "-0.119008");
-    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng, img) 
+    INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Wimbledon Farmers' Market", "info@lfm.org.uk", "Havana Rd", "SW19 8EG", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.438928", "-0.195700");
     
     
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng, img) 
-    VALUES ("Adrian", "Izzard", "adrian@wildco.co.uk",  "11 Chalky rd", "CB21 6AT", "Cambridge","",   "Wild Country Organics", "", "", "", "http://www.wildco.co.uk/",  1, "52.103484", "0.232812", "https://kaboompics.com/photo/11572/a-fresh-tomatoes-assortment-displayed-at-san-miguel-market");
+    VALUES ("Adrian", "Izzard", "adrian@wildco.co.uk",  "11 Chalky rd", "CB21 6AT", "Cambridge","",   "Wild Country Organics", "", "", "", "http://www.wildco.co.uk/",  1, "52.103484", "0.232812", "./images/supplier_img/apples.jpg");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng, img) 
     VALUES ("Jan",  "Urbanowski", "info@urbogreens.com",  "Bermondsey","",    "London","",    "Urbogreens", "", "", "", "http://www.urbogreens.com", 1, "51.492705", "-0.064974", "https://cdn.pixabay.com/photo/2016/01/19/14/51/vegetables-1149006__340.jpg");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng, img) 
-    VALUES ("Ted",  "Dawson", "tedsveg@aim.com", "", "",      "Boston, Lincolnshire", "",   "Teds Veg", "", "", "",       "http://www.tedsveg.co.uk", 1, "51.505376", "-0.091057", "https://pixabay.com/photos/savoy-kohl-savoy-cabbage-vegetables-3860933/");
+    VALUES ("Ted",  "Dawson", "tedsveg@aim.com", "", "",      "Boston, Lincolnshire", "",   "Teds Veg", "", "", "",       "http://www.tedsveg.co.uk", 1, "51.505376", "-0.091057", "./images/supplier_img/lettuce.jpg");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng, img) 
-    VALUES ("William",  "Rooney", "info@mushroomtable.com", "Colchester rd",  "Co7 7TN",  "Colchester, Essex","",   "The Mushroom Table","","","",        "http://www.mushroomtable.com", 1, "51.906431", "1.001597", "https://cdn.pixabay.com/photo/2016/09/19/18/50/real-chanterelles-1680932__340.jpg");
+    VALUES ("William",  "Rooney", "info@mushroomtable.com", "Colchester rd",  "Co7 7TN",  "Colchester, Essex","",   "The Mushroom Table","","","", "http://www.mushroomtable.com", 1, "51.906431", "1.001597", "./images/supplier_img/sweet_peas.jpg");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng, img) 
     VALUES ("Ceri", "Brinkworth", "ceri@brinkworthdairy.co.uk", "Hill End Farm",  "SN15 5AZ", "Chippenham", "","Brinkworth Dairy","", "", "", "http://www.brinkworthdairy.co.uk", 1, "51.557338", "-1.998485", "https://cdn.pixabay.com/photo/2012/06/21/00/48/market-50423_1280.jpg");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng, img) 
-    VALUES ("Michael",  "Dallaway", "michael@rentacherrytree.co.uk",  "Cooks Yard Farm",  "TN31 6HS","", "",  "Rent a Cherry Tree","","","","https://rentacherrytree.co.uk/", 1, "50.980601", "0.601169", "https://cdn.pixabay.com/photo/2016/07/02/22/42/berries-1493905__340.jpg");
+    VALUES ("Michael",  "Dallaway", "michael@rentacherrytree.co.uk",  "Cooks Yard Farm",  "TN31 6HS","", "",  "Rent a Cherry Tree","","","","https://rentacherrytree.co.uk/", 1, "50.980601", "0.601169", "./images/supplier_img/cherries.jpg");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng, img) 
-    VALUES ("Nicky",   "Chambers",  "nicky@picksorganic.co.uk", "The Cottage, King St, Barkby Thorpe",   "LE7 3QF",  "Leicester", "",   "Picks Organic Farm", "", "", "","https://www.picksorganic.co.uk/", 1, "52.666270", "-1.053768", "https://pixabay.com/photos/steak-meat-beef-food-juicy-1081819/");
+    VALUES ("Nicky",   "Chambers",  "nicky@picksorganic.co.uk", "The Cottage, King St, Barkby Thorpe",   "LE7 3QF",  "Leicester", "",   "Picks Organic Farm", "", "", "","https://www.picksorganic.co.uk/", 1, "52.666270", "-1.053768", "./images/supplier_img/meat.jpg");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng, img) 
-    VALUES ("Peter",  "Sikora", "info@culinaryherbco.co.uk",  "Hailsham Road",  "BN26 6RE", "East Sussex",  "", "The Culinary Herb Co", "", "", "07929 545488",   "https://www.culinaryherbco.co.uk/",  1, "50.825516", "0.241456", "https://istockphoto.6q33.net/c/1235124/258824/4205?u=https%3A%2F%2Fwww.istockphoto.com%2Fphoto%2Fflorence-veg-stall-gm498272380-79557107");
+    VALUES ("Peter",  "Sikora", "info@culinaryherbco.co.uk",  "Hailsham Road",  "BN26 6RE", "East Sussex",  "", "The Culinary Herb Co", "", "", "07929 545488",   "https://www.culinaryherbco.co.uk/",  1, "50.825516", "0.241456", "./images/supplier_img/basil.jpg");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng, img) 
-    VALUES ("Stuart", "Stables",  "stuart@grasmere-farm.co.uk", "9-10, Market Gate, Market Deeping",  "PE6 8DL",  "Peterborough", "", "Grasmere Farm", "", "", "",  "www.grasmere-farm.co.uk",  1, "52.675267", "-0.315821", "https://kaboompics.com/photo/4552/wire-mesh-basket-with-fresh-farm-eggs");
+    VALUES ("Stuart", "Stables",  "stuart@grasmere-farm.co.uk", "9-10, Market Gate, Market Deeping",  "PE6 8DL",  "Peterborough", "", "Grasmere Farm", "", "", "",  "www.grasmere-farm.co.uk",  1, "52.675267", "-0.315821", "./images/supplier_img/cucumber.jpg");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng, img) 
-    VALUES ("Stein",  "Leenders", "steinleenders@gmail.com",  "Brambletye Ln, Forest Row",  "RH18", "East Grinstead", "",   "Bramble Tye Fruit Farm", "", "", "", "-",  1, "51.102900", "0.025270", "https://kaboompics.com/photo/3095/fruit-market-with-various-colorful-fresh-fruits");
+    VALUES ("Stein",  "Leenders", "steinleenders@gmail.com",  "Brambletye Ln, Forest Row",  "RH18", "East Grinstead", "",   "Bramble Tye Fruit Farm", "", "", "", "-",  1, "51.102900", "0.025270", "./images/supplier_img/broccoli.jpg");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng, img) 
-    VALUES ("David",  "Lucas",  "info@edenfarms.co.uk", "Rectory Lane, Old Bolingbroke",  "PE23 4EY",  "Spilsby", "",   "Eden Farms", "", "", "", "www.edenfarms.co.uk", 1, "53.163248", "0.027059", "https://kaboompics.com/photo/3748/artichokes-vegetables-at-the-boqueria-in-barcelona-spain");
+    VALUES ("David",  "Lucas",  "info@edenfarms.co.uk", "Rectory Lane, Old Bolingbroke",  "PE23 4EY",  "Spilsby", "",   "Eden Farms", "", "", "", "www.edenfarms.co.uk", 1, "53.163248", "0.027059", "./images/supplier_img/peppers.jpg");
    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	company_name, isSeller, username, password) 
     VALUES ("Alba",	"Pons",	"test@test.co.uk",	"Onslow Square",	"08002", 	"Barcelona","Sunday Farmers Market", 0, "albap", "testing123");
     INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	company_name, isSeller, username, password) 
