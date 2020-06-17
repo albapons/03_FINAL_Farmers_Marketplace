@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 import api from "../utils/apiMarkets";
+import FoodMilesNumber from "./FoodMilesNumber";
 
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
@@ -14,6 +15,11 @@ export class MapContainer extends Component {
       bounds: "",
       suggestions: [],
       places: [],
+      locationStart: {
+        lat: parseFloat(localStorage.getItem("lat")),
+        lng: parseFloat(localStorage.getItem("lng")),
+      },
+      locationEnd: {},
     };
   }
 
@@ -97,10 +103,23 @@ export class MapContainer extends Component {
                         <br />
 
                         <span className="text text-muted">{`Day: ${place.day}     ${place.start_time} - ${place.end_time}`}</span>
+                        <br />
+
+                        <span className="text text-muted">
+                          <i className="fas fa-car-side text fa-1x CCbeige mr-2"></i>
+                          <strong>Food Miles: </strong>
+                          <FoodMilesNumber
+                            start={this.state.locationStart}
+                            end={{
+                              lat: parseFloat(place.lat),
+                              lng: parseFloat(place.lng),
+                            }}
+                          />
+                        </span>
                       </div>
                       <button className="btn btn-link">
                         <Link to={`/markets/${place.id}`}>
-                          <i class="fas fa-info-circle CCblue fa-2x"></i>
+                          <i className="fas fa-info-circle CCblue fa-2x"></i>
                         </Link>
                       </button>
                     </li>

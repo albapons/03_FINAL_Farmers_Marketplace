@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import MarketsCard from "./MarketsCard";
 import MapContainer from "./MapContainer";
-import FoodMilesNumber from "./FoodMilesNumber";
 
 export default class Markets extends Component {
   constructor(props) {
