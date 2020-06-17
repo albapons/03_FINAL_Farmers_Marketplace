@@ -31,43 +31,17 @@ router.get("/:id", userShouldBeLoggedIn, function (req, res, next) {
 //   res.send({ msg: `Here is the private data for user ${userId}!` });
 // });
 
-// INSERT a new user into the DB
+// POST a new user into the DB
 router.post("/", function (req, res, next) {
   const { firstname, lastname, email, password, username } = req.body;
-  db(`INSERT INTO users (firstname, lastname, email, password, username) 
-  VALUES ("${firstname}", "${lastname}", "${email}, "${password}", "${username}");`)
+  db(
+    `INSERT INTO users (firstname, lastname, email, password, username) VALUES ("${firstname}", "${lastname}", "${email}", "${password}", "${username}");`
+  )
     .then((results) => {
       res.send({ msg: "Your data was inputted correctly!" });
     })
     .catch((err) => res.status(500).send(err));
 });
-
-// // INSERT a new user into the DB
-// router.post("/", function (req, res, next) {
-//   const {
-//     firstname,
-//     lastname,
-//     email,
-//     address1,
-//     postcode,
-//     city,
-//     location,
-//     company_name,
-//     company_no,
-//     tel_no,
-//     mob_no,
-//     website,
-//     isSeller,
-//     password,
-//     username,
-//   } = req.body;
-//   db(`INSERT INTO users (firstname, lastname, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website, isSeller, password, username)
-//   VALUES ("${firstname}", "${lastname}", "${email}, "${address1}", "${postcode}", "${city}", "${location}", "${company_name}", "${company_no}", "${tel_no}","${mob_no}", "${website}", "${isSeller}", "${password}", "${username}");`)
-//     .then((results) => {
-//       res.send({ msg: "Your data was inputted correctly!" });
-//     })
-//     .catch((err) => res.status(500).send(err));
-// });
 
 // POST LOGIN
 router.post("/login", function (req, res, next) {

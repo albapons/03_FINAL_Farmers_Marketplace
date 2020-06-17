@@ -41,13 +41,16 @@ export default class Suppliers extends Component {
         <div className="d-flex justify-content-between">
           {users.length && (
             <div className="row">
-              {console.log(users)}
-              {!!users.isSeller &&
-                users.map((user, i) => (
-                  <div key={i}>
-                    <SuppliersCard user={user} />
-                  </div>
-                ))}
+              {users.map(
+                (user, i) =>
+                  user.isSeller && (
+                    <div key={i}>
+                      {console.log(user.isSeller)}
+
+                      <SuppliersCard user={user} />
+                    </div>
+                  )
+              )}
             </div>
           )}
         </div>
