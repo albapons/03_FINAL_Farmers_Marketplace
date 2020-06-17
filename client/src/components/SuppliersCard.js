@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "../App.css";
 
 export default class SuppliersCard extends Component {
@@ -10,27 +11,39 @@ export default class SuppliersCard extends Component {
     const { user } = this.props;
 
     return (
-      <div className="buyersCard">
-        <div className="d-flex justify-content-center my-3">
-          {console.log(this.props.user)}
-          <img
-            src="https://color.romanuke.com/wp-content/uploads/2016/08/cvetovaya-palitra-2987.png"
-            alt="Error"
-            width="200px"
-            height="200px"
-          />
-        </div>
-        <br />
-        {user.id}
-        {user.id}
-        <h5 className="mt-2">
-          <strong>{user.company_name}</strong>
-        </h5>
-        {user.postcode} - {user.city}
-        <br />
-        {user.tel_no}
-        <br />
-        {user.website}
+      <div className="productCard">
+        <Link
+          to={`/suppliers/${user.id}`}
+          product={user}
+          // start={locationStart}
+          // end={locationEnd}
+        >
+          <div className="container d-flex justify-content-center my-3">
+            <img src={user.img} alt="Error" className="productImg" />
+          </div>
+          <div className="container d-flex justify-content-center mt-3"></div>
+          <br />
+          Ref. 00{user.id}
+          <h6 className="mt-2">
+            <strong>{user.company_name}</strong>
+          </h6>
+          {user.address1 && `${user.address1}`}
+          {user.postcode && ` - ${user.postcode}`}
+          {user.city && ` - ${user.city}`}
+          <br />
+          {user.email && `${user.email}`}
+          <br />
+          {user.website && <a href={user.website}>{user.website}</a>}
+          <br />
+          <div className="d-flex justify-content-between mt-3">
+            <div className="ml-1 row">
+              <i className="fas fa-car-side fa-2x CCbeige mr-2"></i>{" "}
+              <strong>Food Miles: </strong>
+              {/* <FoodMilesNumber start={locationStart} end={locationEnd} /> */}
+            </div>
+            <i className="fas fa-cart-plus mx-3 CCcherry fa-2x"></i>
+          </div>
+        </Link>
       </div>
     );
   }

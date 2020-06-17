@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import apiProducts from "../utils/apiProducts";
 import apiMarkets from "../utils/apiMarkets";
+import FoodMilesNumber from "./FoodMilesNumber";
 
 import ProductsList from "./ProductsList";
 
@@ -10,6 +11,14 @@ export default function Market(props) {
   const [market, setMarket] = useState([]);
   const [name, setSearch] = useState("");
   const { id } = useParams();
+  // const { locationStart } = {
+  //   lat: parseFloat(localStorage.getItem("lat")),
+  //   lng: parseFloat(localStorage.getItem("lng")),
+  // };
+  // const { locationE } = {
+  //   lat: parseFloat(localStorage.getItem("lat")),
+  //   lng: parseFloat(localStorage.getItem("lng")),
+  // };
 
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -38,7 +47,7 @@ export default function Market(props) {
         <div>
           <i className="fas fa-shopping-basket CCbeige fa-2x"></i>
           <h5 className="title">IT'S TIME TO GO TO {market.name}? </h5>
-          <h5 className="subtitle">Get your products!</h5>
+          <h5 className="subtitle">Look at the products you can find in it!</h5>
         </div>
       </div>
       <div className="d-flex justify-content-center">
@@ -56,6 +65,13 @@ export default function Market(props) {
           <p className="text">
             {market.day} from {market.start_time} to {market.end_time}
           </p>
+          <span className="text">
+            <i className="fas fa-car-side text fa-1x CCbeige mr-2"></i>
+            <strong>Food Miles: </strong>
+            {console.log(props.start)}
+            {console.log(props.end)}
+            <FoodMilesNumber start={props.start} end={props.end} />
+          </span>
         </div>
       </div>
 

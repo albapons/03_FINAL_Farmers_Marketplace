@@ -32,7 +32,7 @@ con.connect(function (err) {
       description varchar(512) NOT NULL,
       tax_code varchar(255) NOT NULL,
       category_id int,
-      isPerishable binary(1) NOT NULL,
+      isPerishable TINYINT(1) NOT NULL,
       shelf_life_count int NOT NULL,
       shelf_life_units varchar(255) NOT NULL,
       seller_id int NOT NULL,
@@ -128,7 +128,6 @@ con.connect(function (err) {
     VALUES ("Westminster Bridge Farmers' Market", "info@lfm.org.uk", "Westminster Bridge Rd", "SE1 7EP", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.500852", "-0.119008");
     INSERT INTO markets (name, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, day, start_time, end_time, website, lat, lng) 
     VALUES ("Wimbledon Farmers' Market", "info@lfm.org.uk", "Havana Rd", "SW19 8EG", "London", "bla", "London Farmers' Markets", "3815770",  "0207833 0338",  "0207833 0338", "Saturday", "09:00", "13:00", "http://www.lfm.org.uk", "51.438928", "-0.195700");
-
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng) 
     VALUES ("Adrian", "Izzard", "adrian@wildco.co.uk",  "11 Chalky rd", "CB21 6AT", "Cambridge","",   "Wild Country Organics", "", "", "", "http://www.wildco.co.uk/",  1, "52.103484", "0.232812");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng) 
@@ -151,8 +150,8 @@ con.connect(function (err) {
     VALUES ("Stein",  "Leenders", "steinleenders@gmail.com",  "Brambletye Ln, Forest Row",  "RH18", "East Grinstead", "",   "Bramble Tye Fruit Farm", "", "", "", "-",  1, "51.102900", "0.025270");
     INSERT INTO users (firstname, lastname, email,  address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website,  isSeller, lat, lng) 
     VALUES ("David",  "Lucas",  "info@edenfarms.co.uk", "Rectory Lane, Old Bolingbroke",  "PE23 4EY",  "Spilsby", "",   "Eden Farms", "", "", "", "www.edenfarms.co.uk", 1, "53.163248", "0.027059");
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city, location, company_name, website,isSeller, username, password) 
-    VALUES ("Alba",	"Pons",	"test@test.co.uk",	"Onslow Square",	"08002", 	"Barcelona","Sunday Farmers Market" , "albap", "testing123");
+   INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	company_name, isSeller, username, password) 
+    VALUES ("Alba",	"Pons",	"test@test.co.uk",	"Onslow Square",	"08002", 	"Barcelona","Sunday Farmers Market", 0, "albap", "testing123");
     INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city,	company_name, isSeller, username, password) 
     VALUES ("Cihem",	"Zine",	"test@test.co.uk",	"Ladbroke grove",	"W11",	"Barcelona", "Santa Caterina Market", 0, "cihemz", "testing123");
     INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city, company_name,	isSeller, username, password) 
@@ -161,8 +160,8 @@ con.connect(function (err) {
     VALUES ("Jane",	"Smith",	"test@test.co.uk",	"Upper St",	"N1", 	"London", "Notting Hill Farmers' Market", 0, "janes", "testing123");
     INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city, company_name,	isSeller, username, password) 
     VALUES ("John",	"Doe",	"test@test.co.uk",	"Hamilton Terrace",	"NW8",	"London", "West Hampstead Farmers' Market", 0, "johnd", "testing123");
-    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city, comnpany_name,	isSeller, username, password) 
-    VALUES ("Peter",	"Parker",	"test@test.co.uk",	"Bermondsey St",	"SE1",	"London", "South Kensington Saturday Farmers"' Market, 0, "peterp", "testing123");
+    INSERT INTO users (firstname,	lastname,	email,	address1,	postcode,	city, company_name,	isSeller, username, password) 
+    VALUES ("Peter", "Parker", "test@test.co.uk", "Bermondsey St", "SE1",	"London", "South Kensington Saturday Farmers' Market", 0, "peterp", "testing123");
    
     INSERT INTO users_markets (user_id, market_id) 
     VALUES (1,17);
@@ -198,7 +197,6 @@ con.connect(function (err) {
     VALUES (1,9);
     INSERT INTO users_markets (user_id, market_id) 
     VALUES (9,9);
-
     INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
     VALUES ("Angelica (Archangelica)",	2.5,	"#",	"MONOCARPIC. Ht 1-2.5m. Angelica is best known as a decorative confectionery for cakes. You can add the leaves to stewing rhubarb or gooseberries to add a sweetness without adding excess sugar. Being monocarpic it tends to have a three-year lifespan.",
       "1",8,	1,	3,	"yrs", "https://www.victoriananursery.co.uk/images/250/sq_angelica_002.jpg");
@@ -206,24 +204,18 @@ con.connect(function (err) {
     INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
     VALUES ("Basil",	2.3,	"#",	"TENDER ANNUAL. Ht 30cm. This basil originates from Mexico. The leaves have a hint of purple and are highly cinnamon-scented when rubbed.  The leaves can be used in spicy dishes, curries and salad dressings. Plant somewhere sheltered from the wind in rich, fertile, well-drained soil in full sun.",
     "1", 2,	1,	3,	"yrs", "https://www.plantsguru.com/image/cache/herb/sweet-basil-800x800.jpg");
-
-
     INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
     VALUES ("Lovage (Levisticum officinale)",	3.15,	"#",	"HARDY PERENNIAL. Ht 1.5m. This plant produces large celery scented leaves and stems with fleshy roots. It adds a meaty flavour to food and can be used in salads, to flavour soups, stews, stocks and savoury dishes. Rub the leaves on chicken or around salad bowls. The young shoots and leaf stalks can be blanched and eaten as a vegetable.",
     "1",9,	1,	3,	"yrs", "https://www.diet-health.info/images/recipes/1400/liebstoeckel-im-garten-lovage-by-juefraphoto-fotolia-51701952.jpg");
-
     INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
     VALUES ("Mint (eau de cologne)",	2.9,	"#",	"HARDY PERENNIAL. Ht 60-80cm. This plant is also known as bergamot mint with a slight citrus scent. It is a vigorous grower with undertones of lemon, orange and lavender. Add the fresh leaves to fruit salads, summer drinks and light summer salads. It can also be added to potpourri or hot bathwater.",
     "1",6,	1,	3,	"yrs", "https://www.victoriananursery.co.uk/images/800/sq_eau_de_cologne_mint_001.jpg");
-
     INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
-    VALUES ("Mizuna (Brassica Rapa Japoinca)",	3.3,	"#",	"HARDY ANNUAL. Ht 30cm. Mizuna is a Japanese leafy vegetable, which can be used as a cut and come again salad leaf. Very easy to grow with a light peppery, cabbage flavour and can be picked all year round. Add the leaves raw in mixed salads or cooked and seasoned in stir-fries. Plant in fertile, rich soil in a shady spot.",
+    VALUES ("Mizuna (Brassica Rapa Japoinca)",	3.3,	"#",	"HARDY ANNUAL. Ht 30cm. Mizuna is a Japanese leafy vegetable, which can be used as a cut and come again salad leaf. Very easy to grow with a light peppery, cabbage flavour and can be picked all year round. Add the leaves raw in mixed salads or cooked and seasoned in stir-fries. Plant in fertile, rich soil in a shady spot.",
     "1",3,	1,	3,	"yrs", "https://dp2o72xxh5dh5.cloudfront.net/wp-content/uploads/2019/03/agrilution-Mizuna-7-1-uai-3499x2333.jpg");
-
     INSERT INTO products (name,	unit_price,	units,	description,	tax_code,	seller_id,	isPerishable,	shelf_life_count,	shelf_life_units, img) 
     VALUES ("Sweet Cicely (Myrrhis odorata)",	1.2,	"#",	"HARDY PERENNIAL. Ht 50-100cm. This plant is one of the first to emerge after winter. It can be used as a substitute for sugar and has a sweet aniseed flavour. Add chopped leaves into salads, dressings, omelettes, soups and stews. Try adding the leaves to boiling water when cooking cabbage or cooking fruit, such as blackcurrants, plums, rhubarb or gooseberries.",
     "1",1,	1,	3,	"yrs", "https://hillfarmnursery.files.wordpress.com/2014/11/myrrhis-odorata-may-23-2014-4.jpg");
-
     `;
   con.query(sql, function (err, result) {
     if (err) throw err;

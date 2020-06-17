@@ -1,19 +1,26 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
+
 import "./ContactUs.css";
+import apiRegister from "../utils/apiRegister";
 
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       users: [],
-      username: "",
-      password: "",
-      firstname: "",
-      lastname: "",
-      email: "",
+      username: "mariarrrr",
+      password: "testing123",
+      firstname: "Mariaaaa",
+      lastname: "Ribot",
+      email: "test@test.co.uk",
     };
   }
+
+  performURL = () => {
+    return <Redirect to="/target" />;
+  };
 
   componentDidMount() {
     this.getUsers();
@@ -28,30 +35,15 @@ export default class SignUp extends Component {
   };
 
   addUsers = () => {
-    const {
-      users,
-      username,
-      password,
-      firstname,
-      lastname,
-      email,
-    } = this.state;
+    const { firstname, lastname, email, password, username } = this.state;
 
-    fetch(
-      `/users`,
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ users }),
-      },
-      { withCredentials: true }
-    )
-      .then((response) => response.json())
-      .then((response) => console.log(response.message));
-
+    apiRegister
+      .postUser(firstname, lastname, email, password, username)
+      .then((response) => {
+        console.log(response.data);
+      });
     this.getUsers();
+    this.performURL();
   };
 
   handleInput = (e) => {
@@ -157,7 +149,9 @@ export default class SignUp extends Component {
           </div>
 
           <div className="d-flex justify-content-center">
-            <button className="button">Sign in</button>
+            <button className="button" onClick={() => this.addUsers()}>
+              Sign in
+            </button>
           </div>
 
           {/* This is not working! */}

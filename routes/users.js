@@ -5,6 +5,7 @@ var userShouldBeLoggedIn = require("../guards/userShoudBeLoggedIn");
 const db = require("../model/helper");
 require("dotenv").config();
 const supersecret = process.env.SUPER_SECRET;
+
 // GET all users
 const getUsers = (req, res) => {
   db(`SELECT * FROM users;`)
@@ -14,6 +15,7 @@ const getUsers = (req, res) => {
     .catch((err) => res.status(500).send(err));
 };
 router.get("/", getUsers);
+
 // GET one user
 router.get("/:id", userShouldBeLoggedIn, function (req, res, next) {
   const { id } = req.params;
@@ -23,46 +25,24 @@ router.get("/:id", userShouldBeLoggedIn, function (req, res, next) {
     })
     .catch((err) => res.status(500).send(err));
 });
+
 // GET PROFILE INFO
 // router.get("/profile", userShouldBeLoggedIn, function (req, res, next) {
 //   res.send({ msg: `Here is the private data for user ${userId}!` });
 // });
-// INSERT a new user into the DB
+
+// POST a new user into the DB
 router.post("/", function (req, res, next) {
   const { firstname, lastname, email, password, username } = req.body;
-  db(`INSERT INTO users (firstname, lastname, email, password, username) 
-  VALUES ("${firstname}", "${lastname}", "${email}, "${password}", "${username}");`)
+  db(
+    `INSERT INTO users (firstname, lastname, email, password, username) VALUES ("${firstname}", "${lastname}", "${email}", "${password}", "${username}");`
+  )
     .then((results) => {
       res.send({ msg: "Your data was inputted correctly!" });
     })
     .catch((err) => res.status(500).send(err));
 });
-// // INSERT a new user into the DB
-// router.post("/", function (req, res, next) {
-//   const {
-//     firstname,
-//     lastname,
-//     email,
-//     address1,
-//     postcode,
-//     city,
-//     location,
-//     company_name,
-//     company_no,
-//     tel_no,
-//     mob_no,
-//     website,
-//     isSeller,
-//     password,
-//     username,
-//   } = req.body;
-//   db(`INSERT INTO users (firstname, lastname, email, address1, postcode, city, location, company_name, company_no, tel_no, mob_no, website, isSeller, password, username)
-//   VALUES ("${firstname}", "${lastname}", "${email}, "${address1}", "${postcode}", "${city}", "${location}", "${company_name}", "${company_no}", "${tel_no}","${mob_no}", "${website}", "${isSeller}", "${password}", "${username}");`)
-//     .then((results) => {
-//       res.send({ msg: "Your data was inputted correctly!" });
-//     })
-//     .catch((err) => res.status(500).send(err));
-// });
+
 // POST LOGIN
 router.post("/login", function (req, res, next) {
   const { username, password } = req.body;
@@ -78,6 +58,7 @@ router.post("/login", function (req, res, next) {
     }
   });
 });
+
 // DELETE a user from the DB
 router.delete("/:id", function (req, res, next) {
   const { id } = req.params;

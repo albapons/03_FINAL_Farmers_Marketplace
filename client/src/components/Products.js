@@ -52,9 +52,9 @@ export default function Products(props) {
             </div>
           </div>
         </div>
-      </div>
-      <div className="col-md-9">
-        <ProductsList products={products} />
+        <div className="col-md-9">
+          <ProductsList products={products} />
+        </div>
       </div>
     </div>
   );
