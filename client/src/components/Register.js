@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./Register.css";
+import "./ContactUs.css";
 
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       users: [],
-      username: "mariar",
-      password: "testing123",
-      firstname: "Maria",
-      lastname: "Ribot",
-      email: "test@test.co.uk ",
+      username: "",
+      password: "",
+      firstname: "",
+      lastname: "",
+      email: "",
     };
   }
 
@@ -71,65 +71,96 @@ export default class SignUp extends Component {
     } = this.state;
 
     return (
-      <div className="register">
-        <div className="text-center border border-light p-5" action="#!">
-          <p className="h4 mb-4">Sign up</p>
-          <div className="form-row mb-4">
-            <div className="col">
-              <input
-                type="text"
-                id="defaultRegisterFormFirstName"
-                className="form-control"
-                placeholder="First name"
-                value={firstname}
-                name="firstname"
-                onChange={this.handleInput}
-              />
-            </div>
-            <div className="col">
-              <input
-                type="text"
-                id="defaultRegisterFormLastName"
-                className="form-control"
-                placeholder="Last name"
-                value={lastname}
-                name="lastname"
-                onChange={this.handleInput}
-              />
+      <div className="container">
+        <div className="row">
+          <div>
+            <i className="fas fa-file-alt CCbeige fa-2x"></i>
+            <h5 className="title">IT'S TIME TO KNOW ABOUT YOU! </h5>
+            <h5 className="subtitle">Create your account...</h5>
+          </div>
+        </div>
+        <div className="text-center borderCard p-5 my-3" action="#!">
+          <div className="row">
+            <div className="col mb-md-0 mb-5">
+              <div className="row">
+                <div className="col">
+                  <div className="md-form mb-0">
+                    <input
+                      type="text"
+                      id="firstname"
+                      className="form-control"
+                      value={firstname}
+                      name="firstname"
+                      onChange={this.handleInput}
+                    />
+                    <label htmlFor="firstname">First Name</label>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="md-form mb-0">
+                    <input
+                      type="text"
+                      id="lastname"
+                      className="form-control"
+                      value={lastname}
+                      name="lastname"
+                      onChange={this.handleInput}
+                    />
+                    <label htmlFor="lastname">Last Name</label>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <div className="md-form mb-0">
+                    <input
+                      type="text"
+                      id="username"
+                      className="form-control"
+                      value={username}
+                      name="username"
+                      onChange={this.handleInput}
+                    />
+                    <label htmlFor="username">UserName</label>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="md-form mb-0">
+                    <input
+                      type="password"
+                      id="password"
+                      className="form-control"
+                      value={password}
+                      name="password"
+                      onChange={this.handleInput}
+                    />
+                    <label htmlFor="password">Password</label>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <div className="md-form mb-0">
+                    <input
+                      type="email"
+                      id="email"
+                      className="form-control mb-4"
+                      value={email}
+                      name="email"
+                      onChange={this.handleInput}
+                    />
+                    <label htmlFor="email">E-mail</label>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <input
-            type="username"
-            id="defaultRegisterFormUsername"
-            className="form-control mb-4"
-            placeholder="Username"
-            value={username}
-            name="username"
-            onChange={this.handleInput}
-          />
-          <input
-            type="email"
-            id="defaultRegisterFormEmail"
-            className="form-control mb-4"
-            placeholder="E-mail"
-            value={email}
-            name="email"
-            onChange={this.handleInput}
-          />
-          <input
-            type="password"
-            id="defaultRegisterFormPassword"
-            className="form-control"
-            placeholder="Password"
-            aria-describedby="defaultRegisterFormPasswordHelpBlock"
-            value={password}
-            name="password"
-            onChange={this.handleInput}
-          />
-          <small
-            id="defaultRegisterFormPasswordHelpBlock"
-            className="form-text text-muted mb-4"
-          ></small>
+
+          <div className="d-flex justify-content-center">
+            <button className="button">Sign in</button>
+          </div>
+
+          {/* This is not working! */}
           {/* <div className="custom-control custom-checkbox">
             <input
               type="checkbox"
@@ -143,13 +174,7 @@ export default class SignUp extends Component {
               Subscribe to our newsletter
             </label>
           </div> */}
-          <button
-            className="buttonregister btn my-4 btn-block"
-            type="submit"
-            onClick={this.addUsers}
-          >
-            Sign in
-          </button>
+
           {/* <p>or sign up with:</p>
           <a href="#" className="mx-2" role="button">
             <i class="fab fa-facebook-f light-blue-text"></i>
@@ -162,10 +187,10 @@ export default class SignUp extends Component {
           </a>
           <hr></hr>
           <p>By clicking</p> */}
-          <em>Sign up</em> you agree to our
+          {/* <em>Sign up</em> you agree to our
           <Link href="/terms" target="_blank">
             terms of service
-          </Link>
+          </Link> */}
         </div>
       </div>
     );

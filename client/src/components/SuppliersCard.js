@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import "../App.css";
+
 import Suppliers from "./Suppliers";
 
+
 export default class SuppliersCard extends Component {
+
  constructor(props) {
    super(props)
    
@@ -10,11 +13,9 @@ export default class SuppliersCard extends Component {
 
 
 
- 
-
 render() {
 
- const {user} = this.props
+  const {users} = this.state;
 
     return (
 
@@ -29,31 +30,51 @@ render() {
           />
         </div>
 
+
           
       
 
 
+
         <br />
+
 
        
 
         
 
      {user.id}
+
+
+        
+        {user.id}
+
         <h5 className="mt-2">
+
          
+   
+
          
-    <strong>{user.company_name}</strong>
+ 
+          <strong>{user.company_name}</strong>
+
         </h5>
+
        
       {user.postcode} - {user.city}
+
+
+
         <br />
+
         {user.tel_no} 
+
+
         <br />
+
     {user.website} 
-       
+
       </div>
-      
     );
   }
 }

@@ -17,15 +17,29 @@ const db = require("../model/helper");
 
 /* GET products filtered by name */
 router.get("/", function (req, res, next) {
-  const { name } = req.query;
+  const { name, market_id, seller_id } = req.query;
   let query = "";
+  let marketWhere = "";
+  let sellerWhere = "";
+  if (market_id) {
+    marketWhere = ` WHERE market_id = ${market_id}`;
+  }
+  if (seller_id) {
+    sellerWhere = ` WHERE seller_id = ${seller_id}`;
+  }
+
   if (name)
-    query = `SELECT p.*, u.lat, u.lng, u.company_name, u.website FROM products AS p 
+    query = `SELECT p.*, u.lat, u.lng, u.company_name, u.website 
+    FROM products AS p 
     LEFT JOIN users AS u ON u.id = p.seller_id 
-     WHERE p.name LIKE "%${name}%";`;
+    WHERE p.name LIKE "%${name}%";`;
   else
-    query = `SELECT p.*, u.lat, u.lng, u.company_name, u.website  FROM products AS p 
-    LEFT JOIN users AS u ON u.id = p.seller_id ;`;
+    query = `SELECT DISTINCT p.*, u.lat, u.lng, u.company_name, u.website  
+    FROM users_markets AS um 
+    LEFT JOIN users AS u ON u.id = um.user_id 
+    RIGHT JOIN products AS p ON p.seller_id = um.user_id
+    ${marketWhere} ${sellerWhere};`;
+  console.log(query);
   db(query)
     .then((results) => {
       res.send(results.data);

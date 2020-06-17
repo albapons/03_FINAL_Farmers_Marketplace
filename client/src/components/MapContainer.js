@@ -4,129 +4,53 @@ import api from "../utils/apiMarkets";
 
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
-const mapStyles = {
-  width: "100vw",
-  height: "100vh",
-};
-const style = {
-  width: "100vw",
-  height: "100vh",
-};
-
-const center = {
-  lat: 51.5074,
-  lng: 0.1278,
-};
-
-let service = null;
-let map, infoWindow, myLocation;
-let bounds, location;
+let myBounds;
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      input: "",
+      bounds: "",
       suggestions: [],
-      places: [
-        {
-          address1: "Torrington Square Rd",
-          city: "London",
-          company_name: "London Farmers' Markets",
-          company_no: "3815770",
-          day: "Saturday",
-          email: "info@lfm.org.uk",
-          end_time: "13:00:00",
-          id: 1,
-          lat: 51.523124,
-          lng: -0.130947,
-          location: "bla",
-          mob_no: "0207833 0338",
-          name: "Bloomsbury Farmers' Market",
-          postcode: "WC1E 7HY",
-          start_time: "09:00:00",
-          tel_no: "0207833 0338",
-          website: "http://www.lfm.org.uk",
-        },
-      ],
-      markets: [],
+      places: [],
     };
   }
 
-  savePlace = (place) => {
-    this.setState({ places: [...this.state.places, place] });
-  };
-
-  handleChange = (e) => {
-    this.setState({ input: e.target.value });
-  };
-
-  handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      this.searchDB();
-    }
-  };
-
   onMarkerClick = (props, marker, e) => {
-    console.log(props, marker, e);
+    const infoWindow = new props.google.maps.InfoWindow({
+      content: `${props.name}`,
+    });
+    infoWindow.open(props.map, marker);
   };
 
-  initPlaces(mapProps, map) {
+  initPlaces(mapProps, map, ctx) {
     const { google } = mapProps;
-    //service = new google.maps.places.PlacesService(map);
-    //console.log(google.maps);
-    infoWindow = new google.maps.InfoWindow();
-  }
-
-  componentDidMount() {
-    let myBounds = document.getElementById("myMap")?.getBounds();
-    console.log("Here are the bounds: ", myBounds);
+    google.maps.event.addListener(map, "idle", function () {
+      let bounds = map.getBounds();
+      localStorage.setItem("bounds", bounds.toUrlValue());
+      //This works now..
+      ctx.searchDB();
+    });
   }
 
   // Here is the modified search using the geocode library to return lat,lng co-ords to draw on the map
   searchDB = async () => {
-    console.log(bounds.toJSON());
-    let myBounds = {
-      east: -0.07,
-      north: 51.6,
-      south: 51.4,
-      west: -0.3,
-    };
-    let res = await api.getMarketsFiltered(myBounds);
-    console.log(res.data);
-    for (const record of res.data) {
-      this.setState({ suggestions: [...this.state.suggestions, record] });
-      this.setState({ places: [...this.state.places, record] });
+    let res = await api.getMarketsFiltered(localStorage.getItem("bounds"));
+    this.setState({ places: [] });
+    this.setState({ suggestions: [] });
+    if (res?.data) {
+      for (let i = 0; i < res.data.length; i++) {
+        let record = res.data[i];
+        this.setState({ suggestions: [...this.state.suggestions, record] });
+        this.setState({ places: [...this.state.places, record] });
+      }
     }
-  };
-
-  search = () => {
-    const { input } = this.state;
-    service.textSearch({ query: input }, (suggestions) => {
-      this.setState({ suggestions });
-      console.log(suggestions);
-    });
   };
 
   render() {
     const { suggestions, places } = this.state;
 
-    bounds = new this.props.google.maps.LatLngBounds();
-    console.log(
-      `Here is the localstorage lat: ${localStorage.getItem(
-        "lat"
-      )}, and lng: ${localStorage.getItem("lng")}`
-    );
-    console.log("There are this many places: ", places.length);
-    for (let i = 0; i < places.length; i++) {
-      let location = { lat: places[i].lat, lng: places[i].lng };
-      bounds.extend(location);
-      console.log(
-        `Here are the LatLngBounds for ${places[i].name}: ${JSON.stringify(
-          bounds.toJSON()
-        )}`
-      );
-    }
+    myBounds = new this.props.google.maps.LatLngBounds();
 
     return (
       <div className="container" style={{ width: "100%" }}>
@@ -137,25 +61,6 @@ export class MapContainer extends Component {
           <a className="navbar-brand" href="#">
             Find your nearest Market
           </a>
-
-          <li className="input-group">
-            <input
-              className="form-control mr-sm-2"
-              type="search"
-              value={this.state.input}
-              onChange={this.handleChange}
-              onKeyPress={this.handleKeyPress}
-              placeholder="Search"
-              aria-label="Search"
-            />
-
-            <button
-              className="btn btn-outline-success my-2 my-sm-0"
-              onClick={this.searchDB}
-            >
-              Search
-            </button>
-          </li>
         </nav>
         <div className="row">
           <div className="col">
@@ -173,12 +78,16 @@ export class MapContainer extends Component {
                       </div>
                       <span className="text-muted">{place.address1}</span>
                     </div>
-
+                    <div>
+                      <span className="text-muted">{`Day: ${place.day}     ${place.start_time} - ${place.end_time}`}</span>
+                    </div>
                     <button
-                      className="btn btn-outline-primary"
-                      onClick={() => this.savePlace(place)}
+                      className="btn btn-link"
+                      onClick={() =>
+                        /* navigate to that market page*/ this.state
+                      }
                     >
-                      Show
+                      More Info
                     </button>
                   </li>
                 ))}
@@ -189,18 +98,26 @@ export class MapContainer extends Component {
             <Map
               id="myMap"
               google={this.props.google}
-              onReady={this.initPlaces}
+              onReady={(mapProps, map) => this.initPlaces(mapProps, map, this)}
               zoom={14}
               style={{ height: "500px", width: "500px" }}
               initialCenter={{ lat: localStorage.lat, lng: localStorage.lng }}
             >
               {places.map((market, i) => (
                 <Marker
-                  onClick={this.onMarkerClick}
+                  onMouseover={this.onMarkerMouseover}
                   name={market.name}
                   position={{ lat: market.lat, lng: market.lng }}
                   key={i}
                 />
+              ))}
+              {places.map((market, i) => (
+                <InfoWindow onClose={this.onInfoWindowClose} key={i}>
+                  <div>
+                    <h1>{market.name}</h1>
+                    <h2>{market.address1 + market.postcode + market.city}</h2>
+                  </div>
+                </InfoWindow>
               ))}
             </Map>
           </div>

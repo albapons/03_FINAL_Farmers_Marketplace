@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import SuppliersCard from "./SuppliersCard";
+
 import SupplierMap from "./SupplierMap";
 import "./SupplierMap.css"
 
 
+import SupplierMap from "./SupplierMap";
+// import "./SupplierMap.css";
+
+
 export default class Suppliers extends Component {
+
   constructor(props) {
     super(props)
     this.state = {
@@ -26,23 +32,33 @@ getUsers = () => {
 }
   
 
+
+ 
   render() {
+
 
     const {users} = this.state;
    
+
     return (
     
       <div className="container">
         {console.log(users)}
 
         <div className="d-flex justify-content-center  my-5">
+
           <div className="square">
     
+
+
+          GOOGLE MAP HERE
           </div>
+
 
         </div>
         
         <div className="d-flex justify-content-between">
+
        
     
           {users.length && (
@@ -56,9 +72,6 @@ getUsers = () => {
           )}
        
   
-          {/* /* <SuppliersCard />
-          <SuppliersCard />
-          <SuppliersCard  /> */}
           
           
           
@@ -68,7 +81,13 @@ getUsers = () => {
           
          
           
+  
+        
+          
+         
+          
            
+
         </div>
       </div>
     );

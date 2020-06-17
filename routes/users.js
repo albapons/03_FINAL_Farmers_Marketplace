@@ -5,26 +5,7 @@ var userShouldBeLoggedIn = require("../guards/userShoudBeLoggedIn");
 const db = require("../model/helper");
 require("dotenv").config();
 const supersecret = process.env.SUPER_SECRET;
-// POST LOGIN
-router.post("/login", function (req, res, next) {
-  const { username, password } = req.body;
-  db(
-    `SELECT * FROM users WHERE username = "${username}" AND password = "${password}";`
-  ).then((results) => {
-    if (results.data.length) {
-      console.log("Yes the user is found");
-      var token = jwt.sign({ userId: results.data[0].id }, supersecret);
-      res.send({ msg: "User OK, here is your token", token });
-    } else {
-      res.status(404).send({ msg: "User not found!" });
-    }
-  });
-});
-// GET PROFILE INFO
-router.get("/profile", userShouldBeLoggedIn, function (req, res, next) {
-  res.send({ msg: `Here is the private data for user ${userId}!` });
-});
-/* GET users listing. */
+// GET all users
 const getUsers = (req, res) => {
   db(`SELECT * FROM users;`)
     .then((results) => {
@@ -34,14 +15,18 @@ const getUsers = (req, res) => {
 };
 router.get("/", getUsers);
 // GET one user
-router.get("/:id", function (req, res, next) {
+router.get("/:id", userShouldBeLoggedIn, function (req, res, next) {
   const { id } = req.params;
-  db(`SELECT * FROM users WHERE id = ${id}`)
+  db(`SELECT * FROM users WHERE id = ${id};`)
     .then((results) => {
       res.send(results.data[0]);
     })
     .catch((err) => res.status(500).send(err));
 });
+// GET PROFILE INFO
+// router.get("/profile", userShouldBeLoggedIn, function (req, res, next) {
+//   res.send({ msg: `Here is the private data for user ${userId}!` });
+// });
 // INSERT a new user into the DB
 router.post("/", function (req, res, next) {
   const { firstname, lastname, email, password, username } = req.body;
@@ -78,6 +63,21 @@ router.post("/", function (req, res, next) {
 //     })
 //     .catch((err) => res.status(500).send(err));
 // });
+// POST LOGIN
+router.post("/login", function (req, res, next) {
+  const { username, password } = req.body;
+  db(
+    `SELECT * FROM users WHERE username = "${username}" AND password = "${password}";`
+  ).then((results) => {
+    if (results.data.length) {
+      console.log("Yes the user is found");
+      var token = jwt.sign({ userId: results.data[0].id }, supersecret);
+      res.send({ msg: "User OK, here is your token", token });
+    } else {
+      res.status(404).send({ msg: "User not found!" });
+    }
+  });
+});
 // DELETE a user from the DB
 router.delete("/:id", function (req, res, next) {
   const { id } = req.params;
