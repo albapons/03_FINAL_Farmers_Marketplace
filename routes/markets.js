@@ -12,6 +12,16 @@ const db = require("../model/helper");
 //     .catch((err) => res.status(500).send(err));
 // });
 
+/* GET markets listing. */
+router.get("/:id/", function (req, res, next) {
+  const { id } = req.params;
+  db(`SELECT * FROM markets WHERE id = ${id};`)
+    .then((results) => {
+      res.send(results.data[0]);
+    })
+    .catch((err) => res.status(500).send(err));
+});
+
 /* GET filtered markets listing. 
 By location. ot sure how to pass an object through the GET request*/
 router.get("/", function (req, res) {

@@ -1,33 +1,61 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import api from "../utils/apiProducts";
+import { useParams } from "react-router-dom";
+import apiProducts from "../utils/apiProducts";
+import apiSuppliers from "../utils/apiSuppliers";
 import ProductsList from "./ProductsList";
 
 export default function Supplier(props) {
   const [products, setProducts] = useState([]);
   const [name, setSearch] = useState("");
+  const [supplier, setSupplier] = useState([]);
+  const { id } = useParams();
 
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
 
+  const getOneSupplier = () => {
+    apiSuppliers.getOneSupplier(id).then((response) => {
+      setSupplier(response.data);
+    });
+  };
+
   const getProductsFiltered = () => {
-    api.getProductsFiltered(name).then((response) => {
+    apiProducts.getProductsFiltered(name).then((response) => {
       setProducts(response.data);
     });
   };
 
   useEffect(() => {
     getProductsFiltered();
+    getOneSupplier();
   }, [name]);
 
   return (
     <div className="container">
+      {console.log(supplier)}
       <div className="row">
         <div>
           <i className="fas fa-shopping-basket CCbeige fa-2x"></i>
           <h5 className="title">IT'S TIME TO GO TO *****SUPPLIER*****? </h5>
           <h5 className="subtitle">Get your products!</h5>
+        </div>
+      </div>
+      <div className="d-flex justify-content-center">
+        <div className="text-center borderCard p-5 my-3 w-75" action="#!">
+          <h4 className="subtitle">{supplier.name}</h4>
+          <p className="text">
+            {supplier.address1} · {supplier.postcode} · {supplier.city}
+          </p>
+          <a className="text" href={supplier.website}>
+            {supplier.website}
+          </a>
+          <p className="text">
+            {supplier.email} · {supplier.mob_no}
+          </p>
+          <p className="text">
+            {supplier.day} from {supplier.start_time} to {supplier.end_time}
+          </p>
         </div>
       </div>
       <div className="row">
