@@ -20,6 +20,12 @@ export default function ProductsCard(props) {
     lng: parseFloat(localStorage.getItem("lng")),
   };
 
+  // {
+  //   console.log(parseFloat(product.lat));
+  // }
+  // {
+  //   console.log(parseFloat(product.lng));
+  // }
   let locationEnd = {
     lat: parseFloat(product.lat),
     lng: parseFloat(product.lng),
@@ -51,7 +57,6 @@ export default function ProductsCard(props) {
               Seller: <a href={product.website}>{product.company_name}</a>
             </p>
             <p>{`Description: ${product.description}`}</p>
-            {/* {product.unit_price.toFixed(2) + " £"} */}
             <div className="row d-flex justify-content-between mt-3">
               <div className="col-md-6">
                 <i className="fas fa-car-side fa-2x CCblue mr-2"></i>
@@ -59,7 +64,6 @@ export default function ProductsCard(props) {
                 <FoodMilesNumber start={locationStart} end={locationEnd} />
               </div>
               <div className="col-md-4 d-flex justify-content-center">
-                {/* We need to save the value of the Input Number for each product */}
                 <InputNumber />
               </div>
               <div className="col-md-2 d-flex justify-content-center">

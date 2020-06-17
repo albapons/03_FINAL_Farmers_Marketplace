@@ -6,16 +6,12 @@ import FoodMilesNumber from "./FoodMilesNumber";
 
 import ProductsList from "./ProductsList";
 
-export default function Market(props) {
+export default function Market({ start, end }) {
   const [products, setProducts] = useState([]);
   const [market, setMarket] = useState([]);
   const [name, setSearch] = useState("");
   const { id } = useParams();
   // const { locationStart } = {
-  //   lat: parseFloat(localStorage.getItem("lat")),
-  //   lng: parseFloat(localStorage.getItem("lng")),
-  // };
-  // const { locationE } = {
   //   lat: parseFloat(localStorage.getItem("lat")),
   //   lng: parseFloat(localStorage.getItem("lng")),
   // };
@@ -68,9 +64,9 @@ export default function Market(props) {
           <span className="text">
             <i className="fas fa-car-side text fa-1x CCbeige mr-2"></i>
             <strong>Food Miles: </strong>
-            {console.log(props.start)}
-            {console.log(props.end)}
-            <FoodMilesNumber start={props.start} end={props.end} />
+            {console.log(start)}
+            {console.log(end)}
+            <FoodMilesNumber start={start} end={end} />
           </span>
         </div>
       </div>
