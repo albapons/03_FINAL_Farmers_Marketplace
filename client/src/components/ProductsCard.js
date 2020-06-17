@@ -27,7 +27,6 @@ export default function ProductsCard(props) {
           <img src={props.product.img} alt="Error" className="productImg" />
         </div>
         <div className="container d-flex justify-content-center mt-3">
-          {/* We need to save the value of the Input Number for each product */}
           <InputNumber />
         </div>
         <br />

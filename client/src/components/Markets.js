@@ -4,11 +4,6 @@ import MapContainer from "./MapContainer";
 export default class Markets extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      lat: this.props.lat,
-      lng: this.props.lng,
-      location: { lat: this.props.lat, lng: this.props.lng },
-    };
   }
   render() {
     return (
@@ -20,9 +15,7 @@ export default class Markets extends Component {
           </div>
         </div>
         <div className="d-flex row">
-          {/*This works now*/}
-
-          <MapContainer lat={this.state.lat} lng={this.state.lng} />
+          <MapContainer />
         </div>
         <div className="d-flex row"></div>
         <div className="d-flex justify-content-between"></div>

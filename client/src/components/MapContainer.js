@@ -35,7 +35,6 @@ export class MapContainer extends Component {
     google.maps.event.addListener(map, "idle", function () {
       let bounds = map.getBounds();
       localStorage.setItem("bounds", bounds.toUrlValue());
-      //This works now..
       ctx.searchDB();
     });
   }
