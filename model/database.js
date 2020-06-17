@@ -54,7 +54,7 @@ con.connect(function (err) {
       tel_no varchar(255),
       mob_no varchar(255),
       website varchar(255),
-      isSeller binary(1),
+      isSeller TINYINT(1),
       password varchar(255),
       username varchar(255),
       lat varchar(255),
