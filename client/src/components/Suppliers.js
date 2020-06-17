@@ -26,8 +26,14 @@ export default class Suppliers extends Component {
 
     return (
       <div className="container">
-        {console.log(users)}
-
+        <div className="row">
+          <div>
+            <i className="fas fa-tractor CCbeige fa-2x"></i>
+            <h5 className="title">IT'S TIME TO KNOW OUR SUPPLIERS </h5>
+            <h5 className="subtitle">Look at our local suppliers</h5>
+          </div>
+        </div>
+        {/* MAP CONTAINER */}
         <div className="d-flex justify-content-center  my-5">
           <div className="square">GOOGLE MAP HERE</div>
         </div>
@@ -35,11 +41,13 @@ export default class Suppliers extends Component {
         <div className="d-flex justify-content-between">
           {users.length && (
             <div className="row">
-              {users.map((user, i) => (
-                <div key={i}>
-                  <SuppliersCard user={user} />
-                </div>
-              ))}
+              {console.log(users)}
+              {!!users.isSeller &&
+                users.map((user, i) => (
+                  <div key={i}>
+                    <SuppliersCard user={user} />
+                  </div>
+                ))}
             </div>
           )}
         </div>

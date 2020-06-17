@@ -100,7 +100,6 @@ class App extends Component {
                   <span onClick={() => this.logOut()}>
                     <i className="fas fa-sign-out-alt CCblue fa-2x"></i>
                   </span>
-                  {console.log(this.state.username)}
                 </div>
               ) : (
                 <div className="row">

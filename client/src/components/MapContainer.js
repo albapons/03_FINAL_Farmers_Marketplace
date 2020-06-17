@@ -118,7 +118,14 @@ export class MapContainer extends Component {
                         </span>
                       </div>
                       <button className="btn btn-link">
-                        <Link to={`/markets/${place.id}`}>
+                        <Link
+                          to={`/markets/${place.id}`}
+                          start={this.state.locationStart}
+                          end={{
+                            lat: parseFloat(place.lat),
+                            lng: parseFloat(place.lng),
+                          }}
+                        >
                           <i className="fas fa-info-circle CCblue fa-2x"></i>
                         </Link>
                       </button>
