@@ -21,7 +21,7 @@ export default function Supplier(props) {
   };
 
   const getProductsFiltered = () => {
-    apiProducts.getProductsFiltered(name).then((response) => {
+    apiProducts.getProductsFiltered(name, "", id).then((response) => {
       setProducts(response.data);
     });
   };

@@ -24,9 +24,11 @@ export default {
   // },
 
   // GET products filtered list by name
-  getProductsFiltered: (name, market_id) => {
+  getProductsFiltered: (name = "", market_id = "", seller_id = "") => {
     return axios
-      .get(`${apiRoot}?name=${name}&market_id=${market_id}`)
+      .get(
+        `${apiRoot}?name=${name}&market_id=${market_id}&seller_id=${seller_id}`
+      )
       .catch(function (error) {
         console.log(error);
       });
