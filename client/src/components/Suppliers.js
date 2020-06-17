@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SuppliersCard from "./SuppliersCard";
+
 export default class Suppliers extends Component {
   constructor(props) {
     super(props);
