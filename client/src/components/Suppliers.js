@@ -15,7 +15,7 @@ export default class Suppliers extends Component {
   }
 
   getUsers = () => {
-    fetch(`/api/users`)
+    fetch(`/users`)
       .then((response) => response.json())
       .then((response) => {
         this.setState({ users: response });
