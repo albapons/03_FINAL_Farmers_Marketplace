@@ -11,10 +11,8 @@ export default function Market({ start, end }) {
   const [market, setMarket] = useState([]);
   const [name, setSearch] = useState("");
   const { id } = useParams();
-  // const { locationStart } = {
-  //   lat: parseFloat(localStorage.getItem("lat")),
-  //   lng: parseFloat(localStorage.getItem("lng")),
-  // };
+  const [locationStart, setLocationStart] = useState(start);
+  const [locationEnd, setLocationEnd] = useState(end);
 
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -31,6 +29,11 @@ export default function Market({ start, end }) {
       setProducts(response.data);
     });
   };
+
+  useEffect(() => {
+    getProductsFiltered();
+    getOneMarket();
+  }, []);
 
   useEffect(() => {
     getProductsFiltered();
@@ -64,9 +67,9 @@ export default function Market({ start, end }) {
           <span className="text">
             <i className="fas fa-car-side text fa-1x CCbeige mr-2"></i>
             <strong>Food Miles: </strong>
-            {console.log(start)}
-            {console.log(end)}
-            <FoodMilesNumber start={start} end={end} />
+            {console.log(locationStart)}
+            {console.log(locationEnd)}
+            <FoodMilesNumber start={locationStart} end={locationEnd} />
           </span>
         </div>
       </div>

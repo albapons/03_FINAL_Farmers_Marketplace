@@ -33,7 +33,11 @@ export default class SuppliersCard extends Component {
           <br />
           {user.email && `${user.email}`}
           <br />
-          {user.website && <a href={user.website}>{user.website}</a>}
+          {user.website && (
+            <p>
+              <a href={user.website}>{user.website}</a>
+            </p>
+          )}
           <br />
           <div className="d-flex justify-content-between mt-3">
             <div className="ml-1 row">
