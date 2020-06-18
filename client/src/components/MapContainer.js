@@ -103,7 +103,7 @@ export class MapContainer extends Component {
                         <span className="text text-muted">{`Day: ${place.day}     ${place.start_time} - ${place.end_time}`}</span>
                         <br />
 
-                        <span className="text text-muted">
+                        <span className="text text-muted d-flex align-items-center">
                           <i className="fas fa-car-side text fa-1x CCbeige mr-2"></i>
                           <strong>Food Miles: </strong>
                           <FoodMilesNumber
@@ -116,14 +116,7 @@ export class MapContainer extends Component {
                         </span>
                       </div>
                       <button className="btn btn-link">
-                        <Link
-                          to={`/markets/${place.id}`}
-                          start={this.state.locationStart}
-                          end={{
-                            lat: parseFloat(place.lat),
-                            lng: parseFloat(place.lng),
-                          }}
-                        >
+                        <Link to={`/markets/${place.id}`}>
                           <i className="fas fa-info-circle CCblue fa-2x"></i>
                         </Link>
                       </button>

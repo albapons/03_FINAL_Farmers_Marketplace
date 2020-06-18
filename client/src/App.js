@@ -37,13 +37,7 @@ class App extends Component {
     document.getElementById("main").style.marginLeft = "20px";
   };
 
-  setLogin = (username) => {
-    this.setState({
-      login: true,
-    });
-    console.log(this.state.login);
-  };
-
+  // Save the location
   setLocation = (lat, lng) => {
     localStorage.setItem("lat", lat);
     localStorage.setItem("lng", lng);
@@ -52,6 +46,12 @@ class App extends Component {
   onLogin = (username, history) => {
     this.setState({ username });
     history.push("/");
+  };
+
+  setLogin = (username) => {
+    this.setState({
+      login: true,
+    });
   };
 
   logOut = () => {
@@ -73,7 +73,7 @@ class App extends Component {
             <Link to="/products">Products</Link>
             <Link to="/markets">Markets</Link>
             <Link to="/suppliers">Suppliers</Link>
-            <Link to="/recipe">Recipe Of The Week</Link>
+            <Link to="/recipe">Find a recipe</Link>
             <Link to="/contact">Contact</Link>
           </div>
         </div>

@@ -35,11 +35,11 @@ export default class Suppliers extends Component {
           </div>
         </div>
         {/* MAP CONTAINER */}
-        <div className="d-flex justify-content-center  my-5">
+        {/* <div className="d-flex justify-content-center  my-5">
           <SupplierMap />
-        </div>
+        </div> */}
 
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between mt-3">
           {users?.length && (
             <div className="row">
               {users.map(
