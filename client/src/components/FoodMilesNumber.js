@@ -13,6 +13,7 @@ class FoodMilesNumber extends Component {
       distance: "",
     };
   }
+
   componentDidMount() {
     const { google } = this.props;
     d_service = new google.maps.DistanceMatrixService(
@@ -20,15 +21,19 @@ class FoodMilesNumber extends Component {
     );
     this.search();
   }
+
   componentDidUpdate(prevProps, prevState) {
+    // To refresh the props when they're ready
     if (
       prevProps.start !== this.props.start ||
       prevProps.end !== this.props.end
     )
       this.search();
   }
+
   search = () => {
     const { start, end } = this.props;
+    // To calculate the distance
     d_service.getDistanceMatrix(
       {
         origins: [start],
