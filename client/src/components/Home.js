@@ -17,7 +17,6 @@ export default class Home extends Component {
     return (
       <div className="body">
         <div className="row">
-          {" "}
           <div
             className="homeTitle buy"
             onMouseOver={(e) => this.changeOpacityUp(e)}

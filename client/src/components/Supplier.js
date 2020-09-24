@@ -51,7 +51,7 @@ export default function Supplier(props) {
             {supplier.website}
           </a>
           <p className="text">
-            {supplier.email} · {supplier.mob_no}{" "}
+            {supplier.email} · {supplier.mob_no}
             {`(${supplier.firstname} ${supplier.lastname})`}
           </p>
         </div>
