@@ -33,7 +33,7 @@ class FoodMilesNumber extends Component {
 
   search = () => {
     const { start, end } = this.props;
-    // To calculate the distance
+    // To calculate the distance between the user location and the supplier location
     d_service.getDistanceMatrix(
       {
         origins: [start],
